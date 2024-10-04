@@ -1,0 +1,79 @@
+.MensajeGeneral {
+  text-align: center;
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+.MensajeGeneral__Imagen {
+  width: 300px;
+  height: 300px;
+}
+.MensajeGeneral__Texto {
+  color: var(--ColorRojo);
+  font-size: 25px;
+  font-weight: bold;
+}
+.MensajeGeneral__Boton {
+  padding: 10px 25px;
+  border-radius: 25px;
+  color: var(--ColorBlanco);
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.3s ease-in-out all;
+}
+.MensajeGeneral__Boton.Azul {
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+}
+.MensajeGeneral__Boton.Azul:hover {
+  border: 2px solid var(--ColorAzul);
+  color: var(--ColorAzul);
+}
+.MensajeGeneral__Boton.Verde {
+  background-color: var(--ColorVerde);
+  border: 2px solid var(--ColorVerde);
+}
+.MensajeGeneral__Boton.Verde:hover {
+  border: 2px solid var(--ColorVerde);
+  color: var(--ColorVerde);
+}
+.MensajeGeneral__Boton.Rojo {
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.MensajeGeneral__Boton.Rojo:hover {
+  border: 2px solid var(--ColorRojo);
+  color: var(--ColorRojo);
+}
+.MensajeGeneral__Boton.Naranja {
+  background-color: var(--ColorNaranja);
+  border: 2px solid var(--ColorNaranja);
+}
+.MensajeGeneral__Boton.Naranja:hover {
+  border: 2px solid var(--ColorNaranja);
+  color: var(--ColorNaranja);
+}
+.MensajeGeneral__Boton.Negro {
+  background-color: var(--ColorNegro);
+  border: 2px solid var(--ColorNegro);
+}
+.MensajeGeneral__Boton.Negro:hover {
+  border: 2px solid var(--ColorNegro);
+  color: var(--ColorNegro);
+}
+.MensajeGeneral__Boton:hover {
+  background-color: transparent;
+}
+@media (width <= 1000px) {
+  .MensajeGeneral__Imagen {
+    width: 200px;
+    height: 200px;
+  }
+  .MensajeGeneral__Texto {
+    font-size: 20px;
+  }
+}

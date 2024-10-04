@@ -1,0 +1,120 @@
+.ModalConfirmacionAgencias {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  padding: 10px;
+
+  z-index: 1000;
+}
+
+.ModalConfirmacionAgencias__Contenido {
+  position: relative;
+  background-color: var(--ColorBlanco);
+  padding: 10px;
+  width: 400px;
+  /* width: 500px; */
+  /* border-radius: 20px; */
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.ModalConfirmacionAgencias__Contenido--CerrarModal {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: -20px;
+  right: -20px;
+  border-radius: 50%;
+  border: 2px solid var(--ColorRojo);
+  background-color: var(--ColorRojo);
+  color: var(--ColorBlanco);
+  font-size: 16px;
+  transition: 0.3s ease-in-out all;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ModalConfirmacionAgencias__Contenido--CerrarModal:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.ModalConfirmacionAgencias__Contenido--Titulo {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 10px 0;
+  text-transform: uppercase;
+}
+.ModalConfirmacionAgencias__Contenido--Titulo.Activar {
+  color: var(--ColorVerde);
+}
+.ModalConfirmacionAgencias__Contenido--Titulo.Desactivar {
+  color: var(--ColorRojo);
+}
+.ModalConfirmacionAgencias__Contenido--Texto {
+  grid-column: 1 / -1;
+  color: var(--ColorNegro);
+  text-align: center;
+  padding: 10px 0;
+  font-weight: bold;
+}
+.ModalConfirmacionAgencias__Contenido--Texto.Activar b {
+  text-transform: uppercase;
+  color: var(--ColorVerde);
+}
+.ModalConfirmacionAgencias__Contenido--Texto.Desactivar b {
+  text-transform: uppercase;
+  color: var(--ColorRojo);
+}
+.ModalConfirmacionAgencias__Contenido--Texto i {
+  color: var(--ColorGris);
+  font-style: italic;
+  font-size: 10px;
+}
+.ModalConfirmacionAgencias__Contenido--Boton {
+  grid-column: 1 / -1;
+  text-align: center;
+  height: 50px;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  /* border-radius: 10px; */
+  margin-top: 20px;
+}
+.ModalConfirmacionAgencias__Contenido--Boton.Activar {
+  background-color: var(--ColorVerde);
+  border: 2px solid var(--ColorVerde);
+}
+.ModalConfirmacionAgencias__Contenido--Boton.Desactivar {
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.ModalConfirmacionAgencias__Contenido--Boton.Activar:hover {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorVerde);
+}
+.ModalConfirmacionAgencias__Contenido--Boton.Desactivar:hover {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorRojo);
+}
+@media (width <= 550px) {
+  .ModalConfirmacionAgencias__Contenido {
+    width: 100%;
+  }
+  .ModalConfirmacionAgencias__Contenido--CerrarModal {
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 0;
+  }
+}

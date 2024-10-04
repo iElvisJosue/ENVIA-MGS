@@ -1,0 +1,120 @@
+.IniciarSesion {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.IniciarSesion__Form {
+  position: relative;
+  background-color: var(--ColorBlanco);
+  padding: 20px;
+  width: 500px;
+  border-radius: 35px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  box-shadow: 0px 0px 100px 0px rgba(0, 0, 0, 0.15);
+}
+.IniciarSesion__Form--Img {
+  width: 120px;
+}
+.IniciarSesion__Form--Title {
+  text-align: center;
+  color: var(--ColorNegro);
+  font-size: 25px;
+}
+/* .IniciarSesion__Form--Divisor {
+  width: 100%;
+  height: 2px;
+  border: none;
+  background-color: var(--ColorGrisClaro);
+} */
+.IniciarSesion__Form--ContenedorCampos {
+  position: relative;
+  width: 100%;
+  min-height: 65px;
+  height: 65px;
+}
+.IniciarSesion__Form--ContenedorCampos--Icono {
+  position: absolute;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.IniciarSesion__Form--ContenedorCampos--Icono.Ojo {
+  right: 0;
+  cursor: pointer;
+}
+.IniciarSesion__Form--ContenedorCampos--Icono ion-icon {
+  color: var(--ColorNegro);
+  width: 50px;
+  font-size: 20px;
+}
+.IniciarSesion__Form--ContenedorCampos--Texto {
+  font-size: 16px;
+  width: 100%;
+  height: 65px;
+  background-color: var(--ColorSecundario);
+  border-radius: 25px;
+  border: 2px solid transparent;
+  color: var(--ColorNegro);
+  padding: 10px 50px;
+  outline: none;
+
+  transition: 0.3s ease-in-out all;
+}
+.IniciarSesion__Form--ContenedorCampos--Texto::placeholder {
+  font-weight: bold;
+  color: var(--ColorNegro);
+}
+.IniciarSesion__Form--ContenedorCampos--Texto:focus {
+  border-color: var(--ColorNegro);
+}
+.IniciarSesion__Form--MensajeError {
+  width: 100%;
+  font-size: 13px;
+  color: var(--ColorRojo);
+  font-weight: bold;
+}
+.IniciarSesion__Form--BotonEnviar {
+  width: 100%;
+  height: 65px;
+  font-size: 16px;
+  border-radius: 25px;
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+  color: var(--ColorBlanco);
+  font-weight: bold;
+  transition: 0.3s ease-in-out all;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.IniciarSesion__Form--BotonEnviar ion-icon {
+  font-size: 20px;
+}
+.IniciarSesion__Form--BotonEnviar:hover {
+  cursor: pointer;
+  background: none;
+  color: var(--ColorAzul);
+}
+
+@media (width <= 768px) {
+  .IniciarSesion {
+    display: initial;
+  }
+  .IniciarSesion__Form {
+    border-radius: 0;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+  }
+}

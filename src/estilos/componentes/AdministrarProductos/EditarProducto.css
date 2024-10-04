@@ -1,0 +1,154 @@
+.EditarProducto {
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+}
+.EditarProducto__Opciones {
+  grid-column: 1 / -1;
+  margin-top: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.EditarProducto__Opciones--Boton {
+  height: 50px;
+  border-radius: 15px;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.EditarProducto__Opciones--Boton ion-icon {
+  font-size: 20px;
+}
+.EditarProducto__Opciones--Boton.Regresar {
+  border: 2px solid var(--ColorRojo);
+  background-color: var(--ColorRojo);
+}
+.EditarProducto__Opciones--Boton.Regresar:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.EditarProducto__Opciones--Boton.Regresar:hover::after {
+  content: "Regresar";
+}
+.EditarProducto__Titulo {
+  grid-column: 1 / -1;
+  color: var(--ColorAzul);
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+.EditarProducto__Titulo__Campo {
+  grid-column: span 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.EditarProducto__Titulo__Campo p {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--ColorNegro);
+  font-weight: bold;
+  gap: 5px;
+}
+.EditarProducto__Titulo__Campo p ion-icon {
+  font-size: 20px;
+}
+.EditarProducto__Titulo__Campo input,
+.EditarProducto__Titulo__Campo select {
+  width: 100%;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  background-color: var(--ColorSecundario);
+  border: 1px solid var(--ColorSecundario);
+  border-radius: 5px;
+  padding: 0 10px;
+  color: var(--ColorNegro);
+  font-size: 16px;
+  font-weight: bold;
+}
+.EditarProducto__Titulo__Campo input:focus {
+  border: 2px solid var(--ColorNegro);
+}
+.EditarProducto__Footer {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.EditarProducto__Footer__Boton {
+  width: 150px;
+  height: 50px;
+  max-height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  border-radius: 25px;
+}
+.EditarProducto__Footer__Boton.Cancelar {
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.EditarProducto__Footer__Boton.Cancelar:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.EditarProducto__Footer__Boton.Guardar {
+  background-color: var(--ColorVerde);
+  border: 2px solid var(--ColorVerde);
+}
+.EditarProducto__Footer__Boton.Guardar:hover {
+  background-color: transparent;
+  color: var(--ColorVerde);
+}
+@media (max-width: 1000px) {
+  .EditarProducto__Titulo__Campo {
+    grid-column: span 2;
+  }
+  .EditarProducto__Titulo__Campo.Tres {
+    grid-column: span 2;
+  }
+}
+@media (max-width: 500px) {
+  .EditarProducto {
+    gap: 25px;
+  }
+  .EditarProducto__Titulo {
+    margin-top: 20px;
+    font-size: 20px;
+  }
+  .EditarProducto__Footer {
+    flex-direction: column;
+  }
+  .EditarProducto__Footer__Boton {
+    width: 100%;
+  }
+  .EditarProducto__Titulo__Campo {
+    grid-column: 1 / -1;
+  }
+  .EditarProducto__Titulo__Campo.Tres {
+    grid-column: 1 / -1;
+  }
+  .EditarProducto__Titulo__Campo.Dos {
+    grid-column: 1 / -1;
+  }
+}

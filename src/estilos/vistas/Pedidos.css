@@ -1,0 +1,6 @@
+.Pedidos {
+  grid-area: Cuerpo;
+  width: 100%;
+  height: calc(100vh - 75px);
+  overflow-y: auto;
+}

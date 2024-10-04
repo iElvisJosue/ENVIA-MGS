@@ -1,0 +1,92 @@
+/* IMPORTAMOS LA FUENTE */
+@font-face {
+  font-family: "NotoSans";
+  src: url("../public/NotoSans.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Ticketing";
+  src: url("../public/Ticketing.ttf") format("truetype");
+}
+
+/* CONFIGURACIÓN GENERAL */
+:root {
+  --ColorAmarilloClaro: #f9bd23;
+  --ColorAmarilloOscuro: #da8a00;
+  --ColorPrincipal: #171616;
+  --ColorSecundario: #e7e8ed;
+  --ColorNegro: #171616;
+  --ColorBlanco: #ffffff;
+  --ColorNaranja: #da8a00;
+  --ColorAzul: #0062dd;
+  --ColorAzulHover: #3683f9;
+  --ColorVerde: #408a15;
+  --ColorRojo: #cc362e;
+  --ColorGris: gray;
+  --ColorGrisClaro: #d4d5da;
+  --ColorGrisContenedor: #eef3f9;
+  --ColorGrisEncabezado: #f9fafe;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: var(--ColorNegro);
+}
+body {
+  background: var(--ColorGrisContenedor);
+}
+body,
+input,
+select,
+button,
+a {
+  font-family: "NotoSans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+input {
+  /* accent-color: var(--MainYellow); */
+  outline: none;
+}
+input[type="file"] {
+  display: none;
+}
+::-webkit-scrollbar {
+  width: 12px; /* Ancho del scroll */
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--ColorAzul); /* Color del scroll thumb */
+}
+::-webkit-scrollbar-track {
+  background-color: var(--ColorBlanco); /* Color del track */
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  box-shadow: 0 0 0px 1000px white inset;
+}
+.Main {
+  position: relative;
+
+  display: grid;
+  grid-template-areas:
+    "MenuHamburguesa Encabezado Encabezado"
+    "MenuHamburguesa Cuerpo Cuerpo";
+  grid-template-columns: 300px 1fr 1fr;
+  grid-template-rows: 75px 1fr;
+}
+@media (width >= 1920px) {
+  .Main {
+    width: 1920px;
+    margin: 0 auto;
+  }
+}
+@media (width <= 768px) {
+  .Main {
+    grid-template-areas:
+      "Encabezado Encabezado Encabezado"
+      "Cuerpo Cuerpo Cuerpo";
+  }
+}

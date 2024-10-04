@@ -1,0 +1,128 @@
+.Menu {
+  position: relative;
+  width: 300px;
+  height: 100vh;
+  background-color: var(--ColorAzul);
+  padding: 0 10px 10px 10px;
+  overflow: auto;
+  grid-area: MenuHamburguesa;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+}
+.Menu.Activo {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.Menu::-webkit-scrollbar {
+  display: none;
+}
+.Menu__Encabezado {
+  position: relative;
+  width: 100%;
+  min-height: 75px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.Menu__Encabezado a {
+  text-decoration: none;
+  color: var(--ColorBlanco);
+  font-size: 20px;
+  font-weight: bold;
+}
+.Menu__Encabezado--MostrarMenu {
+  display: none;
+  cursor: pointer;
+  font-size: 30px;
+  color: var(--ColorBlanco);
+}
+.Menu__Encabezado img {
+  width: 35px;
+}
+.Menu__Encabezado h1 {
+  font-size: 20px;
+}
+.Menu__Cuerpo {
+  width: 100%;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Menu__Cuerpo__Contenido {
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.Menu__Cuerpo__Contenido.Activo {
+  height: auto;
+}
+.Menu__CerrarSesion {
+  margin-top: auto;
+  width: 100%;
+  min-height: 50px;
+  border-radius: 50px;
+  outline: none;
+  background-color: var(--ColorBlanco);
+  border: 2px solid var(--ColorBlanco);
+  color: var(--ColorAzul);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease-in-out all;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.Menu__CerrarSesion ion-icon {
+  font-size: 20px;
+}
+.Menu__CerrarSesion:hover {
+  background-color: var(--ColorAzul);
+  color: var(--ColorBlanco);
+}
+.Menu__MostrarMenu {
+  position: fixed;
+  top: 22.5px;
+  right: 10px;
+  color: var(--ColorNegro);
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+
+  display: none;
+}
+.Menu.Activo .Menu__MostrarMenu {
+  display: none;
+}
+@media (width <= 768px) {
+  .Menu {
+    position: absolute;
+    top: 0;
+    left: -300px;
+  }
+  .Menu__MostrarMenu {
+    display: block;
+  }
+  .Menu__Encabezado {
+    justify-content: space-between;
+  }
+  .Menu__Encabezado--MostrarMenu {
+    display: block;
+  }
+}

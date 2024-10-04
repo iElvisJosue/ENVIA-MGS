@@ -1,0 +1,125 @@
+.NumeroDeGuia {
+  width: 100%;
+  min-height: 100vh;
+  padding: 10px;
+  background-color: var(--ColorAzul);
+  font-size: 14px;
+  font-family: "Ticketing", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.NumeroDeGuia__Separador {
+  width: 100%;
+  border: 1px dashed var(--ColorNegro);
+}
+.NumeroDeGuia__Ticket,
+.NumeroDeGuia__Movimientos {
+  position: relative;
+  width: 300px;
+  min-height: 100px;
+  background-color: var(--ColorBlanco);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-weight: bold;
+  gap: 10px;
+  padding: 20px 10px;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    height: 6px;
+    width: calc(100% - 5px);
+  }
+
+  &:before {
+    top: -5px;
+    background: radial-gradient(
+        circle,
+        transparent,
+        transparent 50%,
+        var(--ColorBlanco) 50%,
+        var(--ColorBlanco) 100%
+      ) -7px -8px / 16px 16px repeat-x;
+  }
+
+  &:after {
+    bottom: -5px;
+    background: radial-gradient(
+        circle,
+        transparent,
+        transparent 50%,
+        var(--ColorBlanco) 50%,
+        var(--ColorBlanco) 100%
+      ) -7px -2px / 16px 16px repeat-x;
+  }
+}
+.NumeroDeGuia__Ticket--Logo,
+.NumeroDeGuia__Movimientos--Logo {
+  width: 75px;
+}
+.NumeroDeGuia__Ticket--Detalles {
+  text-align: center;
+}
+.NumeroDeGuia__Ticket--Detalles.SinResultados {
+  color: var(--ColorRojo);
+  text-transform: uppercase;
+}
+.NumeroDeGuia__Ticket--Detalles.SinResultados b {
+  color: var(--ColorNegro);
+}
+.NumeroDeGuia__Ticket--Detalles b {
+  font-size: 16px;
+  color: var(--ColorVerde);
+}
+.NumeroDeGuia__Ticket--Detalles ion-icon {
+  font-size: 20px;
+  color: var(--ColorNegro);
+}
+.NumeroDeGuia__Movimientos {
+  width: 500px;
+  min-height: 100px;
+}
+.NumeroDeGuia__Movimientos--Titulo {
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.NumeroDeGuia__Movimientos--Detalles {
+  width: 100%;
+  text-align: center;
+}
+.NumeroDeGuia__Movimientos--Detalles.Pendiente {
+  color: var(--ColorNaranja);
+}
+.NumeroDeGuia__Movimientos--Detalles.Creado,
+.NumeroDeGuia__Movimientos--Detalles.Pagado,
+.NumeroDeGuia__Movimientos--Detalles.Entregado {
+  color: var(--ColorVerde);
+}
+.NumeroDeGuia__Movimientos--Detalles.Cancelado {
+  color: var(--ColorRojo);
+}
+.NumeroDeGuia__Movimientos--Detalles.Camino {
+  color: var(--ColorAzul);
+}
+@media (width <= 510px) {
+  .NumeroDeGuia__Movimientos {
+    width: 100%;
+  }
+}
+@media (width <= 310px) {
+  .NumeroDeGuia__Ticket {
+    width: 100%;
+  }
+}

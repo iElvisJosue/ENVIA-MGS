@@ -1,0 +1,313 @@
+.Bienvenida {
+  grid-area: Cuerpo;
+  width: 100%;
+  height: calc(100vh - 75px);
+  overflow-y: auto;
+  padding: 10px;
+
+  display: grid;
+  grid-template-areas:
+    "Bienvenida Bienvenida EspacioUno"
+    "EspacioDos UltimasDiezGuias UltimasDiezGuias"
+    "EspacioTres UltimasDiezGuias UltimasDiezGuias";
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 300px 150px auto;
+  align-items: flex-start;
+  justify-items: center;
+  gap: 10px;
+}
+.Bienvenida__Mensaje {
+  grid-area: Bienvenida;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--ColorBlanco);
+  border-radius: 35px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.Bienvenida__Mensaje img {
+  min-width: 150px;
+  max-width: 150px;
+}
+.Bienvenida__Mensaje p {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+.Bienvenida__Mensaje p:nth-child(2) {
+  color: var(--ColorAzul);
+}
+.Bienvenida__Mensaje p:nth-child(3) {
+  color: var(--ColorRojo);
+}
+.Bienvenida__Mensaje p:nth-child(4) {
+  color: var(--ColorVerde);
+}
+.Bienvenida__Perfil,
+.Bienvenida__TotalDePedidosHechosHoy,
+.EspacioTres {
+  grid-area: EspacioUno;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--ColorAzul);
+  color: var(--ColorBlanco);
+  border-radius: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Bienvenida__Perfil {
+  grid-area: EspacioUno;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.Bienvenida__Perfil--Encabezado {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Bienvenida__Perfil--Encabezado p {
+  font-weight: bold;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.Bienvenida__Perfil--Encabezado ion-icon {
+  font-size: 25px;
+}
+.Bienvenida__Perfil--Icono {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  border-left: 5px solid var(--ColorBlanco);
+  border-top: 5px solid var(--ColorBlanco);
+  border-right: 5px solid var(--ColorRojo);
+  border-bottom: 5px solid var(--ColorBlanco);
+  transform: rotate(-45deg);
+  padding: 10px;
+}
+.Bienvenida__Perfil--Icono img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  transform: rotate(45deg);
+}
+.Bienvenida__Perfil--Nombre {
+  padding: 2px 10px;
+  background-color: var(--ColorBlanco);
+  color: var(--ColorAzul);
+  border-radius: 15px;
+  font-weight: bold;
+}
+.Bienvenida__Perfil--Permisos {
+  font-style: italic;
+  color: var(--ColorBlanco);
+}
+.Bienvenida__TotalDePedidosHechosHoy {
+  grid-area: EspacioDos;
+  background-image: url("/PedidosHoy.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Bienvenida__TotalDePedidosHechosHoy--Texto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 5px;
+}
+.Bienvenida__TotalDePedidosHechosHoy--Texto p {
+  font-weight: bold;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.Bienvenida__TotalDePedidosHechosHoy--Cantidad {
+  background: var(--ColorBlanco);
+  color: var(--ColorNegro);
+  min-width: 65px;
+  min-height: 65px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.EspacioTres {
+  grid-area: EspacioTres;
+  height: 150px;
+}
+.Bienvenida__UltimasGuias {
+  grid-area: UltimasDiezGuias;
+  width: 100%;
+  min-height: 310px;
+  background-color: var(--ColorBlanco);
+  border-radius: 35px;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.Bienvenida__UltimasGuias--Encabezado {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Bienvenida__UltimasGuias--Encabezado p {
+  color: var(--ColorNegro);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+.Bienvenida__UltimasGuias--Encabezado button {
+  background-color: var(--ColorNegro);
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease-in-out all;
+  border: none;
+  cursor: pointer;
+}
+.Bienvenida__UltimasGuias--Encabezado button ion-icon {
+  font-size: 20px;
+  color: var(--ColorBlanco);
+}
+.Bienvenida__UltimasGuias--Cuerpo {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  background-color: var(--ColorGrisContenedor);
+  gap: 10px;
+}
+.Bienvenida__UltimasGuias--Cuerpo span {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.Bienvenida__UltimasGuias--Cuerpo span ion-icon {
+  font-size: 20px;
+  color: var(--ColorAzul);
+}
+.Bienvenida__UltimasGuias--SinResultados {
+  background-color: var(--ColorBlanco);
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.Bienvenida__UltimasGuias--SinResultados img {
+  width: 75px;
+  height: 75px;
+}
+.Bienvenida__UltimasGuias--SinResultados small {
+  color: var(--ColorRojo);
+  font-weight: bold;
+  text-align: center;
+}
+.Bienvenida__UltimasGuias--SinResultados a {
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  font-size: 10px;
+}
+.Bienvenida__UltimasGuias--SinResultados a:hover {
+  background-color: transparent;
+  color: var(--ColorAzul);
+}
+.Bienvenida__UltimasGuias--Cuerpo--Encabezado,
+.Bienvenida__UltimasGuias--Cuerpo--Detalles {
+  width: 100%;
+  min-height: 50px;
+
+  display: flex;
+}
+.Bienvenida__UltimasGuias--Cuerpo--Detalles {
+  height: auto;
+  border-left: 2px solid var(--ColorAzul);
+  border-right: 2px solid var(--ColorAzul);
+}
+.Bienvenida__UltimasGuias--Cuerpo--Detalles:nth-child(even) {
+  background-color: var(--ColorBlanco);
+}
+.Bienvenida__UltimasGuias--Cuerpo--Detalles:nth-child(odd) {
+  background-color: var(--ColorSecundario);
+}
+.Bienvenida__UltimasGuias--Cuerpo--Detalles:last-child {
+  border-bottom: 2px solid var(--ColorAzul);
+}
+
+@media (width <= 500px) {
+  .Bienvenida {
+    grid-template-areas:
+      "Bienvenida Bienvenida Bienvenida"
+      "EspacioUno EspacioUno EspacioUno"
+      "UltimasDiezGuias UltimasDiezGuias UltimasDiezGuias"
+      "EspacioDos EspacioDos EspacioDos"
+      "EspacioTres EspacioTres EspacioTres";
+    grid-template-rows: auto;
+  }
+  .Bienvenida__Mensaje,
+  .Bienvenida__UltimasGuias,
+  .Bienvenida__UltimasGuias--Cuerpo,
+  .EspacioUno,
+  .Bienvenida__TotalDePedidosHechosHoy,
+  .EspacioTres {
+    border-radius: 15px;
+  }
+  .Bienvenida__Mensaje p {
+    font-size: 14px;
+  }
+  .Bienvenida__TotalDePedidosHechosHoy--Texto p {
+    font-size: 16px;
+  }
+  .Bienvenida__TotalDePedidosHechosHoy--Cantidad {
+    min-width: 50px;
+    min-height: 50px;
+    font-size: 16px;
+  }
+  .Bienvenida__UltimasGuias {
+    min-height: auto;
+  }
+}
