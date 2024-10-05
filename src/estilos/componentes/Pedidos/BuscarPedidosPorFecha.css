@@ -30,7 +30,7 @@
   background-color: var(--ColorBlanco);
   border: 2px solid var(--ColorBlanco);
   color: var(--ColorNegro);
-  border-radius: 15px;
+  /* border-radius: 15px; */
   margin-top: 10px;
   transition: 0.3s ease-in-out all;
   cursor: pointer;
@@ -94,7 +94,7 @@
   border: 2px solid var(--ColorAzul);
   color: var(--ColorBlanco);
   font-weight: bold;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   font-size: 12px;
   width: 50px;
   height: 35px;

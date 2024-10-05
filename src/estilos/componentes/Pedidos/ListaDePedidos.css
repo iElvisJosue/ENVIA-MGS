@@ -21,7 +21,7 @@
   background-color: var(--ColorAzul);
   border: 2px solid var(--ColorAzul);
   color: var(--ColorBlanco);
-  border-radius: 15px;
+  /* border-radius: 15px; */
   margin-top: 10px;
   transition: 0.3s ease-in-out all;
   cursor: pointer;

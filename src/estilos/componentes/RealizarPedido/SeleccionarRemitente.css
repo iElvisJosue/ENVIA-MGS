@@ -21,7 +21,7 @@
   background-color: var(--ColorAzul);
   border: 2px solid var(--ColorAzul);
   color: var(--ColorBlanco);
-  border-radius: 15px;
+  /* border-radius: 15px; */
   margin-top: 10px;
   transition: 0.3s ease-in-out all;
   cursor: pointer;
@@ -56,7 +56,7 @@
   max-height: 50px;
   background-color: var(--ColorBlanco);
   border: 1px solid var(--ColorBlanco);
-  border-radius: 15px 0 0 15px;
+  /* border-radius: 15px 0 0 15px; */
   padding: 0 10px;
   color: var(--ColorNegro);
   font-size: 16px;
@@ -65,7 +65,7 @@
 .SeleccionarRemitente__Buscar__Lupa {
   min-width: 50px;
   min-height: 50px;
-  border-radius: 0 15px 15px 0;
+  /* border-radius: 0 15px 15px 0; */
   color: var(--ColorBlanco);
   background-color: var(--ColorAzul);
   display: flex;
@@ -139,7 +139,7 @@
   font-weight: bold;
   min-height: 100px;
   height: auto;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   transition: 0.3s ease-in-out all;
   padding: 10px;
 

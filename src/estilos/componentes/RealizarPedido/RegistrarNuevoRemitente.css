@@ -21,7 +21,7 @@
   background-color: var(--ColorAzul);
   border: 2px solid var(--ColorAzul);
   color: var(--ColorBlanco);
-  border-radius: 15px;
+  /* border-radius: 15px; */
   margin-top: 10px;
   transition: 0.3s ease-in-out all;
   cursor: pointer;
@@ -78,7 +78,7 @@
   max-height: 50px;
   background-color: var(--ColorBlanco);
   border: 1px solid var(--ColorBlanco);
-  border-radius: 5px;
+  /* border-radius: 5px; */
   padding: 0 10px;
   color: var(--ColorNegro);
   font-size: 16px;
@@ -104,7 +104,7 @@
   color: var(--ColorBlanco);
   transition: 0.3s ease-in-out all;
   cursor: pointer;
-  border-radius: 25px;
+  /* border-radius: 25px; */
 }
 .RegistrarNuevoRemitente__Footer__Boton.Regresar {
   background-color: var(--ColorRojo);

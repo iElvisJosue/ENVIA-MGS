@@ -40,7 +40,7 @@
   max-height: 50px;
   background-color: var(--ColorBlanco);
   border: 1px solid var(--ColorBlanco);
-  border-radius: 5px;
+  /* border-radius: 5px; */
   padding: 0 10px;
   color: var(--ColorNegro);
   font-size: 16px;
@@ -66,7 +66,7 @@
   color: var(--ColorBlanco);
   transition: 0.3s ease-in-out all;
   cursor: pointer;
-  border-radius: 25px;
+  /* border-radius: 25px; */
 }
 .InformacionDelProducto__Footer__Boton.Cancelar {
   background-color: var(--ColorRojo);

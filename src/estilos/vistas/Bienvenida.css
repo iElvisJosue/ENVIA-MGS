@@ -22,7 +22,7 @@
   width: 100%;
   height: 100%;
   background-color: var(--ColorBlanco);
-  border-radius: 35px;
+  /* border-radius: 35px; */
 
   display: flex;
   flex-direction: column;
@@ -56,7 +56,7 @@
   height: 100%;
   background-color: var(--ColorAzul);
   color: var(--ColorBlanco);
-  border-radius: 35px;
+  /* border-radius: 35px; */
 
   display: flex;
   align-items: center;
@@ -107,7 +107,7 @@
   padding: 2px 10px;
   background-color: var(--ColorBlanco);
   color: var(--ColorAzul);
-  border-radius: 15px;
+  /* border-radius: 15px; */
   font-weight: bold;
 }
 .Bienvenida__Perfil--Permisos {
@@ -160,7 +160,7 @@
   width: 100%;
   min-height: 310px;
   background-color: var(--ColorBlanco);
-  border-radius: 35px;
+  /* border-radius: 35px; */
   padding: 20px;
 
   display: flex;
@@ -186,7 +186,7 @@
   background-color: var(--ColorNegro);
   width: 30px;
   height: 30px;
-  border-radius: 15px;
+  /* border-radius: 15px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -202,7 +202,7 @@
   display: flex;
   width: 100%;
   padding: 10px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   font-size: 12px;
   font-weight: bold;
   text-align: center;
@@ -225,7 +225,7 @@
   background-color: var(--ColorBlanco);
   width: 100%;
   padding: 10px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -245,7 +245,7 @@
   background-color: var(--ColorAzul);
   border: 2px solid var(--ColorAzul);
   padding: 5px 10px;
-  border-radius: 15px;
+  /* border-radius: 15px; */
   font-weight: bold;
   color: var(--ColorBlanco);
   transition: 0.3s ease-in-out all;
@@ -288,14 +288,14 @@
       "EspacioTres EspacioTres EspacioTres";
     grid-template-rows: auto;
   }
-  .Bienvenida__Mensaje,
+  /* .Bienvenida__Mensaje,
   .Bienvenida__UltimasGuias,
   .Bienvenida__UltimasGuias--Cuerpo,
   .EspacioUno,
   .Bienvenida__TotalDePedidosHechosHoy,
   .EspacioTres {
     border-radius: 15px;
-  }
+  } */
   .Bienvenida__Mensaje p {
     font-size: 14px;
   }

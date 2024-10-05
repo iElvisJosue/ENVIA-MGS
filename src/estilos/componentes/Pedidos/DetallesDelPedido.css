@@ -75,7 +75,7 @@
 }
 .DetallesDelPedido__Opciones--Boton {
   height: 50px;
-  border-radius: 15px;
+  /* border-radius: 15px; */
   font-size: 17px;
   font-weight: bold;
   color: var(--ColorBlanco);
@@ -141,7 +141,7 @@
   grid-column: span 1;
   background-color: var(--ColorBlanco);
   padding: 10px;
-  border-radius: 15px;
+  /* border-radius: 15px; */
   text-align: center;
 
   display: flex;
@@ -191,7 +191,7 @@
 }
 .DetallesDelPedido__Detalles__Movimiento--Encabezado {
   width: 100%;
-  border-radius: 15px;
+  /* border-radius: 15px; */
   background-color: var(--ColorBlanco);
   padding: 0;
 

@@ -17,7 +17,7 @@
   max-height: 50px;
   background-color: var(--ColorBlanco);
   border: 1px solid var(--ColorBlanco);
-  border-radius: 15px 0 0 15px;
+  /* border-radius: 15px 0 0 15px; */
   padding: 0 10px;
   color: var(--ColorNegro);
   font-size: 16px;
@@ -26,7 +26,7 @@
 .ListaDePedidosCompleta__Buscar__Lupa {
   min-width: 50px;
   min-height: 50px;
-  border-radius: 0 15px 15px 0;
+  /* border-radius: 0 15px 15px 0; */
   color: var(--ColorBlanco);
   background-color: var(--ColorAzul);
   display: flex;
@@ -93,7 +93,7 @@
   border: 2px solid var(--ColorAzul);
   color: var(--ColorBlanco);
   font-weight: bold;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   font-size: 12px;
   width: 50px;
   height: 35px;

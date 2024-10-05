@@ -15,7 +15,7 @@
 }
 .EditarAgencia__Opciones--Boton {
   height: 50px;
-  border-radius: 15px;
+  /* border-radius: 15px; */
   font-size: 17px;
   font-weight: bold;
   color: var(--ColorBlanco);
@@ -85,7 +85,7 @@
   max-height: 50px;
   background-color: var(--ColorSecundario);
   border: 1px solid var(--ColorSecundario);
-  border-radius: 5px;
+  /* border-radius: 5px; */
   padding: 0 10px;
   color: var(--ColorNegro);
   font-size: 16px;
@@ -111,7 +111,7 @@
   color: var(--ColorBlanco);
   transition: 0.3s ease-in-out all;
   cursor: pointer;
-  border-radius: 25px;
+  /* border-radius: 25px; */
 }
 .EditarAgencia__Footer__Boton.Cancelar {
   background-color: var(--ColorRojo);
