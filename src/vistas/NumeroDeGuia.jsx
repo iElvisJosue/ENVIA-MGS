@@ -109,7 +109,7 @@ export default function NumeroDeGuia() {
           <img
             className="NumeroDeGuia__Movimientos--Logo"
             src="/RastreoTicket.png"
-            alt="Logo USMX"
+            alt="Logo MGS"
           />
           <p className="NumeroDeGuia__Movimientos--Titulo">
             Movimientos del pedido
