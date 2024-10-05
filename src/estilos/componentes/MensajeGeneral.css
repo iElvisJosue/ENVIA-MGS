@@ -19,7 +19,7 @@
 }
 .MensajeGeneral__Boton {
   padding: 10px 25px;
-  border-radius: 25px;
+  /* border-radius: 25px; */
   color: var(--ColorBlanco);
   font-weight: bold;
   font-size: 16px;
