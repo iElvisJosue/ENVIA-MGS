@@ -108,17 +108,22 @@
   content: "Realizar otro pedido";
 }
 .DetallesDelPedido__Opciones--Boton.Ticket,
+.DetallesDelPedido__Opciones--Boton.CodigoDeBarras,
 .DetallesDelPedido__Opciones--Boton.PaqueteTickets {
   border: 2px solid var(--ColorAzul);
   background-color: var(--ColorAzul);
 }
 .DetallesDelPedido__Opciones--Boton.Ticket:hover,
+.DetallesDelPedido__Opciones--Boton.CodigoDeBarras:hover,
 .DetallesDelPedido__Opciones--Boton.PaqueteTickets:hover {
   background-color: transparent;
   color: var(--ColorAzul);
 }
 .DetallesDelPedido__Opciones--Boton.Ticket:hover::after {
   content: "Ticket";
+}
+.DetallesDelPedido__Opciones--Boton.CodigoDeBarras:hover::after {
+  content: "Etiqueta";
 }
 .DetallesDelPedido__Opciones--Boton.PaqueteTickets:hover::after {
   content: "Paquete de tickets";

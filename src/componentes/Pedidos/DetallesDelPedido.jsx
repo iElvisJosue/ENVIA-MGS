@@ -72,6 +72,13 @@ export default function DetallesDelPedido({
           >
             <ion-icon name="ticket"></ion-icon>
           </a>
+          <a
+            className="DetallesDelPedido__Opciones--Boton CodigoDeBarras"
+            href={`${HOST_PDF}/${paquete[indicePedido].EtiquetaPedido}`}
+            target="_blank"
+          >
+            <ion-icon name="barcode"></ion-icon>
+          </a>
           {paquete.length > 1 && (
             <a
               className="DetallesDelPedido__Opciones--Boton PaqueteTickets"

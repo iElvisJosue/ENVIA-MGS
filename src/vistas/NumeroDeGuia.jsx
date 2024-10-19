@@ -53,24 +53,25 @@ export default function NumeroDeGuia() {
               </b>
               <br />
               <b>
-                {informacionGuia[0].DireccionDestinatario},{" "}
-                {informacionGuia[0].ColoniaDestinatario}, CP.{" "}
-                {informacionGuia[0].CodigoPostalDestinatario}
-              </b>
-              <br />
-              <b>
-                {informacionGuia[0].TelefonoCasaDestinatario} -{" "}
                 {informacionGuia[0].CelularDestinatario}
+                {informacionGuia[0].TelefonoCasaDestinatario &&
+                  ` - ${informacionGuia[0].TelefonoCasaDestinatario}`}
               </b>
               <br />
               <b>
+                {informacionGuia[0].PaisDestinatario}
+                <br />
                 {`${
-                  informacionGuia[0].MunicipioDelegacionDestinatario
-                    ? informacionGuia[0].MunicipioDelegacionDestinatario + " / "
-                    : ""
-                }`}
-                {informacionGuia[0].CiudadDestinatario} /{" "}
-                {informacionGuia[0].EstadoDestinatario}
+                  informacionGuia[0].MunicipioDelegacionDestinatario &&
+                  `${informacionGuia[0].MunicipioDelegacionDestinatario} /`
+                } `}
+                {informacionGuia[0].EstadoDestinatario} /{" "}
+                {informacionGuia[0].CiudadDestinatario}
+              </b>
+              <br />
+              <b>
+                {informacionGuia[0].DireccionDestinatario}{" "}
+                {informacionGuia[0].CodigoPostalDestinatario}
               </b>
               <br />
               {informacionGuia[0].ReferenciaDestinatario && (
