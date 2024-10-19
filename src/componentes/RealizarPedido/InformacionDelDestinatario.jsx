@@ -25,12 +25,8 @@ export default function InformacionDelDestinatario({
   };
 
   return vistaDestinatario === 0 ? (
-    <RegistrarNuevoDestinatario
-      PropsParaRegistrarNuevoDestinatario={PropsParaRegistrarNuevoDestinatario}
-    />
+    <RegistrarNuevoDestinatario {...PropsParaRegistrarNuevoDestinatario} />
   ) : (
-    <SeleccionarDestinatario
-      PropsParaRegistrarNuevoDestinatario={PropsParaRegistrarNuevoDestinatario}
-    />
+    <SeleccionarDestinatario {...PropsParaRegistrarNuevoDestinatario} />
   );
 }

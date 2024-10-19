@@ -35,6 +35,9 @@
   background-color: var(--ColorBlanco);
   color: var(--ColorAzul);
 }
+.RegistrarNuevoRemitente__Opciones--Boton:hover::after {
+  content: "Seleccionar Remitente";
+}
 .RegistrarNuevoRemitente__Opciones--Boton ion-icon {
   font-size: 20px;
 }
@@ -151,8 +154,5 @@
   .RegistrarNuevoRemitente__Footer__Boton {
     width: 100%;
     height: 50px;
-  }
-  .RegistrarNuevoRemitente__Opciones--Boton {
-    width: 100%;
   }
 }

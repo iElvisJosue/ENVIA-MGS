@@ -12,6 +12,8 @@ export default function useBuscarProductosPorFiltro() {
   const [productos, establecerProductos] = useState(null);
   const [cargandoProductos, establecerCargandoProductos] = useState(true);
   const [filtroProductos, establecerFiltroProductos] = useState("");
+  const [buscarProductosNuevamente, establecerBuscarProductosNuevamente] =
+    useState(false);
 
   useEffect(() => {
     const obtenerProductos = async () => {
@@ -27,12 +29,14 @@ export default function useBuscarProductosPorFiltro() {
       }
     };
     obtenerProductos();
-  }, [filtroProductos]);
+  }, [filtroProductos, buscarProductosNuevamente]);
 
   return {
     productos,
     cargandoProductos,
     filtroProductos,
     establecerFiltroProductos,
+    buscarProductosNuevamente,
+    establecerBuscarProductosNuevamente,
   };
 }

@@ -25,7 +25,6 @@ export default function ListaDeUsuarios({
   const {
     usuarios,
     cargandoUsuarios,
-    filtroUsuario,
     establecerFiltroUsuario,
     obtenerUsuariosNuevamente,
     establecerObtenerUsuariosNuevamente,
@@ -231,7 +230,7 @@ export default function ListaDeUsuarios({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={`¡Oops! No se encontraron resultados para "${filtroUsuario}"`}
+          Texto={`¡Oops! No se encontraron resultados.`}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Registrar-Usuario"}

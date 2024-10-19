@@ -94,6 +94,13 @@
 .EditarAgencia__Titulo__Campo input:focus {
   border: 2px solid var(--ColorNegro);
 }
+.DesactivarNombreAgencia {
+  background: transparent !important;
+  color: var(--ColorRojo) !important;
+  border: 2px solid var(--ColorRojo) !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
 .EditarAgencia__Footer {
   grid-column: 1 / -1;
 

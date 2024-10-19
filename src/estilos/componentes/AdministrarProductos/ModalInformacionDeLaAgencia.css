@@ -57,6 +57,7 @@
   color: var(--ColorAzul);
   text-align: center;
   padding: 10px 0;
+  font-size: 24px;
 }
 .ModalInformacionDeLaAgencia__Contenido--Informacion {
   grid-column: span 1;

@@ -35,6 +35,9 @@
   background-color: var(--ColorBlanco);
   color: var(--ColorAzul);
 }
+.SeleccionarDestinatario__Opciones--Boton:hover::after {
+  content: "Registrar destinatario";
+}
 .SeleccionarDestinatario__Opciones--Boton ion-icon {
   font-size: 20px;
 }
@@ -206,8 +209,5 @@
 @media (width <= 500px) {
   .SeleccionarDestinatario {
     grid-template-columns: 1fr;
-  }
-  .SeleccionarDestinatario__Opciones--Boton {
-    width: 100%;
   }
 }

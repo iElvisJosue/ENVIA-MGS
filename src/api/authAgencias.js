@@ -27,3 +27,6 @@ export const SolicitudActualizarInformacionAgencia = (data) =>
 // SOLICITUD PARA BUSCAR UNA AGENCIAS POR FILTRO
 export const SolicitudBuscarAgenciasPorFiltro = (data) =>
   axios.post("/agencias/BuscarAgenciasPorFiltro", data);
+// SOLICITUD PARA OBTENER LA AGENCIA MGS
+export const SolicitudObtenerAgenciaMGS = ({ CookieConToken }) =>
+  axios.get(`/agencias/ObtenerAgenciaMGS/${CookieConToken}`);

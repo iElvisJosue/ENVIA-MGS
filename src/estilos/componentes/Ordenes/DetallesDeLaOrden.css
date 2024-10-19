@@ -1,0 +1,269 @@
+.DetallesDeLaOrden {
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+.DetallesDeLaOrden__Seccion,
+.DetallesDeLaOrden__Opciones {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.DetallesDeLaOrden__Opciones {
+  margin-top: 30px;
+}
+.DetallesDeLaOrden__Opciones--Botones {
+  display: flex;
+  gap: 5px;
+}
+.DetallesDeLaOrden__OtrasOrdenes {
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesDeLaOrden__OtrasOrdenes--Texto {
+  font-weight: bold;
+  color: var(--ColorAzul);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesDeLaOrden__OtrasOrdenes--Botones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesDeLaOrden__OtrasOrdenes--Botones--Boton {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesDeLaOrden__OtrasOrdenes--Botones--Boton ion-icon {
+  font-size: 12px;
+}
+.DetallesDeLaOrden__OtrasOrdenes--Botones--Boton.Anterior {
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.DetallesDeLaOrden__OtrasOrdenes--Botones--Boton.Siguiente {
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+}
+.DetallesDeLaOrden__Opciones {
+  justify-content: space-between;
+}
+.DetallesDeLaOrden__Opciones--Boton {
+  height: 50px;
+  /* border-radius: 15px; */
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesDeLaOrden__Opciones--Boton ion-icon {
+  font-size: 20px;
+}
+.DetallesDeLaOrden__Opciones--Boton.Regresar,
+.DetallesDeLaOrden__Opciones--Boton.OtraOrden {
+  border: 2px solid var(--ColorRojo);
+  background-color: var(--ColorRojo);
+}
+.DetallesDeLaOrden__Opciones--Boton.Regresar:hover,
+.DetallesDeLaOrden__Opciones--Boton.OtraOrden:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.DetallesDeLaOrden__Opciones--Boton.Regresar:hover::after {
+  content: "Regresar";
+}
+.DetallesDeLaOrden__Opciones--Boton.OtraOrden:hover::after {
+  content: "Realizar otra orden";
+}
+.DetallesDeLaOrden__Opciones--Boton.Ticket,
+.DetallesDeLaOrden__Opciones--Boton.PaqueteTickets {
+  border: 2px solid var(--ColorAzul);
+  background-color: var(--ColorAzul);
+}
+.DetallesDeLaOrden__Opciones--Boton.Ticket:hover,
+.DetallesDeLaOrden__Opciones--Boton.PaqueteTickets:hover {
+  background-color: transparent;
+  color: var(--ColorAzul);
+}
+.DetallesDeLaOrden__Opciones--Boton.Ticket:hover::after {
+  content: "Ticket";
+}
+.DetallesDeLaOrden__Opciones--Boton.PaqueteTickets:hover::after {
+  content: "Paquete de tickets";
+}
+.DetallesDeLaOrden__Opciones__Titulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.DetallesDeLaOrden__Seccion img {
+  width: 50px;
+  height: 50px;
+}
+.DetallesDeLaOrden__Seccion h1 {
+  color: var(--ColorAzul);
+  text-transform: uppercase;
+}
+.DetallesDeLaOrden__Detalles {
+  grid-column: span 1;
+  background-color: var(--ColorBlanco);
+  padding: 10px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesDeLaOrden__Detalles ion-icon {
+  font-size: 25px;
+}
+.DetallesDeLaOrden__Detalles.Guia {
+  background-color: var(--ColorPrincipal);
+  color: var(--ColorBlanco);
+}
+.DetallesDeLaOrden__Detalles.Pendiente {
+  background-color: var(--ColorNaranja);
+  color: var(--ColorBlanco);
+}
+.DetallesDeLaOrden__Detalles.Pagado {
+  background-color: var(--ColorVerde);
+  color: var(--ColorBlanco);
+}
+.DetallesDeLaOrden__Detalles.Agencia,
+.DetallesDeLaOrden__Detalles.Fecha {
+  grid-column: span 2;
+}
+
+.DetallesDeLaOrden__Detalles.Remitente {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.DetallesDeLaOrden__Detalles.Movimiento {
+  grid-column: 1 / -1;
+  background-color: transparent;
+  padding: 0;
+
+  flex-direction: column;
+  gap: 10px;
+}
+.DetallesDeLaOrden__Detalles__Movimiento--Encabezado {
+  width: 100%;
+  /* border-radius: 15px; */
+  background-color: var(--ColorBlanco);
+  padding: 0;
+
+  display: flex;
+}
+
+.DetallesDeLaOrden__Detalles__Movimiento--Encabezado.Creado,
+.DetallesDeLaOrden__Detalles__Movimiento--Encabezado.Pagado,
+.DetallesDeLaOrden__Detalles__Movimiento--Encabezado.Entregado {
+  background-color: var(--ColorVerde);
+  color: var(--ColorBlanco);
+}
+.DetallesDeLaOrden__Detalles__Movimiento--Encabezado.Pendiente {
+  background-color: var(--ColorNaranja);
+  color: var(--ColorBlanco);
+}
+.DetallesDeLaOrden__Detalles__Movimiento--Encabezado.Cancelado {
+  background-color: var(--ColorRojo);
+  color: var(--ColorBlanco);
+}
+.DetallesDeLaOrden__Detalles__Movimiento--Encabezado.Camino,
+.DetallesDeLaOrden__Detalles__Movimiento--Encabezado.Finalizado {
+  background-color: var(--ColorAzul);
+  color: var(--ColorBlanco);
+}
+.DetallesDeLaOrden__Detalles__Movimiento--Encabezado--Descripcion {
+  width: 100%;
+  padding: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.DetallesDeLaOrden__Detalles__Movimiento--Encabezado ion-icon {
+  font-size: 25px;
+}
+.DetallesDeLaOrden__Detalles__Encabezado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.DetallesDeLaOrden__Detalles.Total {
+  grid-column: 1 / -1;
+  background-color: var(--ColorVerde);
+  color: var(--ColorBlanco);
+}
+@media (width <= 850px) {
+  .DetallesDeLaOrden {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .DetallesDeLaOrden__Seccion,
+  .DetallesDeLaOrden__Opciones {
+    font-size: 14px;
+  }
+  .DetallesDeLaOrden__Seccion img {
+    width: 40px;
+    height: 40px;
+  }
+  .DetallesDeLaOrden__Detalles {
+    font-size: 14px;
+  }
+  .DetallesDeLaOrden__Opciones--Boton {
+    font-size: 14px;
+  }
+  .DetallesDeLaOrden__Opciones--Boton ion-icon {
+    font-size: 16px;
+  }
+}
+@media (width <= 450px) {
+  .DetallesDeLaOrden__Detalles__Movimiento--Encabezado--Descripcion {
+    font-size: 12px;
+  }
+  .DetallesDeLaOrden__Detalles__Movimiento--Encabezado--Descripcion ion-icon {
+    font-size: 20px;
+  }
+}

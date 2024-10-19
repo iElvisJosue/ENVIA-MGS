@@ -44,7 +44,6 @@ export default function AdministrarProductosDeLaAgencia({
   const {
     productosAsignadosYNoAsignadosPorAgencia,
     cargandoProductosAsignadosYNoAsignadosPorAgencia,
-    filtroProductosAsignadosYNoAsignadosPorAgencia,
     establecerFiltroProductosAsignadosYNoAsignadosPorAgencia,
     buscarNuevamenteProductosAsignadosYNoAsignadosPorAgencia,
     establecerBuscarNuevamenteProductosAsignadosYNoAsignadosPorAgencia,
@@ -226,7 +225,7 @@ export default function AdministrarProductosDeLaAgencia({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={`¡Oops! No se encontraron resultados para "${filtroProductosAsignadosYNoAsignadosPorAgencia}"`}
+          Texto={`¡Oops! No se encontraron resultados.`}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Registrar-Producto"}

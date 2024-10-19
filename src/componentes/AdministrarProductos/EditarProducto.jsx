@@ -35,6 +35,10 @@ export default function EditarProducto({
     setValue("AnchoProducto", informacionDelProducto?.AnchoProducto);
     setValue("LargoProducto", informacionDelProducto?.LargoProducto);
     setValue("AltoProducto", informacionDelProducto?.AltoProducto);
+    setValue(
+      "CostoCajaVaciaProducto",
+      informacionDelProducto?.CostoCajaVaciaProducto
+    );
     setValue("PrecioProducto", informacionDelProducto?.PrecioProducto);
     setValue(
       "CostoLibraExtraProducto",
@@ -112,21 +116,22 @@ export default function EditarProducto({
             validadorCampo,
           },
           index
-        ) => (
-          <span className={claseCampo} key={index}>
-            <p>
-              <ion-icon name={iconoCampo}></ion-icon> {tituloCampo}
-            </p>
-            <input
-              id={idCampo}
-              type={tipoCampo}
-              name={nombreCampo}
-              placeholder={placeholderCampo}
-              {...register(nombreCampo, validadorCampo)}
-            />
-            {MensajeDeError(nombreCampo)}
-          </span>
-        )
+        ) =>
+          tipoCampo === "text" && (
+            <span className={claseCampo} key={index}>
+              <p>
+                <ion-icon name={iconoCampo}></ion-icon> {tituloCampo}
+              </p>
+              <input
+                id={idCampo}
+                type={tipoCampo}
+                name={nombreCampo}
+                placeholder={placeholderCampo}
+                {...register(nombreCampo, validadorCampo)}
+              />
+              {MensajeDeError(nombreCampo)}
+            </span>
+          )
       )}
       <footer className="EditarProducto__Footer">
         <button type="submit" className="EditarProducto__Footer__Boton Guardar">

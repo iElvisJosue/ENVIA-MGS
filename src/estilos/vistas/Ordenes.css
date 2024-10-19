@@ -1,0 +1,21 @@
+.Ordenes {
+  grid-area: Cuerpo;
+  width: 100%;
+  height: calc(100vh - 75px);
+  overflow-y: auto;
+}
+.Ordenes__AgenciaSeleccionada {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+}
+.Ordenes__AgenciaSeleccionada b {
+  color: var(--ColorVerde);
+  font-style: italic;
+}
+@media (width <= 500px) {
+  .Ordenes__AgenciaSeleccionada {
+    font-size: 10px;
+  }
+}

@@ -11,10 +11,12 @@ import { ProveedorConfiguracion } from "./context/ConfiguracionContext";
 import IniciarSesion from "./vistas/IniciarSesion";
 import Bienvenida from "./vistas/Bienvenida";
 import RealizarPedido from "./vistas/RealizarPedido";
+import RealizarOrden from "./vistas/RealizarOrden";
 import RegistrarAgencia from "./vistas/RegistrarAgencia";
 import RegistrarUsuario from "./vistas/RegistrarUsuario";
 import RegistrarProducto from "./vistas/RegistrarProducto";
 import Pedidos from "./vistas/Pedidos";
+import Ordenes from "./vistas/Ordenes";
 import NumeroDeGuia from "./vistas/NumeroDeGuia";
 import AdministrarUsuarios from "./vistas/AdministrarUsuarios";
 import AdministrarAgencias from "./vistas/AdministrarAgencias";
@@ -74,11 +76,18 @@ export default function App() {
                         />
                       </Route>
                       {/* TERMINAN LAS RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
+                      {/* RUTAS DE PAQUETERÍA */}
                       <Route
                         path="/Realizar-Pedido"
                         element={<RealizarPedido />}
                       />
                       <Route path="/Pedidos" element={<Pedidos />} />
+                      <Route
+                        path="/Realizar-Orden"
+                        element={<RealizarOrden />}
+                      />
+                      <Route path="/Ordenes" element={<Ordenes />} />
+                      {/* RUTAS DE BIENVENIDA */}
                       <Route path="/Bienvenida" element={<Bienvenida />} />
                     </Route>
                   </Routes>

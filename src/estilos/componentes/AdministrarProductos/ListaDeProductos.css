@@ -24,7 +24,6 @@
   max-height: 50px;
   background-color: var(--ColorBlanco);
   border: 1px solid var(--ColorBlanco);
-  /* border-radius: 15px 0 0 15px; */
   padding: 0 10px;
   color: var(--ColorNegro);
   font-size: 16px;
@@ -33,7 +32,6 @@
 .ListaDeProductos__Buscar__Lupa {
   min-width: 50px;
   min-height: 50px;
-  /* border-radius: 0 15px 15px 0; */
   color: var(--ColorBlanco);
   background-color: var(--ColorAzul);
   display: flex;
@@ -130,44 +128,95 @@
   background-color: var(--ColorBlanco);
   color: var(--ColorNegro);
 }
+.ListaDeProductos__Clasificacion--Texto.Vender {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorNegro);
+}
 .ListaDeProductos__Clasificacion--Texto.Desactivada {
   background-color: var(--ColorRojo);
 }
 .ListaDeProductos__Producto {
-  position: relative;
   grid-column: span 1;
   text-align: center;
   font-size: 16px;
   font-weight: bold;
-  min-height: 115px;
-  height: auto;
-  /* border-radius: 20px; */
-  padding: 10px;
   transition: 0.3s ease-in-out all;
   color: var(--ColorNegro);
   background-color: var(--ColorBlanco);
-  border: 2px solid var(--ColorBlanco);
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 5px;
 }
-.ListaDeProductos__Producto.Desactivada {
+.ListaDeProductos__Producto.Desactivado {
   background-color: var(--ColorRojo);
-  border: 2px solid var(--ColorRojo);
   color: var(--ColorBlanco);
 }
 .ListaDeProductos__Producto ion-icon {
   font-size: 25px;
 }
-.ListaDeProductos__Producto__Opciones {
+.ListaDeProductos__Producto__Detalles {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.ListaDeProductos__Producto__Detalles--Vender {
   position: absolute;
-  bottom: -2px;
-  left: -2px;
-  width: calc(100% + 4px);
-  height: 35px;
+  top: 10px;
+  right: 10px;
+  min-width: 40px;
+  min-height: 25px;
+  border-radius: 15px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ListaDeProductos__Producto__Detalles--Vender.No {
+  background-color: var(--ColorRojo);
+}
+.ListaDeProductos__Producto__Detalles--Vender.Si {
+  background-color: var(--ColorVerde);
+}
+.ListaDeProductos__Producto__Detalles--Vender button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ListaDeProductos__Producto__Detalles--Vender.Si button {
+  transform: translateX(8px);
+}
+.ListaDeProductos__Producto__Detalles--Vender.Si button ion-icon {
+  color: var(--ColorVerde);
+}
+.ListaDeProductos__Producto__Detalles--Vender.No button {
+  transform: translateX(-8px);
+}
+.ListaDeProductos__Producto__Detalles--Vender.No button ion-icon {
+  color: var(--ColorRojo);
+}
+.ListaDeProductos__Producto__Detalles--Vender button ion-icon {
+  font-size: 10px;
+}
+.ListaDeProductos__Producto__Opciones {
+  width: 100%;
+  min-height: 35px;
 
   display: flex;
 }
@@ -190,7 +239,7 @@
 }
 .ListaDeProductos__Producto__Opciones--Boton.Administrar p ion-icon {
   font-size: 18px;
-  color: var(--ColorVerde);
+  color: var(--ColorBlanco);
 }
 .ListaDeProductos__Producto__Opciones--Boton.Editar p ion-icon {
   font-size: 18px;
@@ -200,22 +249,12 @@
   font-size: 18px;
   color: var(--ColorRojo);
 }
-.ListaDeProductos__Producto__Opciones--Boton:first-child {
-  /* border-radius: 0 0 0 20px; */
-}
-.ListaDeProductos__Producto__Opciones--Boton:last-child {
-  /* border-radius: 0 0 20px 0; */
-}
-.ListaDeProductos__Producto__Opciones--Boton.Activar {
-  /* border-radius: 0 0 20px 20px; */
-  color: var(--ColorBlanco);
+.ListaDeProductos__Producto__Opciones--Boton.Activar p ion-icon {
+  font-size: 18px;
+  color: var(--ColorVerde);
 }
 .ListaDeProductos__Producto__Opciones--Boton:hover ion-icon {
   transform: scale(1.2);
-}
-.ListaDeProductos__Producto.Desactivado {
-  background-color: var(--ColorRojo);
-  border: 2px solid var(--ColorRojo);
 }
 .ListaDeProductos__TextoPaginas {
   grid-column: 1 / -1;

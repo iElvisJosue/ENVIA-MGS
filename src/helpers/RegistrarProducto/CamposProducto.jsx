@@ -80,6 +80,38 @@ export const CamposProducto = [
     },
   },
   {
+    idCampo: "CostoCajaVaciaProducto",
+    iconoCampo: "logo-dropbox",
+    tituloCampo: "Costo caja vacía",
+    nombreCampo: "CostoCajaVaciaProducto",
+    tipoCampo: "text",
+    placeholderCampo: "Escriba aquí...",
+    claseCampo: "InformacionDelProducto__Titulo__Campo",
+    validadorCampo: {
+      required: "¡Este campo es obligatorio! ⚠️",
+      pattern: {
+        value: /^\d+$/,
+        message: "¡Este campo solo acepta números! 🔢",
+      },
+      maxLength: {
+        value: 5,
+        message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
+      },
+    },
+  },
+  {
+    idCampo: "SeVendeProducto",
+    iconoCampo: "storefront",
+    tituloCampo: "Se vende",
+    nombreCampo: "SeVendeProducto",
+    tipoCampo: "select",
+    placeholderCampo: "Escriba aquí...",
+    claseCampo: "InformacionDelProducto__Titulo__Campo",
+    validadorCampo: {
+      required: "¡Este campo es obligatorio! ⚠️",
+    },
+  },
+  {
     idCampo: "PrecioProducto",
     iconoCampo: "cash",
     tituloCampo: "Precio",
@@ -166,7 +198,7 @@ export const CamposProducto = [
     nombreCampo: "ComisionProducto",
     tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "InformacionDelProducto__Titulo__Campo",
+    claseCampo: "InformacionDelProducto__Titulo__Campo Dos",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
       pattern: {

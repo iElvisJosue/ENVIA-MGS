@@ -1,0 +1,209 @@
+.BuscarOrdenesPorFecha__Titulo {
+  grid-column: 1 / -1;
+  color: var(--ColorAzul);
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+
+  display: flex;
+  flex-direction: column;
+}
+.BuscarOrdenesPorFecha__Titulo--Fechas {
+  font-size: 12px;
+  color: var(--ColorVerde);
+}
+.BuscarOrdenesPorFecha__Botones {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.BuscarOrdenesPorFecha__Botones--Boton {
+  width: auto;
+  padding: 0 10px;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: var(--ColorBlanco);
+  border: 2px solid var(--ColorBlanco);
+  color: var(--ColorNegro);
+  /* border-radius: 15px; */
+  margin-top: 10px;
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+}
+.BuscarOrdenesPorFecha__TextoResultados {
+  grid-column: 1 / -1;
+  color: var(--ColorVerde);
+  text-align: right;
+  font-style: italic;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+.BuscarOrdenesPorFecha__TextoResultados ion-icon {
+  font-size: 20px;
+}
+.BuscarOrdenesPorFecha__Clasificacion {
+  grid-column: 1 / -1;
+  color: var(--ColorAzul);
+
+  display: flex;
+  gap: 5px;
+}
+.BuscarOrdenesPorFecha__Colores {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 5px;
+}
+.BuscarOrdenesPorFecha__Clasificacion--Texto {
+  width: auto;
+  height: 30px;
+  padding: 0 10px;
+  font-size: 14px;
+  color: var(--ColorBlanco);
+  /* border-radius: 15px; */
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.BuscarOrdenesPorFecha__Clasificacion--Texto ion-icon {
+  font-size: 16px;
+}
+.BuscarOrdenesPorFecha__Clasificacion--Texto.PedidoRealizado {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorVerde);
+}
+.BuscarOrdenesPorFecha__Clasificacion--Texto.PedidoNoRealizado {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorRojo);
+}
+.BuscarOrdenesPorFecha__Cuerpo {
+  grid-column: 1 / -1;
+  overflow-x: auto;
+}
+.BuscarOrdenesPorFecha__Cuerpo__Tabla {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+}
+.BuscarOrdenesPorFecha__Cuerpo__Tabla__Encabezado tr th {
+  background-color: var(--ColorAzul);
+  color: var(--ColorBlanco);
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px;
+  min-width: 200px;
+}
+.BuscarOrdenesPorFecha__Cuerpo__Tabla__Encabezado tr th ion-icon {
+  font-size: 20px;
+}
+.BuscarOrdenesPorFecha__Cuerpo__Tabla__Cuerpo {
+  background-color: var(--ColorBlanco);
+  text-align: center;
+}
+.BuscarOrdenesPorFecha__Cuerpo__Tabla__Cuerpo tr td {
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+.BuscarOrdenesPorFecha__Cuerpo__Tabla__Cuerpo--TR {
+  background-color: var(--ColorBlanco);
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  border-right: 2px solid var(--ColorSecundario);
+  border-bottom: 2px solid var(--ColorSecundario);
+  border-left: 2px solid var(--ColorSecundario);
+  color: var(--ColorRojo);
+}
+.BuscarOrdenesPorFecha__Cuerpo__Tabla__Cuerpo--TR.OrdenRealizada {
+  color: var(--ColorVerde);
+}
+.BuscarOrdenesPorFecha__Cuerpo__Tabla__Cuerpo hr {
+  height: 2px;
+  background-color: var(--ColorSecundario);
+  border: none;
+}
+.BuscarOrdenesPorFecha__Cuerpo__Tabla__Cuerpo__Acciones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 5px;
+}
+
+.BuscarOrdenesPorFecha__Cuerpo__Tabla__Cuerpo__Acciones button {
+  width: 25px;
+  height: 25px;
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+  color: var(--ColorBlanco);
+  font-weight: bold;
+  border-radius: 50%;
+  transition: 0.3s ease-in-out all;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.BuscarOrdenesPorFecha__Cuerpo__Tabla__Cuerpo--TR.OrdenRealizada
+  .BuscarOrdenesPorFecha__Cuerpo__Tabla__Cuerpo__Acciones
+  button {
+  background-color: var(--ColorVerde);
+  border: 2px solid var(--ColorVerde);
+}
+.BuscarOrdenesPorFecha__Cuerpo__Tabla__Cuerpo__Acciones button:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.BuscarOrdenesPorFecha__Cuerpo__Tabla__Cuerpo--TR.OrdenRealizada
+  .BuscarOrdenesPorFecha__Cuerpo__Tabla__Cuerpo__Acciones
+  button:hover {
+  background-color: transparent;
+  color: var(--ColorVerde);
+}
+@media (max-width: 500px) {
+  .BuscarOrdenesPorFecha__Titulo {
+    font-size: 20px;
+  }
+  .BuscarOrdenesPorFecha__Cuerpo__Tabla__Encabezado tr th ion-icon {
+    font-size: 16px;
+  }
+  .BuscarOrdenesPorFecha__Cuerpo__Tabla__Encabezado tr th {
+    font-size: 14px;
+  }
+  .BuscarOrdenesPorFecha__Cuerpo__Tabla__Cuerpo tr td {
+    font-size: 12px;
+  }
+  .BuscarOrdenesPorFecha__Cuerpo__Tabla__Cuerpo tr td {
+    padding: 5px;
+  }
+  .BuscarOrdenesPorFecha__TextoResultados {
+    font-size: 12px;
+  }
+  .BuscarOrdenesPorFecha__TextoResultados ion-icon {
+    font-size: 16px;
+  }
+  .BuscarOrdenesPorFecha__Clasificacion {
+    font-size: 18px;
+  }
+  .BuscarOrdenesPorFecha__Clasificacion--Texto {
+    font-size: 12px;
+  }
+}
+@media (width <= 435px) {
+  .BuscarOrdenesPorFecha__Colores {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -35,6 +35,12 @@
   background-color: var(--ColorBlanco);
   color: var(--ColorAzul);
 }
+.RegistrarNuevoDestinatario__Opciones--Boton:hover::after {
+  content: "Seleccionar Destinatario";
+}
+.RegistrarNuevoDestinatario__Opciones--Boton ion-icon {
+  font-size: 20px;
+}
 .RegistrarNuevoDestinatario__Titulo {
   grid-column: 1 / -1;
   color: var(--ColorAzul);
@@ -151,8 +157,5 @@
   .RegistrarNuevoDestinatario__Footer__Boton {
     width: 100%;
     height: 50px;
-  }
-  .RegistrarNuevoDestinatario__Opciones--Boton {
-    width: 100%;
   }
 }

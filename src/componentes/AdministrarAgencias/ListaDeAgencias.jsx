@@ -25,7 +25,6 @@ export default function ListaDeAgencias({
   const {
     agencias,
     cargandoAgencias,
-    filtroAgencias,
     establecerFiltroAgencias,
     obtenerAgenciasNuevamente,
     establecerObtenerAgenciasNuevamente,
@@ -151,38 +150,40 @@ export default function ListaDeAgencias({
                 className="ListaDeAgencias__Agencia"
                 key={infAgencia.idAgencia}
               >
-                <ion-icon name="business"></ion-icon>
-                <p>{infAgencia.NombreAgencia}</p>
-                <ion-icon name="location"></ion-icon>
-                <p>{infAgencia.DireccionAgencia}</p>
-                <p>
-                  {infAgencia.CiudadAgencia}, {infAgencia.EstadoAgencia}{" "}
-                  {infAgencia.CodigoPostalAgencia}
-                </p>
-                {infAgencia.Permisos !== "Administrador" && (
-                  <span className="ListaDeAgencias__Agencia__Opciones">
-                    <button
-                      className="ListaDeAgencias__Agencia__Opciones--Boton Administrar"
-                      title="Administrar Productos"
-                      onClick={() =>
-                        EstablecerInformacionDeLaAgenciaSeleccionada(infAgencia)
-                      }
-                    >
-                      <p>
-                        <ion-icon name="basket"></ion-icon>
-                      </p>
-                    </button>
-                    <button
-                      className="ListaDeAgencias__Agencia__Opciones--Boton Editar"
-                      title="Editar agencia"
-                      onClick={() =>
-                        EstablecerInformacionDelUsuarioAEditar(infAgencia)
-                      }
-                    >
-                      <p>
-                        <ion-icon name="create"></ion-icon>
-                      </p>
-                    </button>
+                <span className="ListaDeAgencias__Agencia__Detalles">
+                  <ion-icon name="business"></ion-icon>
+                  <p>{infAgencia.NombreAgencia}</p>
+                  <ion-icon name="location"></ion-icon>
+                  <p>{infAgencia.DireccionAgencia}</p>
+                  <p>
+                    {infAgencia.CiudadAgencia}, {infAgencia.EstadoAgencia}{" "}
+                    {infAgencia.CodigoPostalAgencia}
+                  </p>
+                </span>
+                <span className="ListaDeAgencias__Agencia__Opciones">
+                  <button
+                    className="ListaDeAgencias__Agencia__Opciones--Boton Administrar"
+                    title="Administrar Productos"
+                    onClick={() =>
+                      EstablecerInformacionDeLaAgenciaSeleccionada(infAgencia)
+                    }
+                  >
+                    <p>
+                      <ion-icon name="basket"></ion-icon>
+                    </p>
+                  </button>
+                  <button
+                    className="ListaDeAgencias__Agencia__Opciones--Boton Editar"
+                    title="Editar agencia"
+                    onClick={() =>
+                      EstablecerInformacionDelUsuarioAEditar(infAgencia)
+                    }
+                  >
+                    <p>
+                      <ion-icon name="create"></ion-icon>
+                    </p>
+                  </button>
+                  {infAgencia.NombreAgencia !== "Envía MGS" && (
                     <button
                       className="ListaDeAgencias__Agencia__Opciones--Boton Desactivar"
                       onClick={() => MostrarModalDesactivar(infAgencia)}
@@ -192,35 +193,35 @@ export default function ListaDeAgencias({
                         <ion-icon name="ban"></ion-icon>
                       </p>
                     </button>
-                  </span>
-                )}
+                  )}
+                </span>
               </section>
             ) : (
               <section
                 className="ListaDeAgencias__Agencia Desactivada"
                 key={infAgencia.idAgencia}
               >
-                <ion-icon name="business"></ion-icon>
-                <p>{infAgencia.NombreAgencia}</p>
-                <ion-icon name="location"></ion-icon>
-                <p>{infAgencia.DireccionAgencia}</p>
-                <p>
-                  {infAgencia.CiudadAgencia}, {infAgencia.EstadoAgencia}{" "}
-                  {infAgencia.CodigoPostalAgencia}
-                </p>
-                {infAgencia.Permisos !== "Administrador" && (
-                  <span className="ListaDeAgencias__Agencia__Opciones">
-                    <button
-                      className="ListaDeAgencias__Agencia__Opciones--Boton Activar"
-                      onClick={() => MostrarModalActivar(infAgencia)}
-                      title="Activar agencia"
-                    >
-                      <p>
-                        <ion-icon name="power"></ion-icon>
-                      </p>
-                    </button>
-                  </span>
-                )}
+                <span className="ListaDeAgencias__Agencia__Detalles">
+                  <ion-icon name="business"></ion-icon>
+                  <p>{infAgencia.NombreAgencia}</p>
+                  <ion-icon name="location"></ion-icon>
+                  <p>{infAgencia.DireccionAgencia}</p>
+                  <p>
+                    {infAgencia.CiudadAgencia}, {infAgencia.EstadoAgencia}{" "}
+                    {infAgencia.CodigoPostalAgencia}
+                  </p>
+                </span>
+                <span className="ListaDeAgencias__Agencia__Opciones">
+                  <button
+                    className="ListaDeAgencias__Agencia__Opciones--Boton Activar"
+                    onClick={() => MostrarModalActivar(infAgencia)}
+                    title="Activar agencia"
+                  >
+                    <p>
+                      <ion-icon name="power"></ion-icon>
+                    </p>
+                  </button>
+                </span>
               </section>
             )
           )}
@@ -232,7 +233,7 @@ export default function ListaDeAgencias({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={`¡Oops! No se encontraron resultados para "${filtroAgencias}"`}
+          Texto={`¡Oops! No se encontraron resultados.`}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Registrar-Agencia"}

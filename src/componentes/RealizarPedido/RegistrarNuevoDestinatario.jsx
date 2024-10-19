@@ -15,7 +15,12 @@ import { CamposDestinatario } from "../../helpers/RealizarPedido/CamposDestinata
 import "../../estilos/componentes/RealizarPedido/RegistrarNuevoDestinatario.css";
 
 export default function RegistrarNuevoDestinatario({
-  PropsParaRegistrarNuevoDestinatario,
+  establecerVistaDestinatario,
+  destinatario,
+  establecerDestinatario,
+  establecerPaso,
+  agencia,
+  paso,
 }) {
   const {
     handleSubmit,
@@ -25,15 +30,6 @@ export default function RegistrarNuevoDestinatario({
   } = useForm({
     criteriaMode: "all",
   });
-
-  const {
-    establecerVistaDestinatario,
-    destinatario,
-    establecerDestinatario,
-    establecerPaso,
-    agencia,
-    paso,
-  } = PropsParaRegistrarNuevoDestinatario;
 
   useEffect(() => {
     if (destinatario?.idDestinatario === false) {
@@ -69,6 +65,9 @@ export default function RegistrarNuevoDestinatario({
   }, []);
 
   const GuardarInformacionDelDestinatario = handleSubmit(async (data) => {
+    // SON TEMPORALES
+    data.PaisDestinatario = "MEX | Mexico";
+    data.CodigoPaisDestinatario = "MEX";
     data.idDestinatario = false;
     establecerDestinatario(data);
     establecerPaso(paso + 1);
@@ -86,7 +85,7 @@ export default function RegistrarNuevoDestinatario({
           className="RegistrarNuevoDestinatario__Opciones--Boton"
           onClick={() => establecerVistaDestinatario(1)}
         >
-          <ion-icon name="list"></ion-icon> Seleccionar Destinatario
+          <ion-icon name="list"></ion-icon>
         </button>
       </span>
       <h1 className="RegistrarNuevoDestinatario__Titulo">

@@ -15,17 +15,13 @@ import usePaginacion from "../../hooks/usePaginacion";
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/RealizarPedido/SeleccionarRemitente.css";
 export default function SeleccionarRemitente({
-  PropsParaRegistrarNuevoRemitente,
+  establecerVistaRemitente,
+  establecerRemitente,
+  establecerPaso,
+  agencia,
+  paso,
 }) {
-  const {
-    establecerVistaRemitente,
-    establecerRemitente,
-    establecerPaso,
-    agencia,
-    paso,
-  } = PropsParaRegistrarNuevoRemitente;
-
-  const { remitentes, cargandoRemitentes, filtro, establecerFiltro } =
+  const { remitentes, cargandoRemitentes, establecerFiltro } =
     useBuscarRemitentesPorAgencia({
       idAgencia: agencia.idAgencia,
     });
@@ -80,7 +76,7 @@ export default function SeleccionarRemitente({
           className="SeleccionarRemitente__Opciones--Boton"
           onClick={() => establecerVistaRemitente(0)}
         >
-          <ion-icon name="add-circle"></ion-icon> Registrar Remitente
+          <ion-icon name="add-circle"></ion-icon>
         </button>
       </span>
       <h1 className="SeleccionarRemitente__Titulo">Seleccionar Remitente</h1>
@@ -146,7 +142,7 @@ export default function SeleccionarRemitente({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={`¡Oops! No se encontraron resultados para "${filtro}"`}
+          Texto={`¡Oops! No se encontraron resultados.`}
         />
       )}
     </section>

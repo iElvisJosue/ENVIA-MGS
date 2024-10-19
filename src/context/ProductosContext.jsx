@@ -9,6 +9,9 @@ import {
   SolicitudAsignarAgenciaAlProducto,
   SolicitudDesasignarAgenciaAlProducto,
   SolicitudActualizarInformacionDeUnProducto,
+  SolicitudActualizarEstadoProducto,
+  SolicitudActualizarSeVendeProducto,
+  SolicitudObtenerProductosActivosYDisponiblesParaVender,
 } from "../api/authProductos";
 
 export const ProductosContext = createContext();
@@ -88,6 +91,32 @@ export const ProveedorProductos = ({ children }) => {
       return error;
     }
   };
+  const ActualizarEstadoDeUnProducto = async (data) => {
+    try {
+      const res = await SolicitudActualizarEstadoProducto(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const ActualizarSeVendeProducto = async (data) => {
+    try {
+      const res = await SolicitudActualizarSeVendeProducto(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const ObtenerProductosActivosYDisponiblesParaVender = async (data) => {
+    try {
+      const res = await SolicitudObtenerProductosActivosYDisponiblesParaVender(
+        data
+      );
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
 
   return (
     <ProductosContext.Provider
@@ -100,6 +129,9 @@ export const ProveedorProductos = ({ children }) => {
         AsignarAgenciaAlProducto,
         DesasignarAgenciaAlProducto,
         ActualizarInformacionDeUnProducto,
+        ActualizarEstadoDeUnProducto,
+        ActualizarSeVendeProducto,
+        ObtenerProductosActivosYDisponiblesParaVender,
       }}
     >
       {children}

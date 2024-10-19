@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import { toast } from "sonner";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useAgencias } from "../../context/AgenciasContext";
@@ -39,9 +40,25 @@ export default function EditarAgencia({
     setValue("Ciudad", informacionDeLaAgencia?.CiudadAgencia);
     setValue("CP", informacionDeLaAgencia?.CodigoPostalAgencia);
     setValue("Direccion", informacionDeLaAgencia?.DireccionAgencia);
+    if (informacionDeLaAgencia?.NombreAgencia === "Envía MGS") {
+      document
+        .getElementById("NombreAgencia")
+        .classList.add("DesactivarNombreAgencia");
+      document
+        .getElementById("NombreAgencia")
+        .setAttribute("disabled", "disabled");
+    }
   }, []);
 
   const ActualizarInformacionDeLaAgencia = handleSubmit(async (info) => {
+    if (
+      informacionDeLaAgencia.NombreAgencia === "Envía MGS" &&
+      info.Agencia !== "Envía MGS"
+    ) {
+      return toast.error(
+        "No se puede cambiar el nombre de la agencia a Envía MGS ❌"
+      );
+    }
     try {
       info.idAgencia = informacionDeLaAgencia?.idAgencia;
       info.CookieConToken = COOKIE_CON_TOKEN;

@@ -1,0 +1,158 @@
+.RegistrarNuevoRemitenteOrden {
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+}
+.RegistrarNuevoRemitenteOrden__Opciones {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+}
+.RegistrarNuevoRemitenteOrden__Opciones--Boton {
+  width: auto;
+  padding: 0 10px;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+  color: var(--ColorBlanco);
+  /* border-radius: 15px; */
+  margin-top: 10px;
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.RegistrarNuevoRemitenteOrden__Opciones--Boton:hover {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorAzul);
+}
+.RegistrarNuevoRemitenteOrden__Opciones--Boton:hover::after {
+  content: "Seleccionar remitente";
+}
+.RegistrarNuevoRemitenteOrden__Opciones--Boton ion-icon {
+  font-size: 20px;
+}
+.RegistrarNuevoRemitenteOrden__Titulo {
+  grid-column: 1 / -1;
+  color: var(--ColorAzul);
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+.RegistrarNuevoRemitenteOrden__Campo {
+  grid-column: span 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.RegistrarNuevoRemitenteOrden__Campo.Dos {
+  grid-column: span 2;
+}
+.RegistrarNuevoRemitenteOrden__Campo.Tres {
+  grid-column: 1 / -1;
+}
+.RegistrarNuevoRemitenteOrden__Campo p {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--ColorNegro);
+  font-weight: bold;
+  gap: 5px;
+}
+.RegistrarNuevoRemitenteOrden__Campo p ion-icon {
+  font-size: 20px;
+}
+.RegistrarNuevoRemitenteOrden__Campo input,
+.RegistrarNuevoRemitenteOrden__Campo select {
+  width: 100%;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  background-color: var(--ColorBlanco);
+  border: 1px solid var(--ColorBlanco);
+  /* border-radius: 5px; */
+  padding: 0 10px;
+  color: var(--ColorNegro);
+  font-size: 16px;
+  font-weight: bold;
+}
+.RegistrarNuevoRemitenteOrden__Campo input:focus {
+  border: 2px solid var(--ColorNegro);
+}
+.RegistrarNuevoRemitenteOrden__Footer {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.RegistrarNuevoRemitenteOrden__Footer__Boton {
+  width: 150px;
+  height: 50px;
+  max-height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  /* border-radius: 25px; */
+}
+.RegistrarNuevoRemitenteOrden__Footer__Boton.Regresar {
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.RegistrarNuevoRemitenteOrden__Footer__Boton.Regresar:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.RegistrarNuevoRemitenteOrden__Footer__Boton.Siguiente {
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+}
+.RegistrarNuevoRemitenteOrden__Footer__Boton.Siguiente:hover {
+  background-color: transparent;
+  color: var(--ColorAzul);
+}
+@media (width <= 850px) {
+  .RegistrarNuevoRemitenteOrden {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .RegistrarNuevoRemitenteOrden__Campo.Dos {
+    grid-column: span 1;
+  }
+  .RegistrarNuevoRemitenteOrden__Opciones--Boton {
+    font-size: 14px;
+    gap: 2px;
+  }
+  .RegistrarNuevoRemitenteOrden__Opciones--Boton ion-icon {
+    font-size: 18px;
+  }
+}
+@media (width <= 500px) {
+  .RegistrarNuevoRemitenteOrden {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .RegistrarNuevoRemitenteOrden__Titulo {
+    font-size: 20px;
+  }
+  .RegistrarNuevoRemitenteOrden__Campo {
+    font-size: 16px;
+  }
+  .RegistrarNuevoRemitenteOrden__Footer__Boton {
+    width: 100%;
+    height: 50px;
+  }
+}

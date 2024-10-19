@@ -79,9 +79,12 @@ export default function ModalInformacionDeLaAgencia({
         </small>
         <small className="ModalInformacionDeLaAgencia__Contenido--Informacion Col2">
           <ion-icon name="location"></ion-icon>
-          <b>Locación</b> {informacionDeLaAgencia.DireccionAgencia},{" "}
+          <b>Locación</b>
+          {informacionDeLaAgencia.PaisAgencia}
+          <br />
+          {informacionDeLaAgencia.EstadoAgencia},{" "}
           {informacionDeLaAgencia.CiudadAgencia},{" "}
-          {informacionDeLaAgencia.EstadoAgencia}{" "}
+          {informacionDeLaAgencia.DireccionAgencia}{" "}
           {informacionDeLaAgencia.CodigoPostalAgencia}
         </small>
         {informacionDeLaAgencia.Editable && (

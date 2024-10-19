@@ -15,7 +15,12 @@ import { CamposRemitente } from "../../helpers/RealizarPedido/CamposRemitente";
 import "../../estilos/componentes/RealizarPedido/RegistrarNuevoRemitente.css";
 
 export default function RegistrarNuevoRemitente({
-  PropsParaRegistrarNuevoRemitente,
+  establecerVistaRemitente,
+  remitente,
+  establecerRemitente,
+  establecerPaso,
+  paso,
+  agencia,
 }) {
   const {
     handleSubmit,
@@ -25,15 +30,6 @@ export default function RegistrarNuevoRemitente({
   } = useForm({
     criteriaMode: "all",
   });
-
-  const {
-    establecerVistaRemitente,
-    remitente,
-    establecerRemitente,
-    establecerPaso,
-    agencia,
-    paso,
-  } = PropsParaRegistrarNuevoRemitente;
 
   useEffect(() => {
     if (remitente?.idRemitente === false) {
@@ -51,6 +47,9 @@ export default function RegistrarNuevoRemitente({
   }, []);
 
   const GuardaInformacionDelRemitente = handleSubmit(async (data) => {
+    // SON TEMPORALES
+    data.PaisRemitente = "MEX | Mexico";
+    data.CodigoPaisRemitente = "MEX";
     data.idRemitente = false;
     establecerRemitente(data);
     establecerPaso(paso + 1);
@@ -68,7 +67,7 @@ export default function RegistrarNuevoRemitente({
           className="RegistrarNuevoRemitente__Opciones--Boton"
           onClick={() => establecerVistaRemitente(1)}
         >
-          <ion-icon name="list"></ion-icon> Seleccionar Remitente
+          <ion-icon name="list"></ion-icon>
         </button>
       </span>
 

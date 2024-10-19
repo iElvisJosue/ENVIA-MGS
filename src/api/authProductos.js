@@ -1,12 +1,12 @@
 import axios from "./axios";
 
-// PETICIÓN PARA OBTENER REGISTRAR UN PRODUCTO
+// SOLICITUD PARA OBTENER REGISTRAR UN PRODUCTO
 export const SolicitudRegistrarProducto = (data) =>
   axios.post("/productos/RegistrarProducto", data);
-// PETICIÓN PARA OBTENER LOS PRODUCTOS DE UNA AGENCIA
+// SOLICITUD PARA OBTENER LOS PRODUCTOS DE UNA AGENCIA
 export const SolicitudObtenerProductosPorAgencia = (data) =>
   axios.post("/productos/ObtenerProductosPorAgencia", data);
-// PETICIÓN PARA BUSCAR LOS PRODUCTOS POR FILTRO
+// SOLICITUD PARA BUSCAR LOS PRODUCTOS POR FILTRO
 export const SolicitudBuscarProductosPorFiltro = (data) =>
   axios.post("/productos/BuscarProductosPorFiltro", data);
 // SOLICITUD PARA BUSCAR LAS AGENCIAS QUE TIENE UN PRODUCTO
@@ -24,3 +24,16 @@ export const SolicitudDesasignarAgenciaAlProducto = (data) =>
 // SOLICITUD PARA ACTUALIZAR LA INFORMACION DE UN PRODUCTO
 export const SolicitudActualizarInformacionDeUnProducto = (data) =>
   axios.put("/productos/ActualizarInformacionDeUnProducto", data);
+// SOLICITUD PARA ACTIVAR O DESACTIVAR UN PRODUCTO
+export const SolicitudActualizarEstadoProducto = (data) =>
+  axios.put("/productos/ActualizarEstadoProducto", data);
+// SOLICITUD PARA ACTUALIZAR SI EL PRODUCTO SE VENDE
+export const SolicitudActualizarSeVendeProducto = (data) =>
+  axios.put("/productos/ActualizarSeVendeProducto", data);
+// SOLICITUD PARA ACTUALIZAR SI EL PRODUCTO SE VENDE
+export const SolicitudObtenerProductosActivosYDisponiblesParaVender = ({
+  CookieConToken,
+}) =>
+  axios.get(
+    `/productos/ObtenerProductosActivosYDisponiblesParaVender/${CookieConToken}`
+  );

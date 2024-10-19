@@ -83,21 +83,37 @@ export default function InformacionDelProducto() {
             validadorCampo,
           },
           index
-        ) => (
-          <span className={claseCampo} key={index}>
-            <p>
-              <ion-icon name={iconoCampo}></ion-icon> {tituloCampo}
-            </p>
-            <input
-              id={idCampo}
-              type={tipoCampo}
-              name={nombreCampo}
-              placeholder={placeholderCampo}
-              {...register(nombreCampo, validadorCampo)}
-            />
-            {MensajeDeError(nombreCampo)}
-          </span>
-        )
+        ) =>
+          tipoCampo === "text" ? (
+            <span className={claseCampo} key={index}>
+              <p>
+                <ion-icon name={iconoCampo}></ion-icon> {tituloCampo}
+              </p>
+              <input
+                id={idCampo}
+                type={tipoCampo}
+                name={nombreCampo}
+                placeholder={placeholderCampo}
+                {...register(nombreCampo, validadorCampo)}
+              />
+              {MensajeDeError(nombreCampo)}
+            </span>
+          ) : (
+            <span className={claseCampo} key={index}>
+              <p>
+                <ion-icon name={iconoCampo}></ion-icon> {tituloCampo}
+              </p>
+              <select
+                id={idCampo}
+                name={nombreCampo}
+                {...register(nombreCampo, validadorCampo)}
+              >
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+              </select>
+              {MensajeDeError(nombreCampo)}
+            </span>
+          )
       )}
       <footer className="InformacionDelProducto__Footer">
         <button

@@ -1,0 +1,214 @@
+.SeleccionarRemitenteOrden {
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+.SeleccionarRemitenteOrden__Opciones {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+}
+.SeleccionarRemitenteOrden__Opciones--Boton {
+  width: auto;
+  padding: 0 10px;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+  color: var(--ColorBlanco);
+  /* border-radius: 15px; */
+  margin-top: 10px;
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.SeleccionarRemitenteOrden__Opciones--Boton:hover {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorAzul);
+}
+.SeleccionarRemitenteOrden__Opciones--Boton:hover::after {
+  content: "Registrar remitente";
+}
+
+.SeleccionarRemitenteOrden__Opciones--Boton ion-icon {
+  font-size: 20px;
+}
+.SeleccionarRemitenteOrden__Titulo {
+  grid-column: 1 / -1;
+  color: var(--ColorAzul);
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+.SeleccionarRemitenteOrden__Buscar {
+  grid-column: 4/5;
+  display: flex;
+}
+.SeleccionarRemitenteOrden__Buscar input {
+  width: 100%;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  background-color: var(--ColorBlanco);
+  border: 1px solid var(--ColorBlanco);
+  /* border-radius: 15px 0 0 15px; */
+  padding: 0 10px;
+  color: var(--ColorNegro);
+  font-size: 16px;
+  font-weight: bold;
+}
+.SeleccionarRemitenteOrden__Buscar__Lupa {
+  min-width: 50px;
+  min-height: 50px;
+  /* border-radius: 0 15px 15px 0; */
+  color: var(--ColorBlanco);
+  background-color: var(--ColorAzul);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.SeleccionarRemitenteOrden__TextoResultados {
+  grid-column: 1 / -1;
+  color: var(--ColorVerde);
+  text-align: right;
+  font-style: italic;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+.SeleccionarRemitenteOrden__TextoResultados ion-icon {
+  font-size: 20px;
+}
+.SeleccionarRemitenteOrden__BotonesDePaginacion {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.SeleccionarRemitenteOrden__BotonesDePaginacion--Boton {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.SeleccionarRemitenteOrden__BotonesDePaginacion--Boton ion-icon {
+  font-size: 15px;
+}
+.SeleccionarRemitenteOrden__BotonesDePaginacion--Boton.Anterior {
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.SeleccionarRemitenteOrden__BotonesDePaginacion--Boton.Siguiente {
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+}
+.SeleccionarRemitenteOrden__BotonesDePaginacion--Boton.Anterior:hover {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorRojo);
+}
+.SeleccionarRemitenteOrden__BotonesDePaginacion--Boton.Siguiente:hover {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorAzul);
+}
+.SeleccionarRemitenteOrden__Remitente {
+  grid-column: span 1;
+  color: var(--ColorNegro);
+  border: 2px solid var(--ColorBlanco);
+  background-color: var(--ColorBlanco);
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  min-height: 100px;
+  height: auto;
+  /* border-radius: 20px; */
+  transition: 0.3s ease-in-out all;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.SeleccionarRemitenteOrden__Remitente ion-icon {
+  font-size: 25px;
+}
+.SeleccionarRemitenteOrden__Remitente:hover {
+  color: var(--ColorBlanco);
+  border: 2px solid var(--ColorAzulHover);
+  background-color: var(--ColorAzulHover);
+  cursor: pointer;
+  transform: scale(1.02);
+}
+.SeleccionarRemitenteOrden__TextoPaginas {
+  grid-column: 1 / -1;
+  color: var(--ColorAzul);
+  text-align: center;
+  font-weight: bold;
+}
+@media (width <= 1120px) {
+  .SeleccionarRemitenteOrden__Buscar {
+    grid-column: 1 / -1;
+  }
+  .SeleccionarRemitenteOrden {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (width <= 850px) {
+  .SeleccionarRemitenteOrden {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .SeleccionarRemitenteOrden__Campo.Dos {
+    grid-column: span 1;
+  }
+}
+@media (width <= 500px) {
+  .SeleccionarRemitenteOrden__Remitente {
+    font-size: 14px;
+  }
+  .SeleccionarRemitenteOrden__Titulo {
+    font-size: 20px;
+  }
+  .SeleccionarRemitenteOrden__Campo {
+    font-size: 16px;
+  }
+  .SeleccionarRemitenteOrden__Footer__Boton {
+    width: 100%;
+    height: 50px;
+  }
+  .SeleccionarRemitenteOrden__Opciones--Boton {
+    font-size: 14px;
+    gap: 2px;
+  }
+  .SeleccionarRemitenteOrden__Opciones--Boton ion-icon {
+    font-size: 18px;
+  }
+}
+@media (width <= 500px) {
+  .SeleccionarRemitenteOrden {
+    grid-template-columns: 1fr;
+  }
+}

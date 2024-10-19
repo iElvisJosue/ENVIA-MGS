@@ -32,8 +32,6 @@ export default function DetallesDelPedido({
     paquete?.[indicePedido]?.GuiaPedido // Usa acceso condicional por si el paquete o el índice son indefinidos
   );
 
-  console.log(movimientos);
-
   const SiguientePedido = () => {
     if (indicePedido < paquete.length - 1) {
       establecerIndicePedido(indicePedido + 1);
@@ -157,9 +155,9 @@ export default function DetallesDelPedido({
         </p>
         <p>
           <b>Teléfono(s): </b>
-          {paquete[indicePedido].TelefonoCasaRemitente}
-          {paquete[indicePedido].CelularRemitente &&
-            ` - ${paquete[indicePedido].CelularRemitente}`}
+          {paquete[indicePedido].CelularRemitente}
+          {paquete[indicePedido].TelefonoCasaRemitente &&
+            ` - ${paquete[indicePedido].TelefonoCasaRemitente}`}
         </p>
         <p>
           <b>Correo: </b>
@@ -167,9 +165,10 @@ export default function DetallesDelPedido({
         </p>
         <p>
           <b>Dirección: </b>
-          {paquete[indicePedido].DireccionRemitente} <br />{" "}
-          {paquete[indicePedido].CiudadRemitente} -{" "}
+          {paquete[indicePedido].PaisRemitente} <br />{" "}
           {paquete[indicePedido].EstadoRemitente} -{" "}
+          {paquete[indicePedido].CiudadRemitente} <br />{" "}
+          {paquete[indicePedido].DireccionRemitente}{" "}
           {paquete[indicePedido].CodigoPostalRemitente}
         </p>
         {paquete[indicePedido].ReferenciaRemitente && (
@@ -192,17 +191,13 @@ export default function DetallesDelPedido({
         </p>
         <p>
           <b>Teléfono(s): </b>
-          {paquete[indicePedido].TelefonoCasaDestinatario}
-          {paquete[indicePedido].CelularDestinatario &&
-            ` - ${paquete[indicePedido].CelularDestinatario}`}
+          {paquete[indicePedido].CelularDestinatario}
+          {paquete[indicePedido].TelefonoCasaDestinatario &&
+            ` - ${paquete[indicePedido].TelefonoCasaDestinatario}`}
         </p>
         <p>
           <b>Correo: </b>
           {paquete[indicePedido].CorreoDestinatario}
-        </p>
-        <p>
-          <b>Colonia: </b>
-          {paquete[indicePedido].ColoniaDestinatario}
         </p>
         {paquete[indicePedido].MunicipioDelegacionDestinatario && (
           <p>
@@ -213,9 +208,10 @@ export default function DetallesDelPedido({
 
         <p>
           <b>Dirección: </b>
-          {paquete[indicePedido].DireccionDestinatario} <br />{" "}
-          {paquete[indicePedido].CiudadDestinatario} -{" "}
+          {paquete[indicePedido].PaisDestinatario} <br />{" "}
           {paquete[indicePedido].EstadoDestinatario} -{" "}
+          {paquete[indicePedido].CiudadDestinatario} <br />{" "}
+          {paquete[indicePedido].DireccionDestinatario}{" "}
           {paquete[indicePedido].CodigoPostalDestinatario}
         </p>
         {paquete[indicePedido].ReferenciaDestinatario && (

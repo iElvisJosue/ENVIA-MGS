@@ -1,0 +1,267 @@
+.InformacionDeLaCaja {
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+}
+.InformacionDeLaCaja__Titulo {
+  grid-column: 1 / -1;
+  color: var(--ColorAzul);
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+  margin-top: 25px;
+}
+.InformacionDeLaCaja__Campo {
+  grid-column: span 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.InformacionDeLaCaja__Campo.Completo {
+  grid-column: 1 / -1;
+}
+
+.InformacionDeLaCaja__Campo p {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--ColorNegro);
+  font-weight: bold;
+  gap: 5px;
+  font-size: 16px;
+}
+.InformacionDeLaCaja__Campo p ion-icon {
+  font-size: 20px;
+}
+.InformacionDeLaCaja__Campo input,
+.InformacionDeLaCaja__Campo select {
+  width: 100%;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  background-color: var(--ColorBlanco);
+  border: 1px solid var(--ColorBlanco);
+  /* border-radius: 5px; */
+  padding: 0 10px;
+  color: var(--ColorNegro);
+  font-size: 16px;
+  font-weight: bold;
+}
+.InformacionDeLaCaja__Campo input:focus {
+  border: 2px solid var(--ColorNegro);
+}
+.InformacionDeLaCaja__BotonPedido {
+  grid-column: span 1;
+
+  display: flex;
+  align-items: flex-end;
+}
+.InformacionDeLaCaja__BotonPedido button {
+  width: 100%;
+  min-height: 50px;
+  height: 50px;
+  /* border-radius: 25px; */
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+  color: var(--ColorBlanco);
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.3s ease-in-out all;
+}
+.InformacionDeLaCaja__BotonPedido button:hover {
+  background-color: transparent;
+  color: var(--ColorAzul);
+}
+.InformacionDeLaCaja__ListaProductos {
+  grid-column: 1 / -1;
+  padding: 10px;
+  margin-top: 30px;
+}
+.InformacionDeLaCaja__ListaProductos__Titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.InformacionDeLaCaja__ListaProductos__Titulo__Texto {
+  color: var(--ColorAzul);
+  font-weight: bold;
+  font-size: 25px;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.InformacionDeLaCaja__ListaProductos__Encabezado {
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  margin-top: 15px;
+  background-color: var(--ColorAzul);
+  border: 1px solid var(--ColorAzul);
+  color: var(--ColorBlanco);
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  display: flex;
+}
+.InformacionDeLaCaja__ListaProductos__Encabezado p {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.InformacionDeLaCaja__ListaProductos__Cuerpo {
+  display: flex;
+  border: 2px solid var(--ColorSecundario);
+  border-top: none;
+}
+.InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background-color: var(--ColorBlanco);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles--Texto {
+  text-align: center;
+  color: var(--ColorNegro);
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles--Texto.Rojo {
+  color: var(--ColorRojo);
+}
+.InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles--Texto.Verde {
+  color: var(--ColorVerde);
+}
+.InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles:nth-child(2) {
+  border-right: 2px solid var(--ColorSecundario);
+  border-left: 2px solid var(--ColorSecundario);
+}
+.InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles:nth-child(3) {
+  flex-direction: column;
+  gap: 10px;
+}
+.InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles__Boton {
+  width: 50%;
+  height: 40px;
+  max-height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  /* border-radius: 25px; */
+}
+.InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles__Boton.Eliminar {
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles__Boton.Eliminar:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles__Boton.UltimaMilla {
+  background-color: var(--ColorNaranja);
+  border: 2px solid var(--ColorNaranja);
+}
+.InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles__Boton.UltimaMilla:hover {
+  background-color: transparent;
+  color: var(--ColorNaranja);
+}
+.InformacionDeLaCaja__Footer {
+  padding: 10px;
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.InformacionDeLaCaja__Footer__Boton {
+  width: 150px;
+  height: 50px;
+  max-height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+}
+.InformacionDeLaCaja__Footer__Boton.Regresar {
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.InformacionDeLaCaja__Footer__Boton.Regresar:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.InformacionDeLaCaja__Footer__Boton.Finalizar {
+  background-color: var(--ColorVerde);
+  border: 2px solid var(--ColorVerde);
+}
+.InformacionDeLaCaja__Footer__Boton.Finalizar:hover {
+  background-color: transparent;
+  color: var(--ColorVerde);
+}
+@media (width <= 1000px) {
+  .InformacionDeLaCaja {
+    grid-template-columns: 1fr;
+  }
+  .InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles__Boton {
+    width: 100%;
+  }
+  .InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  .InformacionDeLaCaja__ListaProductos__Titulo {
+    flex-direction: column;
+  }
+}
+@media (width <= 768px) {
+  .InformacionDeLaCaja {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .InformacionDeLaCaja__BotonPedido {
+    grid-column: 1 / -1;
+  }
+}
+@media (width <= 500px) {
+  .InformacionDeLaCaja {
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+  .InformacionDeLaCaja__Titulo,
+  .InformacionDeLaCaja__ListaProductos__Titulo__Texto {
+    font-size: 20px;
+  }
+  .InformacionDeLaCaja__Campo {
+    font-size: 16px;
+  }
+  .InformacionDeLaCaja__Footer__Boton {
+    width: 100%;
+    height: 50px;
+  }
+}
+@media (width <= 400px) {
+  .InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles__Boton {
+    height: 60px;
+    max-height: 100px;
+  }
+}

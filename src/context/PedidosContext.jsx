@@ -10,6 +10,11 @@ import {
   SolicitudBuscarMovimientosDeUnPedido,
   SolicitudBuscarPedidoPorNumeroDeGuia,
   SolicitudBuscarPedidosPorFecha,
+  SolicitudGuardarInformacionDeLaOrden,
+  SolicitudBuscarOrdenesPorFiltro,
+  SolicitudBuscarOrdenesPorFecha,
+  SolicitudBuscarMovimientosDeUnaOrden,
+  SolicitudBuscarOrdenesPorPaquete,
 } from "../api/authPedidos";
 
 export const PedidosContext = createContext();
@@ -96,6 +101,46 @@ export const ProveedorPedidos = ({ children }) => {
       return error;
     }
   };
+  const GuardarInformacionDeLaOrden = async (data) => {
+    try {
+      const res = await SolicitudGuardarInformacionDeLaOrden(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const BuscarOrdenesPorFiltro = async (data) => {
+    try {
+      const res = await SolicitudBuscarOrdenesPorFiltro(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const BuscarOrdenesPorFecha = async (data) => {
+    try {
+      const res = await SolicitudBuscarOrdenesPorFecha(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const BuscarMovimientosDeUnaOrden = async (data) => {
+    try {
+      const res = await SolicitudBuscarMovimientosDeUnaOrden(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+  const BuscarOrdenesPorPaquete = async (data) => {
+    try {
+      const res = await SolicitudBuscarOrdenesPorPaquete(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
 
   return (
     <PedidosContext.Provider
@@ -109,6 +154,11 @@ export const ProveedorPedidos = ({ children }) => {
         BuscarMovimientosDeUnPedido,
         BuscarPedidoPorNumeroDeGuia,
         BuscarPedidosPorFecha,
+        GuardarInformacionDeLaOrden,
+        BuscarOrdenesPorFiltro,
+        BuscarOrdenesPorFecha,
+        BuscarMovimientosDeUnaOrden,
+        BuscarOrdenesPorPaquete,
       }}
     >
       {children}

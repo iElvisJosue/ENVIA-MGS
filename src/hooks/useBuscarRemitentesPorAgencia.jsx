@@ -11,6 +11,7 @@ export default function useBuscarRemitentesPorAgencia({ idAgencia }) {
   const [remitentes, establecerRemitentes] = useState(null);
   const [cargandoRemitentes, establecerCargandoRemitentes] = useState(true);
   const [filtro, establecerFiltro] = useState("");
+  console.log(idAgencia);
 
   useEffect(() => {
     const obtenerRemitentes = async () => {

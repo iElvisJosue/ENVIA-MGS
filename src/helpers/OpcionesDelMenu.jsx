@@ -23,6 +23,16 @@ export const OpcionesDelMenu = {
           nombre: "Pedidos",
           url: `${HOST}Pedidos`,
         },
+        {
+          icono: "logo-dropbox",
+          nombre: "Realizar orden",
+          url: `${HOST}Realizar-Orden`,
+        },
+        {
+          icono: "list",
+          nombre: "Ordenes",
+          url: `${HOST}Ordenes`,
+        },
       ],
     },
     {
@@ -103,6 +113,17 @@ export const OpcionesDelMenu = {
           nombre: "Pedidos",
           url: `${HOST}Pedidos`,
         },
+
+        {
+          icono: "logo-dropbox",
+          nombre: "Realizar orden",
+          url: `${HOST}Realizar-Orden`,
+        },
+        {
+          icono: "list",
+          nombre: "Ordenes",
+          url: `${HOST}Ordenes`,
+        },
       ],
     },
   ],
@@ -126,6 +147,16 @@ export const OpcionesDelMenu = {
           icono: "bag-handle",
           nombre: "Pedidos",
           url: `${HOST}Pedidos`,
+        },
+        {
+          icono: "logo-dropbox",
+          nombre: "Realizar orden",
+          url: `${HOST}Realizar-Orden`,
+        },
+        {
+          icono: "list",
+          nombre: "Ordenes",
+          url: `${HOST}Ordenes`,
         },
       ],
     },

@@ -25,12 +25,8 @@ export default function InformacionDelRemitente({
   };
 
   return vistaRemitente === 0 ? (
-    <RegistrarNuevoRemitente
-      PropsParaRegistrarNuevoRemitente={PropsParaRegistrarNuevoRemitente}
-    />
+    <RegistrarNuevoRemitente {...PropsParaRegistrarNuevoRemitente} />
   ) : (
-    <SeleccionarRemitente
-      PropsParaRegistrarNuevoRemitente={PropsParaRegistrarNuevoRemitente}
-    />
+    <SeleccionarRemitente {...PropsParaRegistrarNuevoRemitente} />
   );
 }

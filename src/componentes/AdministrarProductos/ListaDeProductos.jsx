@@ -1,16 +1,22 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
-// import { useEffect, useState } from "react
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+// IMPORTAMOS LOS CONTEXTOS A USAR
+import { useProductos } from "../../context/ProductosContext";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Cargando from "../Cargando";
 import MensajeGeneral from "../MensajeGeneral";
-// import ModalConfirmacionAgencias from "./ModalConfirmacionAgencias";
+import ModalConfirmacionProductos from "./ModalConfirmacionProductos";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useBuscarProductosPorFiltro from "../../hooks/useBuscarProductosPorFiltro";
 import usePaginacion from "../../hooks/usePaginacion";
+
+// IMPORTAMOS LAS AYUDAS
+import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/AdministrarProductos/ListaDeProductos.css";
@@ -19,15 +25,17 @@ export default function ListaDeProductos({
   establecerVista,
   establecerInformacionDelProducto,
 }) {
-  //   const [mostrarModalConfirmacion, establecerMostrarModalConfirmacion] =
-  //     useState(false);
-  //   const [activar, establecerActivar] = useState(true);
-  //   const [infAgencia, establecerInfAgencia] = useState(null);
+  const { ActualizarSeVendeProducto } = useProductos();
+  const [mostrarModalConfirmacion, establecerMostrarModalConfirmacion] =
+    useState(false);
+  const [activar, establecerActivar] = useState(true);
+  const [infProducto, establecerInfProducto] = useState(null);
   const {
     productos,
     cargandoProductos,
-    filtroProductos,
     establecerFiltroProductos,
+    buscarProductosNuevamente,
+    establecerBuscarProductosNuevamente,
   } = useBuscarProductosPorFiltro();
   const {
     CantidadParaMostrar,
@@ -50,7 +58,7 @@ export default function ListaDeProductos({
     }
   }, [productos]);
 
-  const obtenerUsuarios = (event) => {
+  const ObtenerLosProductos = (event) => {
     const valorIntroducido = event.target.value;
     // Utilizamos una expresión regular para permitir letras, números y "-"
     const regex = /^[a-zA-Z0-9\sáéíóúÁÉÍÓÚüÜ-]*$/;
@@ -61,16 +69,37 @@ export default function ListaDeProductos({
     }
   };
 
-  //   const MostrarModalActivar = (infAgencia) => {
-  //     establecerInfAgencia(infAgencia);
-  //     establecerActivar(true);
-  //     establecerMostrarModalConfirmacion(true);
-  //   };
-  //   const MostrarModalDesactivar = (infAgencia) => {
-  //     establecerInfAgencia(infAgencia);
-  //     establecerActivar(false);
-  //     establecerMostrarModalConfirmacion(true);
-  //   };
+  const ActualizarSiSeVendeUnProducto = async (SeVendeProducto, idProducto) => {
+    try {
+      const res = await ActualizarSeVendeProducto({
+        CookieConToken: COOKIE_CON_TOKEN,
+        SeVendeProducto,
+        idProducto,
+      });
+      if (res.response) {
+        const { status, data } = res.response;
+        ManejarMensajesDeRespuesta({ status, data });
+      } else {
+        const { status, data } = res;
+        ManejarMensajesDeRespuesta({ status, data });
+        establecerBuscarProductosNuevamente(!buscarProductosNuevamente);
+      }
+    } catch (error) {
+      const { status, data } = error.response;
+      ManejarMensajesDeRespuesta({ status, data });
+    }
+  };
+
+  const MostrarModalActivar = (infProducto) => {
+    establecerInfProducto(infProducto);
+    establecerActivar(true);
+    establecerMostrarModalConfirmacion(true);
+  };
+  const MostrarModalDesactivar = (infProducto) => {
+    establecerInfProducto(infProducto);
+    establecerActivar(false);
+    establecerMostrarModalConfirmacion(true);
+  };
 
   const EstablecerInformacionDeLaAgenciaSeleccionada = (infProducto) => {
     establecerInformacionDelProducto(infProducto);
@@ -85,25 +114,25 @@ export default function ListaDeProductos({
 
   return (
     <div className="ListaDeProductos">
-      {/* {mostrarModalConfirmacion && (
-        <ModalConfirmacionAgencias
+      {mostrarModalConfirmacion && (
+        <ModalConfirmacionProductos
           Activar={activar}
-          infAgencia={infAgencia}
+          infProducto={infProducto}
           establecerMostrarModalConfirmacion={
             establecerMostrarModalConfirmacion
           }
-          obtenerAgenciasNuevamente={obtenerAgenciasNuevamente}
-          establecerObtenerAgenciasNuevamente={
-            establecerObtenerAgenciasNuevamente
+          buscarProductosNuevamente={buscarProductosNuevamente}
+          establecerBuscarProductosNuevamente={
+            establecerBuscarProductosNuevamente
           }
         />
-      )} */}
+      )}
       <h1 className="ListaDeProductos__Titulo">Administrar Productos</h1>
       <span className="ListaDeProductos__Buscar">
         <input
           type="text"
           placeholder="Buscar producto"
-          onChange={obtenerUsuarios}
+          onChange={ObtenerLosProductos}
         />
         <span className="ListaDeProductos__Buscar__Lupa">
           <ion-icon name="search"></ion-icon>
@@ -121,6 +150,9 @@ export default function ListaDeProductos({
           <span className="ListaDeProductos__Colores">
             <p className="ListaDeProductos__Clasificacion--Texto Activa">
               <ion-icon name="basket"></ion-icon> Activo
+            </p>
+            <p className="ListaDeProductos__Clasificacion--Texto Vender">
+              <ion-icon name="cash"></ion-icon> Vender
             </p>
             <p className="ListaDeProductos__Clasificacion--Texto Desactivada">
               <ion-icon name="ban"></ion-icon> Desactivado
@@ -144,48 +176,124 @@ export default function ListaDeProductos({
               </button>
             )}
           </div>
-          {productos.slice(indiceInicial, indiceFinal).map((infProducto) => (
-            <section
-              className="ListaDeProductos__Producto"
-              key={infProducto.idProducto}
-            >
-              <ion-icon name="basket"></ion-icon>
-              <p>{infProducto.NombreProducto}</p>
-              <span className="ListaDeProductos__Producto__Opciones">
-                <button
-                  className="ListaDeProductos__Producto__Opciones--Boton Administrar"
-                  title="Administrar Agencias"
-                  onClick={() =>
-                    EstablecerInformacionDeLaAgenciaSeleccionada(infProducto)
-                  }
-                >
+          {productos.slice(indiceInicial, indiceFinal).map((infProducto) =>
+            infProducto.StatusProducto === "Activo" ? (
+              <section
+                className="ListaDeProductos__Producto"
+                key={infProducto.idProducto}
+              >
+                <span className="ListaDeProductos__Producto__Detalles">
+                  <ion-icon name="basket"></ion-icon>
+                  <p>{infProducto.NombreProducto}</p>
+                  <ion-icon name="logo-dropbox"></ion-icon>
+                  <p>Costo caja vacía</p>
                   <p>
-                    <ion-icon name="business"></ion-icon>
+                    {Number(infProducto.CostoCajaVaciaProducto).toLocaleString(
+                      "en-US",
+                      {
+                        style: "currency",
+                        currency: "USD",
+                      }
+                    )}
                   </p>
-                </button>
-                <button
-                  className="ListaDeProductos__Producto__Opciones--Boton Editar"
-                  title="Editar producto"
-                  onClick={() =>
-                    EstablecerInformacionDelProductoAEditar(infProducto)
-                  }
-                >
+                  {infProducto.SeVendeProducto === "Si" ? (
+                    <span
+                      className={`ListaDeProductos__Producto__Detalles--Vender ${infProducto.SeVendeProducto}`}
+                      onClick={() =>
+                        ActualizarSiSeVendeUnProducto(
+                          "No",
+                          infProducto.idProducto
+                        )
+                      }
+                    >
+                      <button title="No vender este producto">
+                        <ion-icon name="cash"></ion-icon>
+                      </button>
+                    </span>
+                  ) : (
+                    <span
+                      className={`ListaDeProductos__Producto__Detalles--Vender ${infProducto.SeVendeProducto}`}
+                      onClick={() =>
+                        ActualizarSiSeVendeUnProducto(
+                          "Si",
+                          infProducto.idProducto
+                        )
+                      }
+                    >
+                      <button title="Vender este producto">
+                        <ion-icon name="close"></ion-icon>
+                      </button>
+                    </span>
+                  )}
+                </span>
+                <span className="ListaDeProductos__Producto__Opciones">
+                  <button
+                    className="ListaDeProductos__Producto__Opciones--Boton Administrar"
+                    title="Administrar Agencias"
+                    onClick={() =>
+                      EstablecerInformacionDeLaAgenciaSeleccionada(infProducto)
+                    }
+                  >
+                    <p>
+                      <ion-icon name="business"></ion-icon>
+                    </p>
+                  </button>
+                  <button
+                    className="ListaDeProductos__Producto__Opciones--Boton Editar"
+                    title="Editar producto"
+                    onClick={() =>
+                      EstablecerInformacionDelProductoAEditar(infProducto)
+                    }
+                  >
+                    <p>
+                      <ion-icon name="create"></ion-icon>
+                    </p>
+                  </button>
+                  <button
+                    className="ListaDeProductos__Producto__Opciones--Boton Desactivar"
+                    onClick={() => MostrarModalDesactivar(infProducto)}
+                    title="Desactivar producto"
+                  >
+                    <p>
+                      <ion-icon name="ban"></ion-icon>
+                    </p>
+                  </button>
+                </span>
+              </section>
+            ) : (
+              <section
+                className="ListaDeProductos__Producto Desactivado"
+                key={infProducto.idProducto}
+              >
+                <span className="ListaDeProductos__Producto__Detalles">
+                  <ion-icon name="basket"></ion-icon>
+                  <p>{infProducto.NombreProducto}</p>
+                  <ion-icon name="logo-dropbox"></ion-icon>
+                  <p>Costo caja vacía</p>
                   <p>
-                    <ion-icon name="create"></ion-icon>
+                    {Number(infProducto.CostoCajaVaciaProducto).toLocaleString(
+                      "en-US",
+                      {
+                        style: "currency",
+                        currency: "USD",
+                      }
+                    )}
                   </p>
-                </button>
-                <button
-                  className="ListaDeProductos__Producto__Opciones--Boton Desactivar"
-                  //   onClick={() => MostrarModalDesactivar(infProducto)}
-                  title="Desactivar producto"
-                >
-                  <p>
-                    <ion-icon name="ban"></ion-icon>
-                  </p>
-                </button>
-              </span>
-            </section>
-          ))}
+                </span>
+                <span className="ListaDeProductos__Producto__Opciones">
+                  <button
+                    className="ListaDeProductos__Producto__Opciones--Boton Activar"
+                    onClick={() => MostrarModalActivar(infProducto)}
+                    title="Activar producto"
+                  >
+                    <p>
+                      <ion-icon name="power"></ion-icon>
+                    </p>
+                  </button>
+                </span>
+              </section>
+            )
+          )}
 
           <small className="ListaDeProductos__TextoPaginas">
             Página {paginaParaMostrar} de {cantidadDePaginas}
@@ -194,7 +302,7 @@ export default function ListaDeProductos({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={`¡Oops! No se encontraron resultados para "${filtroProductos}"`}
+          Texto={`¡Oops! No se encontraron resultados.`}
           Boton={true}
           TipoBoton={"Azul"}
           UrlBoton={"/Registrar-Producto"}

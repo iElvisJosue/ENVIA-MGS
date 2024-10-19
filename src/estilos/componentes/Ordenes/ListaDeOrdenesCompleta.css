@@ -1,0 +1,212 @@
+.ListaDeOrdenesCompleta__Titulo {
+  grid-column: 1 / -1;
+  color: var(--ColorAzul);
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+.ListaDeOrdenesCompleta__Buscar {
+  grid-column: 3/5;
+  display: flex;
+}
+.ListaDeOrdenesCompleta__Buscar input {
+  width: 100%;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  background-color: var(--ColorBlanco);
+  border: 1px solid var(--ColorBlanco);
+  /* border-radius: 15px 0 0 15px; */
+  padding: 0 10px;
+  color: var(--ColorNegro);
+  font-size: 16px;
+  font-weight: bold;
+}
+.ListaDeOrdenesCompleta__Buscar__Lupa {
+  min-width: 50px;
+  min-height: 50px;
+  /* border-radius: 0 15px 15px 0; */
+  color: var(--ColorBlanco);
+  background-color: var(--ColorAzul);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.ListaDeOrdenesCompleta__TextoResultados {
+  grid-column: 1 / -1;
+  color: var(--ColorVerde);
+  text-align: right;
+  font-style: italic;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+.ListaDeOrdenesCompleta__TextoResultados ion-icon {
+  font-size: 20px;
+}
+.ListaDeOrdenesCompleta__Clasificacion {
+  grid-column: 1 / -1;
+  color: var(--ColorAzul);
+
+  display: flex;
+  gap: 5px;
+}
+.ListaDeOrdenesCompleta__Colores {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 5px;
+}
+.ListaDeOrdenesCompleta__Clasificacion--Texto {
+  width: auto;
+  height: 30px;
+  padding: 0 10px;
+  font-size: 14px;
+  color: var(--ColorBlanco);
+  /* border-radius: 15px; */
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.ListaDeOrdenesCompleta__Clasificacion--Texto ion-icon {
+  font-size: 16px;
+}
+.ListaDeOrdenesCompleta__Clasificacion--Texto.PedidoRealizado {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorVerde);
+}
+.ListaDeOrdenesCompleta__Clasificacion--Texto.PedidoNoRealizado {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorRojo);
+}
+.ListaDeOrdenesCompleta__Cuerpo {
+  grid-column: 1 / -1;
+  overflow-x: auto;
+}
+.ListaDeOrdenesCompleta__Cuerpo__Tabla {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+}
+.ListaDeOrdenesCompleta__Cuerpo__Tabla__Encabezado tr th {
+  background-color: var(--ColorAzul);
+  color: var(--ColorBlanco);
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px;
+  min-width: 200px;
+}
+.ListaDeOrdenesCompleta__Cuerpo__Tabla__Encabezado tr th ion-icon {
+  font-size: 20px;
+}
+.ListaDeOrdenesCompleta__Cuerpo__Tabla__Cuerpo {
+  background-color: var(--ColorBlanco);
+  text-align: center;
+}
+.ListaDeOrdenesCompleta__Cuerpo__Tabla__Cuerpo tr td {
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+.ListaDeOrdenesCompleta__Cuerpo__Tabla__Cuerpo--TR {
+  background-color: var(--ColorBlanco);
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  border-right: 2px solid var(--ColorSecundario);
+  border-bottom: 2px solid var(--ColorSecundario);
+  border-left: 2px solid var(--ColorSecundario);
+  color: var(--ColorRojo);
+}
+.ListaDeOrdenesCompleta__Cuerpo__Tabla__Cuerpo--TR.OrdenRealizada {
+  color: var(--ColorVerde);
+}
+.ListaDeOrdenesCompleta__Cuerpo__Tabla__Cuerpo hr {
+  height: 2px;
+  background-color: var(--ColorSecundario);
+  border: none;
+}
+.ListaDeOrdenesCompleta__Cuerpo__Tabla__Cuerpo__Acciones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 5px;
+}
+.ListaDeOrdenesCompleta__Cuerpo__Tabla__Cuerpo__Acciones button {
+  width: 25px;
+  height: 25px;
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+  color: var(--ColorBlanco);
+  font-weight: bold;
+  border-radius: 50%;
+  transition: 0.3s ease-in-out all;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ListaDeOrdenesCompleta__Cuerpo__Tabla__Cuerpo--TR.OrdenRealizada
+  .ListaDeOrdenesCompleta__Cuerpo__Tabla__Cuerpo__Acciones
+  button {
+  background-color: var(--ColorVerde);
+  border: 2px solid var(--ColorVerde);
+}
+.ListaDeOrdenesCompleta__Cuerpo__Tabla__Cuerpo__Acciones button:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.ListaDeOrdenesCompleta__Cuerpo__Tabla__Cuerpo--TR.OrdenRealizada
+  .ListaDeOrdenesCompleta__Cuerpo__Tabla__Cuerpo__Acciones
+  button:hover {
+  background-color: transparent;
+  color: var(--ColorVerde);
+}
+@media (max-width: 1000px) {
+  .ListaDeOrdenesCompleta__Buscar {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 500px) {
+  .ListaDeOrdenesCompleta__Titulo {
+    font-size: 20px;
+  }
+  .ListaDeOrdenesCompleta__Cuerpo__Tabla__Encabezado tr th ion-icon {
+    font-size: 16px;
+  }
+  .ListaDeOrdenesCompleta__Cuerpo__Tabla__Encabezado tr th {
+    font-size: 14px;
+  }
+  .ListaDeOrdenesCompleta__Cuerpo__Tabla__Cuerpo tr td {
+    font-size: 12px;
+  }
+  .ListaDeOrdenesCompleta__Cuerpo__Tabla__Cuerpo tr td {
+    padding: 5px;
+  }
+  .ListaDeOrdenesCompleta__TextoResultados {
+    font-size: 12px;
+  }
+  .ListaDeOrdenesCompleta__TextoResultados ion-icon {
+    font-size: 16px;
+  }
+  .ListaDeOrdenesCompleta__Clasificacion {
+    font-size: 18px;
+  }
+  .ListaDeOrdenesCompleta__Clasificacion--Texto {
+    font-size: 12px;
+  }
+}
+@media (width <= 435px) {
+  .ListaDeOrdenesCompleta__Colores {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -15,17 +15,13 @@ import usePaginacion from "../../hooks/usePaginacion";
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/RealizarPedido/SeleccionarDestinatario.css";
 export default function SeleccionarDestinatario({
-  PropsParaRegistrarNuevoDestinatario,
+  establecerVistaDestinatario,
+  establecerDestinatario,
+  establecerPaso,
+  agencia,
+  paso,
 }) {
-  const {
-    establecerVistaDestinatario,
-    establecerDestinatario,
-    establecerPaso,
-    agencia,
-    paso,
-  } = PropsParaRegistrarNuevoDestinatario;
-
-  const { destinatarios, cargandoDestinatarios, filtro, establecerFiltro } =
+  const { destinatarios, cargandoDestinatarios, establecerFiltro } =
     useBuscarDestinatariosPorAgencia({
       idAgencia: agencia.idAgencia,
     });
@@ -66,7 +62,7 @@ export default function SeleccionarDestinatario({
     establecerDestinatario(destinatario);
     establecerPaso(paso + 1);
     toast.success(
-      `Remitente ${destinatario.NombreDestinatario.toUpperCase()} ${destinatario.ApellidoPaternoDestinatario.toUpperCase()} ${destinatario.ApellidoMaternoDestinatario.toUpperCase()} seleccionado con éxito ✨`
+      `Destinatario ${destinatario.NombreDestinatario.toUpperCase()} ${destinatario.ApellidoPaternoDestinatario.toUpperCase()} ${destinatario.ApellidoMaternoDestinatario.toUpperCase()} seleccionado con éxito ✨`
     );
   };
 
@@ -80,7 +76,7 @@ export default function SeleccionarDestinatario({
           className="SeleccionarDestinatario__Opciones--Boton"
           onClick={() => establecerVistaDestinatario(0)}
         >
-          <ion-icon name="add-circle"></ion-icon> Registrar Destinatario
+          <ion-icon name="add-circle"></ion-icon>
         </button>
       </span>
       <h1 className="SeleccionarDestinatario__Titulo">
@@ -153,7 +149,7 @@ export default function SeleccionarDestinatario({
       ) : (
         <MensajeGeneral
           Imagen={"SinResultados.png"}
-          Texto={`¡Oops! No se encontraron resultados para "${filtro}"`}
+          Texto={`¡Oops! No se encontraron resultados.`}
         />
       )}
     </section>

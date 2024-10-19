@@ -48,7 +48,6 @@ export const CamposRemitente = [
     placeholderCampo: "Escriba aquí...",
     claseCampo: "RegistrarNuevoRemitente__Campo",
     validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
       pattern: {
         value: /^\d+$/,
         message: "¡Este campo solo acepta números! 🔢",

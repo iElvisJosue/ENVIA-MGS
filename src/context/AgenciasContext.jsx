@@ -10,6 +10,7 @@ import {
   SolicitudActualizarEstadoAgencia,
   SolicitudActualizarInformacionAgencia,
   SolicitudBuscarAgenciasPorFiltro,
+  SolicitudObtenerAgenciaMGS,
 } from "../api/authAgencias";
 
 export const AgenciasContext = createContext();
@@ -30,7 +31,6 @@ export const ProveedorAgencias = ({ children }) => {
       const res = await SolicitudRegistrarAgencia(data);
       return res;
     } catch (error) {
-      console.error(error);
       return error;
     }
   };
@@ -39,7 +39,6 @@ export const ProveedorAgencias = ({ children }) => {
       const res = await SolicitudBuscarAgenciasPorFiltroYTipoDeUsuario(data);
       return res;
     } catch (error) {
-      console.error(error);
       return error;
     }
   };
@@ -48,7 +47,6 @@ export const ProveedorAgencias = ({ children }) => {
       const res = await SolicitudBuscarProductosQueTieneLaAgencia(data);
       return res;
     } catch (error) {
-      console.error(error);
       return error;
     }
   };
@@ -57,7 +55,6 @@ export const ProveedorAgencias = ({ children }) => {
       const res = await SolicitudBuscarProductosQueNoTieneLaAgencia(data);
       return res;
     } catch (error) {
-      console.error(error);
       return error;
     }
   };
@@ -66,7 +63,6 @@ export const ProveedorAgencias = ({ children }) => {
       const res = await SolicitudAsignarProductoAgencia(data);
       return res;
     } catch (error) {
-      console.error(error);
       return error;
     }
   };
@@ -75,7 +71,6 @@ export const ProveedorAgencias = ({ children }) => {
       const res = await SolicitudDesasignarProductoAgencia(data);
       return res;
     } catch (error) {
-      console.error(error);
       return error;
     }
   };
@@ -84,7 +79,6 @@ export const ProveedorAgencias = ({ children }) => {
       const res = await SolicitudActualizarEstadoAgencia(data);
       return res;
     } catch (error) {
-      console.error(error);
       return error;
     }
   };
@@ -94,7 +88,6 @@ export const ProveedorAgencias = ({ children }) => {
       const res = await SolicitudActualizarInformacionAgencia(data);
       return res;
     } catch (error) {
-      console.error(error);
       return error;
     }
   };
@@ -103,7 +96,14 @@ export const ProveedorAgencias = ({ children }) => {
       const res = await SolicitudBuscarAgenciasPorFiltro(data);
       return res;
     } catch (error) {
-      console.error(error);
+      return error;
+    }
+  };
+  const ObtenerAgenciaMGS = async (data) => {
+    try {
+      const res = await SolicitudObtenerAgenciaMGS(data);
+      return res;
+    } catch (error) {
       return error;
     }
   };
@@ -120,6 +120,7 @@ export const ProveedorAgencias = ({ children }) => {
         ActualizarEstadoAgencia,
         ActualizarInformacionAgencia,
         BuscarAgenciasPorFiltro,
+        ObtenerAgenciaMGS,
       }}
     >
       {children}

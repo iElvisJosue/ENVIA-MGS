@@ -221,7 +221,7 @@
   font-size: 20px;
   color: var(--ColorAzul);
 }
-.Bienvenida__UltimasGuias--SinResultados {
+.Bienvenida__UltimasGuias--Cuerpo.SinResultados {
   background-color: var(--ColorBlanco);
   width: 100%;
   padding: 10px;
@@ -232,16 +232,16 @@
   justify-content: space-between;
   gap: 10px;
 }
-.Bienvenida__UltimasGuias--SinResultados img {
+.Bienvenida__UltimasGuias--Cuerpo.SinResultados img {
   width: 75px;
   height: 75px;
 }
-.Bienvenida__UltimasGuias--SinResultados small {
+.Bienvenida__UltimasGuias--Cuerpo.SinResultados small {
   color: var(--ColorRojo);
   font-weight: bold;
   text-align: center;
 }
-.Bienvenida__UltimasGuias--SinResultados a {
+.Bienvenida__UltimasGuias--Cuerpo.SinResultados a {
   background-color: var(--ColorAzul);
   border: 2px solid var(--ColorAzul);
   padding: 5px 10px;
@@ -252,7 +252,7 @@
   cursor: pointer;
   font-size: 10px;
 }
-.Bienvenida__UltimasGuias--SinResultados a:hover {
+.Bienvenida__UltimasGuias--Cuerpo.SinResultados a:hover {
   background-color: transparent;
   color: var(--ColorAzul);
 }

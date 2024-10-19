@@ -20,12 +20,8 @@ export default function SeleccionarAgencia({
   FuncionParaRealizar,
   establecerPaso,
 }) {
-  const {
-    agencias,
-    cargandoAgencias,
-    filtroAgencias,
-    establecerFiltroAgencias,
-  } = useBuscarAgenciasPorFiltroYTipoDeUsuario();
+  const { agencias, cargandoAgencias, establecerFiltroAgencias } =
+    useBuscarAgenciasPorFiltroYTipoDeUsuario();
   const {
     CantidadParaMostrar,
     paginaParaMostrar,
@@ -132,7 +128,7 @@ export default function SeleccionarAgencia({
         ) : (
           <MensajeGeneral
             Imagen={"SinResultados.png"}
-            Texto={`¡Oops! No se encontraron resultados para "${filtroAgencias}"`}
+            Texto={`¡Oops! No se encontraron resultados.`}
             Boton={true}
             TipoBoton={"Azul"}
             UrlBoton={"/Registrar-Agencia"}
