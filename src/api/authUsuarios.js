@@ -3,9 +3,6 @@ import axios from "./axios";
 // SOLICITUD PARA REGISTRAR UN USUARIO
 export const SolicitudRegistrarUsuario = (data) =>
   axios.post("/usuarios/RegistrarUsuario", data);
-// SOLICITUD PARA BUSCAR USUARIOS POR FILTRO
-export const SolicitudBuscarUsuariosPorFiltro = (data) =>
-  axios.post("/usuarios/BuscarUsuariosPorFiltro", data);
 // SOLICITUD PARA BUSCAR LAS AGENCIAS QUE TIENE EL USUARIO
 export const SolicitudBuscarAgenciasQueTieneElUsuario = (data) =>
   axios.post("/usuarios/BuscarAgenciasQueTieneElUsuario", data);
