@@ -53,9 +53,18 @@ export default function NumeroDeGuia() {
               </b>
               <br />
               <b>
-                {informacionGuia[0].CelularDestinatario}
-                {informacionGuia[0].TelefonoCasaDestinatario &&
-                  ` - ${informacionGuia[0].TelefonoCasaDestinatario}`}
+                {informacionGuia[0].CelularDestinatario ||
+                informacionGuia[0].TelefonoCasaDestinatario
+                  ? `${
+                      informacionGuia[0].CelularDestinatario
+                        ? informacionGuia[0].CelularDestinatario
+                        : ""
+                    }${
+                      informacionGuia[0].TelefonoCasaDestinatario
+                        ? ` - ${informacionGuia[0].TelefonoCasaDestinatario}`
+                        : ""
+                    }`
+                  : "Teléfono(s): N/A"}
               </b>
               <br />
               <b>

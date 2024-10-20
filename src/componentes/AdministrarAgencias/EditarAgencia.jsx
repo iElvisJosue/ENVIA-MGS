@@ -56,7 +56,7 @@ export default function EditarAgencia({
       info.Agencia !== "Envía MGS"
     ) {
       return toast.error(
-        "No se puede cambiar el nombre de la agencia a Envía MGS ❌"
+        "El nombre de la agencia Envía MGS no puede ser cambiado ❌"
       );
     }
     try {

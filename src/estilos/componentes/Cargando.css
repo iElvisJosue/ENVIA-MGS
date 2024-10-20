@@ -2,7 +2,7 @@
 .Main__Cargando {
   width: 100%;
   height: 100vh;
-  background-color: var(--ColorBlanco);
+  background-color: var(--ColorGrisContenedor);
   font-size: 12px;
   grid-column: 1 / -1;
 
