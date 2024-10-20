@@ -12,6 +12,7 @@ import Encabezado from "../componentes/Encabezado";
 import BarraDeProgreso from "../componentes/RealizarOrden/BarraDeProgreso";
 import InformacionDelRemitente from "../componentes/RealizarOrden/InformacionDelRemitente";
 import InformacionDeLaCaja from "../componentes/RealizarOrden/InformacionDeLaCaja";
+import DetallesDeLaOrden from "../componentes/Ordenes/DetallesDeLaOrden";
 
 // IMPORTAMOS LOS HOOKS A USAR
 import useObtenerAgenciaMGS from "../hooks/useObtenerAgenciaMGS";
@@ -28,6 +29,7 @@ export default function RealizarOrden() {
   const [progreso, establecerProgreso] = useState([]);
   const [orden, establecerOrden] = useState([]);
   const [remitente, establecerRemitente] = useState(null);
+  const [detallesOrden, establecerDetallesOrden] = useState(null);
   const { usuario } = useGlobal();
 
   useEffect(() => {
@@ -37,6 +39,8 @@ export default function RealizarOrden() {
   const ReiniciarRealizarPedido = () => {
     establecerPaso(0);
     establecerRemitente(null);
+    establecerOrden([]);
+    establecerDetallesOrden(null);
   };
 
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
@@ -52,12 +56,15 @@ export default function RealizarOrden() {
     orden,
     establecerOrden,
     ReiniciarRealizarPedido,
+    detallesOrden,
+    establecerDetallesOrden,
   };
 
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
   const componentesParaMostrar = {
     0: InformacionDelRemitente,
     1: InformacionDeLaCaja,
+    2: DetallesDeLaOrden,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS

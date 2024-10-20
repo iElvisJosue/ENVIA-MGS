@@ -21,6 +21,7 @@ export default function DetallesDeLaOrden({
   establecerVista,
   ReiniciarRealizarPedido,
 }) {
+  // LA GUIA SOLO VIENE CUANDO EL PEDIDO ES SELECCIONADO DESDE LA VISTA DE "ORDENES"
   const { CodigoRastreo, GuiaOrden } = detallesOrden;
   const [indiceOrden, establecerIndiceOrden] = useState(0);
   const { paquete, cargandoPaquete } = useBuscarOrdenesPorPaquete({

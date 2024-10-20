@@ -48,13 +48,29 @@ export default function RegistrarNuevoRemitente({
 
   const GuardaInformacionDelRemitente = handleSubmit(async (data) => {
     // SON TEMPORALES
-    data.PaisRemitente = "MEX | Mexico";
-    data.CodigoPaisRemitente = "MEX";
+    data.CodigoPaisRemitente = data.PaisRemitente.split(" | ")[0];
     data.idRemitente = false;
     establecerRemitente(data);
     establecerPaso(paso + 1);
     toast.success("Remitente completado con éxito ✨");
   });
+
+  const MensajeError = (nombreCampo) => {
+    return (
+      <ErrorMessage
+        errors={errors}
+        name={nombreCampo}
+        render={({ messages }) =>
+          messages &&
+          Object.entries(messages).map(([type, message]) => (
+            <small key={type} className="RealizarPedido__MensajeDeError">
+              {message}
+            </small>
+          ))
+        }
+      />
+    );
+  };
 
   return (
     <form
@@ -81,7 +97,6 @@ export default function RegistrarNuevoRemitente({
             iconoCampo,
             tituloCampo,
             nombreCampo,
-            tipoCampo,
             placeholderCampo,
             claseCampo,
             validadorCampo,
@@ -92,62 +107,143 @@ export default function RegistrarNuevoRemitente({
             <p>
               <ion-icon name={iconoCampo}></ion-icon> {tituloCampo}
             </p>
-            {tipoCampo === "text" && (
-              <>
-                <input
-                  id={idCampo}
-                  type="text"
-                  name={nombreCampo}
-                  placeholder={placeholderCampo}
-                  {...register(nombreCampo, validadorCampo)}
-                />
-                <ErrorMessage
-                  errors={errors}
-                  name={nombreCampo}
-                  render={({ messages }) =>
-                    messages &&
-                    Object.entries(messages).map(([type, message]) => (
-                      <small
-                        key={type}
-                        className="RealizarPedido__MensajeDeError"
-                      >
-                        {message}
-                      </small>
-                    ))
-                  }
-                />
-              </>
-            )}
-            {tipoCampo === "select" && (
-              <>
-                <select
-                  name=""
-                  id={idCampo}
-                  {...register(nombreCampo, validadorCampo)}
-                >
-                  <option value="">Elige una opción</option>
-                  <option value="Prueba">Opción de prueba</option>
-                </select>
-                <ErrorMessage
-                  errors={errors}
-                  name={nombreCampo}
-                  render={({ messages }) =>
-                    messages &&
-                    Object.entries(messages).map(([type, message]) => (
-                      <small
-                        key={type}
-                        className="RealizarPedido__MensajeDeError"
-                      >
-                        {message}
-                      </small>
-                    ))
-                  }
-                />
-              </>
-            )}
+
+            <input
+              id={idCampo}
+              type="text"
+              name={nombreCampo}
+              placeholder={placeholderCampo}
+              {...register(nombreCampo, validadorCampo)}
+            />
+            {MensajeError(nombreCampo)}
           </span>
         )
       )}
+      <span className="RegistrarNuevoRemitenteOrden__Campo">
+        <p>
+          <ion-icon name="earth"></ion-icon> País
+        </p>
+        <select
+          name="PaisRemitente"
+          id="PaisRemitente"
+          defaultValue={""}
+          {...register("PaisRemitente", {
+            required: "¡Este campo es obligatorio! ⚠️",
+          })}
+        >
+          <option value="">Selecciona un país</option>
+          <option value="MEX | Mexico">MEX | Mexico</option>
+          <option value="USA | United States">USA | United States</option>
+        </select>
+        {MensajeError("PaisRemitente")}
+      </span>
+      <span className="RegistrarNuevoRemitenteOrden__Campo">
+        <p>
+          <ion-icon name="location"></ion-icon> Estado
+        </p>
+        <select
+          name="EstadoRemitente"
+          id="EstadoRemitente"
+          defaultValue={""}
+          {...register("EstadoRemitente", {
+            required: "¡Este campo es obligatorio! ⚠️",
+          })}
+        >
+          <option value="">Selecciona un estado</option>
+          <option value="California">California</option>
+        </select>
+        {MensajeError("EstadoRemitente")}
+      </span>
+      <span className="RegistrarNuevoRemitenteOrden__Campo">
+        <p>
+          <ion-icon name="locate"></ion-icon> Ciudad
+        </p>
+        <select
+          name="CiudadRemitente"
+          id="CiudadRemitente"
+          defaultValue={""}
+          {...register("CiudadRemitente", {
+            required: "¡Este campo es obligatorio! ⚠️",
+          })}
+        >
+          <option value="">Selecciona una ciudad</option>
+          <option value="Los Angeles">Los Angeles</option>
+        </select>
+        {MensajeError("CiudadRemitente")}
+      </span>
+      <span className="RegistrarNuevoRemitenteOrden__Campo">
+        <p>
+          <ion-icon name="pin"></ion-icon> Código Postal
+        </p>
+        <input
+          id="CodigoPostalRemitente"
+          type="text"
+          name="CodigoPostalRemitente"
+          maxLength="5"
+          placeholder="Escriba aquí..."
+          {...register("CodigoPostalRemitente", {
+            required: "¡Este campo es obligatorio! ⚠️",
+            pattern: {
+              value: /^\d+$/,
+              message: "¡Este campo solo acepta números! 🔢",
+            },
+            maxLength: {
+              value: 5,
+              message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
+            },
+            minLength: {
+              value: 5,
+              message: "¡Este campo no puede tener menos de 5 caracteres! 🔠",
+            },
+          })}
+        />
+        {MensajeError("CodigoPostalRemitente")}
+      </span>
+      <span className="RegistrarNuevoRemitenteOrden__Campo Dos">
+        <p>
+          <ion-icon name="trail-sign"></ion-icon> Dirección
+        </p>
+        <input
+          id="DireccionRemitente"
+          type="text"
+          name="DireccionRemitente"
+          placeholder="Escriba aquí..."
+          {...register("DireccionRemitente", {
+            required: "¡Este campo es obligatorio! ⚠️",
+            pattern: {
+              value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
+              message: "¡Este campo solo acepta letras y números! 🔢🔠",
+            },
+            maxLength: {
+              value: 1000,
+              message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
+            },
+          })}
+        />
+        {MensajeError("DireccionRemitente")}
+      </span>
+      <span className="RegistrarNuevoRemitenteOrden__Campo Tres">
+        <p>
+          <ion-icon name="document-text"></ion-icon> Referencia
+        </p>
+        <input
+          id="ReferenciaRemitente"
+          type="text"
+          name="ReferenciaRemitente"
+          placeholder="Escriba aquí..."
+          {...register("ReferenciaRemitente", {
+            pattern: {
+              value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
+              message: "¡Este campo solo acepta letras y números! 🔢🔠",
+            },
+            maxLength: {
+              value: 1000,
+              message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
+            },
+          })}
+        />
+        {MensajeError("ReferenciaRemitente")}
+      </span>
       <footer className="RegistrarNuevoRemitente__Footer">
         <button
           type="button"

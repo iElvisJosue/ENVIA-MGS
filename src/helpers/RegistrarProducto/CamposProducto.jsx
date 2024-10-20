@@ -9,13 +9,13 @@ export const CamposProducto = [
     claseCampo: "InformacionDelProducto__Titulo__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
+      pattern: {
+        value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
+        message: "¡Este campo solo acepta letras! 🔠",
+      },
       maxLength: {
         value: 100,
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-      minLength: {
-        value: 4,
-        message: "¡Este campo no puede tener menos de 4 caracteres! 🔠",
       },
     },
   },
@@ -141,10 +141,10 @@ export const CamposProducto = [
     claseCampo: "InformacionDelProducto__Titulo__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
-      // pattern: {
-      //   value: /^\d+$/,
-      //   message: "¡Este campo solo acepta números! 🔢",
-      // },
+      pattern: {
+        value: /^\d+$/,
+        message: "¡Este campo solo acepta números! 🔢",
+      },
       maxLength: {
         value: 5,
         message: "¡Este campo no puede tener más de 5 caracteres! 🔠",

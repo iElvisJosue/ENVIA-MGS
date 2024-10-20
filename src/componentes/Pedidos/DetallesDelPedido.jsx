@@ -21,6 +21,7 @@ export default function DetallesDelPedido({
   establecerVista,
   ReiniciarRealizarPedido,
 }) {
+  // LA GUIA SOLO VIENE CUANDO EL PEDIDO ES SELECCIONADO DESDE LA VISTA DE "PEDIDOS"
   const { CodigoRastreo, GuiaPedido } = detallesPedido;
   const [indicePedido, establecerIndicePedido] = useState(0);
   const { paquete, cargandoPaquete } = useBuscarPedidosPorPaquete({
@@ -132,7 +133,7 @@ export default function DetallesDelPedido({
         {paquete[indicePedido].GuiaPedido}
       </div>
       <div className="DetallesDelPedido__Detalles Usuario">
-        <ion-icon name="person-circle"></ion-icon> <b>Usuario responsable</b>{" "}
+        <ion-icon name="person-circle"></ion-icon> <b>Usuario</b>{" "}
         {paquete[indicePedido].UsuarioResponsablePedido}
       </div>
       <div

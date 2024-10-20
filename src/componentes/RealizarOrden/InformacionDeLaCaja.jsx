@@ -30,7 +30,7 @@ export default function InformacionDeLaCaja({
   establecerOrden,
   idAgencia,
   NombreAgencia,
-  //   establecerDetallesPedido,
+  establecerDetallesOrden,
 }) {
   // OBTENEMOS LOS PRODUCTOS, TIPOS DE CARGA Y TIPOS DE ENVIO
   const { productos } = useObtenerProductosActivosYDisponiblesParaVender();
@@ -114,8 +114,8 @@ export default function InformacionDeLaCaja({
         ManejarMensajesDeRespuesta({ status, data });
       } else {
         toast.success("La orden fue creada con éxito ✨");
-        // establecerDetallesPedido(res.data);
-        // establecerPaso(4);
+        establecerDetallesOrden(res.data);
+        establecerPaso(2);
       }
     } catch (error) {
       const { status, data } = error.response;

@@ -9,13 +9,13 @@ export const CamposAgencia = [
     claseCampo: "InformacionDeLaAgencia__Titulo__Campo Dos",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
+      pattern: {
+        value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
+        message: "¡Este campo solo acepta letras! 🔠",
+      },
       maxLength: {
         value: 100,
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-      minLength: {
-        value: 4,
-        message: "¡Este campo no puede tener menos de 4 caracteres! 🔠",
       },
     },
   },
@@ -29,13 +29,13 @@ export const CamposAgencia = [
     claseCampo: "InformacionDeLaAgencia__Titulo__Campo Dos",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
+      pattern: {
+        value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
+        message: "¡Este campo solo acepta letras! 🔠",
+      },
       maxLength: {
         value: 100,
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-      minLength: {
-        value: 4,
-        message: "¡Este campo no puede tener menos de 4 caracteres! 🔠",
       },
     },
   },
@@ -135,6 +135,10 @@ export const CamposAgencia = [
     claseCampo: "InformacionDeLaAgencia__Titulo__Campo Tres",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
+      pattern: {
+        value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
+        message: "¡Este campo solo acepta letras y números! 🔢🔠",
+      },
       maxLength: {
         value: 1000,
         message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",

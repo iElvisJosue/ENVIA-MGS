@@ -43,7 +43,7 @@ export default function InformacionDelPedido({
   establecerPaso,
   pedido,
   establecerPedido,
-  //   establecerDetallesPedido,
+  establecerDetallesPedido,
 }) {
   const [mostrarModalAgencia, establecerMostrarModalAgencia] = useState(false);
   const [mostrarModalRemitente, establecerMostrarModalRemitente] =
@@ -217,8 +217,8 @@ export default function InformacionDelPedido({
         ManejarMensajesDeRespuesta({ status, data });
       } else {
         toast.success("El pedido fue creado con éxito ✨");
-        // establecerDetallesPedido(res.data);
-        // establecerPaso(4);
+        establecerDetallesPedido(res.data);
+        establecerPaso(2);
       }
     } catch (error) {
       const { status, data } = error.response;

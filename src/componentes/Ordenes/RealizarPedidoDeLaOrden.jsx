@@ -9,7 +9,8 @@ import { useGlobal } from "../../context/GlobalContext";
 import BarraDeProgreso from "../../componentes/Ordenes/BarraDeProgreso";
 import InformacionDelDestinatario from "../../componentes/Ordenes/InformacionDelDestinatario";
 import InformacionDelPedido from "../../componentes/Ordenes/InformacionDelPedido";
-// import DetallesDelPedido from "../componentes/Pedidos/DetallesDelPedido";
+// REUTILIZAMOS EL COMPONENTE
+import DetallesDelPedido from "../../componentes/Pedidos/DetallesDelPedido";
 
 // IMPORTAMOS LAS AYUDAS
 import { LISTA_DE_PROGRESOS } from "../../helpers/Ordenes/ListaDeProgreso";
@@ -57,7 +58,7 @@ export default function RealizarPedidoDeLaOrden({
   const componentesParaMostrar = {
     0: InformacionDelDestinatario,
     1: InformacionDelPedido,
-    //   2: DetallesDelPedido,
+    2: DetallesDelPedido,
   };
 
   //   ESTE ES EL COMPONENTE QUE MOSTRAREMOS

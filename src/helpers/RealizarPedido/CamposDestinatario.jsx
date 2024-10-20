@@ -9,13 +9,13 @@ export const CamposDestinatario = [
     claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
+      pattern: {
+        value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
+        message: "¡Este campo solo acepta letras! 🔠",
+      },
       maxLength: {
         value: 100,
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-      minLength: {
-        value: 4,
-        message: "¡Este campo no puede tener menos de 4 caracteres! 🔠",
       },
     },
   },
@@ -29,13 +29,13 @@ export const CamposDestinatario = [
     claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
+      pattern: {
+        value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
+        message: "¡Este campo solo acepta letras! 🔠",
+      },
       maxLength: {
         value: 100,
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-      minLength: {
-        value: 4,
-        message: "¡Este campo no puede tener menos de 4 caracteres! 🔠",
       },
     },
   },
@@ -49,13 +49,13 @@ export const CamposDestinatario = [
     claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
+      pattern: {
+        value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
+        message: "¡Este campo solo acepta letras! 🔠",
+      },
       maxLength: {
         value: 100,
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-      minLength: {
-        value: 4,
-        message: "¡Este campo no puede tener menos de 4 caracteres! 🔠",
       },
     },
   },
@@ -74,11 +74,11 @@ export const CamposDestinatario = [
       },
       maxLength: {
         value: 10,
-        message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+        message: "¡Este campo no puede tener más de 10 caracteres! 🔢",
       },
       minLength: {
         value: 10,
-        message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+        message: "¡Este campo no puede tener menos de 10 caracteres! 🔢",
       },
     },
   },
@@ -98,11 +98,11 @@ export const CamposDestinatario = [
       },
       maxLength: {
         value: 10,
-        message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+        message: "¡Este campo no puede tener más de 10 caracteres! 🔢",
       },
       minLength: {
         value: 10,
-        message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+        message: "¡Este campo no puede tener menos de 10 caracteres! 🔢",
       },
     },
   },
@@ -123,122 +123,6 @@ export const CamposDestinatario = [
       maxLength: {
         value: 100,
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-    },
-  },
-  {
-    idCampo: "ColoniaDestinatario",
-    iconoCampo: "golf",
-    tituloCampo: "Colonia",
-    nombreCampo: "ColoniaDestinatario",
-    tipoCampo: "text",
-    placeholderCampo: "Escriba aquí...",
-    claseCampo: "RegistrarNuevoDestinatario__Campo Dos",
-    validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
-      maxLength: {
-        value: 100,
-        message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-    },
-  },
-  {
-    idCampo: "MunicipioDelegacionDestinatario",
-    iconoCampo: "navigate",
-    tituloCampo: "Municipio o delegación",
-    nombreCampo: "MunicipioDelegacionDestinatario",
-    tipoCampo: "text",
-    placeholderCampo: "Escriba aquí...",
-    claseCampo: "RegistrarNuevoDestinatario__Campo",
-    validadorCampo: {
-      maxLength: {
-        value: 100,
-        message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-    },
-  },
-  {
-    idCampo: "CodigoPostalDestinatario",
-    iconoCampo: "pin",
-    tituloCampo: "Código Postal",
-    nombreCampo: "CodigoPostalDestinatario",
-    tipoCampo: "text",
-    placeholderCampo: "Escriba aquí...",
-    claseCampo: "RegistrarNuevoDestinatario__Campo",
-    validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^\d+$/,
-        message: "¡Este campo solo acepta números! 🔢",
-      },
-      maxLength: {
-        value: 10,
-        message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
-      },
-    },
-  },
-  {
-    idCampo: "CiudadDestinatario",
-    iconoCampo: "locate",
-    tituloCampo: "Ciudad",
-    nombreCampo: "CiudadDestinatario",
-    placeholderCampo: "Escriba aquí...",
-    // tipoCampo: "select",
-    tipoCampo: "text",
-    claseCampo: "RegistrarNuevoDestinatario__Campo",
-    validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
-      maxLength: {
-        value: 100,
-        message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-    },
-  },
-  {
-    idCampo: "EstadoDestinatario",
-    iconoCampo: "location",
-    tituloCampo: "Estado",
-    nombreCampo: "EstadoDestinatario",
-    placeholderCampo: "Escriba aquí...",
-    // tipoCampo: "select",
-    tipoCampo: "text",
-    claseCampo: "RegistrarNuevoDestinatario__Campo",
-    validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
-      maxLength: {
-        value: 100,
-        message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
-      },
-    },
-  },
-  {
-    idCampo: "DireccionDestinatario",
-    iconoCampo: "trail-sign",
-    tituloCampo: "Dirección",
-    nombreCampo: "DireccionDestinatario",
-    tipoCampo: "text",
-    placeholderCampo: "Escriba aquí...",
-    claseCampo: "RegistrarNuevoDestinatario__Campo Dos",
-    validadorCampo: {
-      required: "¡Este campo es obligatorio! ⚠️",
-      maxLength: {
-        value: 1000,
-        message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
-      },
-    },
-  },
-  {
-    idCampo: "ReferenciaDestinatario",
-    iconoCampo: "document-text",
-    tituloCampo: "Referencia",
-    nombreCampo: "ReferenciaDestinatario",
-    tipoCampo: "text",
-    placeholderCampo: "Escriba aquí...",
-    claseCampo: "RegistrarNuevoDestinatario__Campo",
-    validadorCampo: {
-      maxLength: {
-        value: 1000,
-        message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
       },
     },
   },

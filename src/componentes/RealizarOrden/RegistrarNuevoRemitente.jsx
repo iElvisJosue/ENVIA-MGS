@@ -129,7 +129,7 @@ export default function RegistrarNuevoRemitente({
         >
           <option value="">Selecciona un país</option>
           <option value="MEX | Mexico">MEX | Mexico</option>
-          <option value="USA | United States">USA | United Stateso</option>
+          <option value="USA | United States">USA | United States</option>
         </select>
         {MensajeError("PaisRemitente")}
       </span>
@@ -146,8 +146,7 @@ export default function RegistrarNuevoRemitente({
           })}
         >
           <option value="">Selecciona un estado</option>
-          <option value="Estado de prueba 1">Estado de prueba 1</option>
-          <option value="Estado de prueba 2">Estado de prueba 2</option>
+          <option value="California">California</option>
         </select>
         {MensajeError("EstadoRemitente")}
       </span>
@@ -164,8 +163,7 @@ export default function RegistrarNuevoRemitente({
           })}
         >
           <option value="">Selecciona una ciudad</option>
-          <option value="Ciudad de prueba 1">Ciudad de prueba 1</option>
-          <option value="Ciudad de prueba 2">Ciudad de prueba 2</option>
+          <option value="Los Angeles">Los Angeles</option>
         </select>
         {MensajeError("CiudadRemitente")}
       </span>
@@ -208,6 +206,10 @@ export default function RegistrarNuevoRemitente({
           placeholder="Escriba aquí..."
           {...register("DireccionRemitente", {
             required: "¡Este campo es obligatorio! ⚠️",
+            pattern: {
+              value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
+              message: "¡Este campo solo acepta letras y números! 🔢🔠",
+            },
             maxLength: {
               value: 1000,
               message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
@@ -226,6 +228,10 @@ export default function RegistrarNuevoRemitente({
           name="ReferenciaRemitente"
           placeholder="Escriba aquí..."
           {...register("ReferenciaRemitente", {
+            pattern: {
+              value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
+              message: "¡Este campo solo acepta letras y números! 🔢🔠",
+            },
             maxLength: {
               value: 1000,
               message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
