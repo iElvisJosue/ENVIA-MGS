@@ -7,6 +7,10 @@ import { toast } from "sonner";
 
 // IMPORTAMOS LAS AYUDAS
 import { CamposRemitente } from "../../helpers/RealizarOrden/CamposRemitente";
+import {
+  REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+  REGEX_SOLO_NUMEROS,
+} from "../../helpers/Regexs";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/RealizarOrden/RegistrarNuevoRemitenteOrden.css";
@@ -179,10 +183,7 @@ export default function RegistrarNuevoRemitente({
           placeholder="Escriba aquí..."
           {...register("CodigoPostalRemitente", {
             required: "¡Este campo es obligatorio! ⚠️",
-            pattern: {
-              value: /^\d+$/,
-              message: "¡Este campo solo acepta números! 🔢",
-            },
+            pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 5,
               message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
@@ -206,10 +207,7 @@ export default function RegistrarNuevoRemitente({
           placeholder="Escriba aquí..."
           {...register("DireccionRemitente", {
             required: "¡Este campo es obligatorio! ⚠️",
-            pattern: {
-              value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
-              message: "¡Este campo solo acepta letras y números! 🔢🔠",
-            },
+            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 1000,
               message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
@@ -228,10 +226,7 @@ export default function RegistrarNuevoRemitente({
           name="ReferenciaRemitente"
           placeholder="Escriba aquí..."
           {...register("ReferenciaRemitente", {
-            pattern: {
-              value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
-              message: "¡Este campo solo acepta letras y números! 🔢🔠",
-            },
+            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 1000,
               message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",

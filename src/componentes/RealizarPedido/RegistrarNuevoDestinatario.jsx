@@ -10,6 +10,10 @@ import AgenciaSeleccionada from "./AgenciaSeleccionada";
 
 // IMPORTAMOS LAS AYUDAS
 import { CamposDestinatario } from "../../helpers/RealizarPedido/CamposDestinatario";
+import {
+  REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+  REGEX_SOLO_NUMEROS,
+} from "../../helpers/Regexs";
 
 // IMPORTAMOS LOS ESTILOS
 import "../../estilos/componentes/RealizarPedido/RegistrarNuevoDestinatario.css";
@@ -199,10 +203,7 @@ export default function RegistrarNuevoDestinatario({
           placeholder="Escriba aquí..."
           {...register("CodigoPostalDestinatario", {
             required: "¡Este campo es obligatorio! ⚠️",
-            pattern: {
-              value: /^\d+$/,
-              message: "¡Este campo solo acepta números! 🔢",
-            },
+            pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 5,
               message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
@@ -226,10 +227,7 @@ export default function RegistrarNuevoDestinatario({
           placeholder="Escriba aquí..."
           {...register("DireccionDestinatario", {
             required: "¡Este campo es obligatorio! ⚠️",
-            pattern: {
-              value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
-              message: "¡Este campo solo acepta letras y números! 🔢🔠",
-            },
+            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 1000,
               message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
@@ -248,10 +246,7 @@ export default function RegistrarNuevoDestinatario({
           name="MunicipioDelegacionDestinatario"
           placeholder="Escriba aquí..."
           {...register("MunicipioDelegacionDestinatario", {
-            pattern: {
-              value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
-              message: "¡Este campo solo acepta letras y números! 🔢🔠",
-            },
+            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 1000,
               message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
@@ -270,10 +265,7 @@ export default function RegistrarNuevoDestinatario({
           name="ReferenciaDestinatario"
           placeholder="Escriba aquí..."
           {...register("ReferenciaDestinatario", {
-            pattern: {
-              value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
-              message: "¡Este campo solo acepta letras y números! 🔢🔠",
-            },
+            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
               value: 1000,
               message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",

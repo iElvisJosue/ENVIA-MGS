@@ -1,3 +1,8 @@
+import {
+  REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+  REGEX_SOLO_NUMEROS,
+} from "../../helpers/Regexs";
+
 export const CamposProducto = [
   {
     idCampo: "NombreProducto",
@@ -9,10 +14,7 @@ export const CamposProducto = [
     claseCampo: "InformacionDelProducto__Titulo__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
-        message: "¡Este campo solo acepta letras! 🔠",
-      },
+      pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
       maxLength: {
         value: 100,
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
@@ -28,11 +30,7 @@ export const CamposProducto = [
     placeholderCampo: "Escriba aquí...",
     claseCampo: "InformacionDelProducto__Titulo__Campo",
     validadorCampo: {
-      // required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^\d+$/,
-        message: "¡Este campo solo acepta números! 🔢",
-      },
+      pattern: REGEX_SOLO_NUMEROS,
       maxLength: {
         value: 5,
         message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
@@ -48,11 +46,7 @@ export const CamposProducto = [
     placeholderCampo: "Escriba aquí...",
     claseCampo: "InformacionDelProducto__Titulo__Campo",
     validadorCampo: {
-      // required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^\d+$/,
-        message: "¡Este campo solo acepta números! 🔢",
-      },
+      pattern: REGEX_SOLO_NUMEROS,
       maxLength: {
         value: 5,
         message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
@@ -68,11 +62,7 @@ export const CamposProducto = [
     placeholderCampo: "Escriba aquí...",
     claseCampo: "InformacionDelProducto__Titulo__Campo",
     validadorCampo: {
-      // required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^\d+$/,
-        message: "¡Este campo solo acepta números! 🔢",
-      },
+      pattern: REGEX_SOLO_NUMEROS,
       maxLength: {
         value: 5,
         message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
@@ -89,10 +79,7 @@ export const CamposProducto = [
     claseCampo: "InformacionDelProducto__Titulo__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^\d+$/,
-        message: "¡Este campo solo acepta números! 🔢",
-      },
+      pattern: REGEX_SOLO_NUMEROS,
       maxLength: {
         value: 5,
         message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
@@ -121,10 +108,7 @@ export const CamposProducto = [
     claseCampo: "InformacionDelProducto__Titulo__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^\d+$/,
-        message: "¡Este campo solo acepta números! 🔢",
-      },
+      pattern: REGEX_SOLO_NUMEROS,
       maxLength: {
         value: 5,
         message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
@@ -141,10 +125,7 @@ export const CamposProducto = [
     claseCampo: "InformacionDelProducto__Titulo__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^\d+$/,
-        message: "¡Este campo solo acepta números! 🔢",
-      },
+      pattern: REGEX_SOLO_NUMEROS,
       maxLength: {
         value: 5,
         message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
@@ -161,10 +142,7 @@ export const CamposProducto = [
     claseCampo: "InformacionDelProducto__Titulo__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^\d+$/,
-        message: "¡Este campo solo acepta números! 🔢",
-      },
+      pattern: REGEX_SOLO_NUMEROS,
       maxLength: {
         value: 5,
         message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
@@ -181,10 +159,7 @@ export const CamposProducto = [
     claseCampo: "InformacionDelProducto__Titulo__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^\d+$/,
-        message: "¡Este campo solo acepta números! 🔢",
-      },
+      pattern: REGEX_SOLO_NUMEROS,
       maxLength: {
         value: 5,
         message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
@@ -201,10 +176,7 @@ export const CamposProducto = [
     claseCampo: "InformacionDelProducto__Titulo__Campo Dos",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^\d+$/,
-        message: "¡Este campo solo acepta números! 🔢",
-      },
+      pattern: REGEX_SOLO_NUMEROS,
       maxLength: {
         value: 5,
         message: "¡Este campo no puede tener más de 5 caracteres! 🔠",

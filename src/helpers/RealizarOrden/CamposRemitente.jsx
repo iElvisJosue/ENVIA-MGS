@@ -1,3 +1,9 @@
+import {
+  REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
+  REGEX_SOLO_NUMEROS,
+  REGEX_CORREO,
+} from "../../helpers/Regexs";
+
 export const CamposRemitente = [
   {
     idCampo: "NombreRemitente",
@@ -5,13 +11,10 @@ export const CamposRemitente = [
     tituloCampo: "Nombre",
     nombreCampo: "NombreRemitente",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "RegistrarNuevoRemitente__Campo",
+    claseCampo: "RegistrarNuevoRemitenteOrden__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
-        message: "¡Este campo solo acepta letras! 🔠",
-      },
+      pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
       maxLength: {
         value: 100,
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
@@ -24,13 +27,10 @@ export const CamposRemitente = [
     tituloCampo: "Apellidos",
     nombreCampo: "ApellidosRemitente",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "RegistrarNuevoRemitente__Campo",
+    claseCampo: "RegistrarNuevoRemitenteOrden__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]+$/,
-        message: "¡Este campo solo acepta letras! 🔠",
-      },
+      pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
       maxLength: {
         value: 100,
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
@@ -43,12 +43,9 @@ export const CamposRemitente = [
     tituloCampo: "Teléfono casa",
     nombreCampo: "TelefonoCasaRemitente",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "RegistrarNuevoRemitente__Campo",
+    claseCampo: "RegistrarNuevoRemitenteOrden__Campo",
     validadorCampo: {
-      pattern: {
-        value: /^\d+$/,
-        message: "¡Este campo solo acepta números! 🔢",
-      },
+      pattern: REGEX_SOLO_NUMEROS,
       maxLength: {
         value: 10,
         message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
@@ -65,13 +62,10 @@ export const CamposRemitente = [
     tituloCampo: "Celular",
     nombreCampo: "CelularRemitente",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "RegistrarNuevoRemitente__Campo",
+    claseCampo: "RegistrarNuevoRemitenteOrden__Campo",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^\d+$/,
-        message: "¡Este campo solo acepta números! 🔢",
-      },
+      pattern: REGEX_SOLO_NUMEROS,
       maxLength: {
         value: 10,
         message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
@@ -88,13 +82,10 @@ export const CamposRemitente = [
     tituloCampo: "Correo electrónico",
     nombreCampo: "CorreoRemitente",
     placeholderCampo: "Escriba aquí...",
-    claseCampo: "RegistrarNuevoRemitente__Campo Dos",
+    claseCampo: "RegistrarNuevoRemitenteOrden__Campo Dos",
     validadorCampo: {
       required: "¡Este campo es obligatorio! ⚠️",
-      pattern: {
-        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-        message: "¡Formato de correo no valido! ⚠️",
-      },
+      pattern: REGEX_CORREO,
       maxLength: {
         value: 100,
         message: "¡Este campo no puede tener más de 100 caracteres! 🔠",
