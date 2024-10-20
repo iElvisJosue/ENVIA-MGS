@@ -10,7 +10,6 @@ export const CamposDestinatario = [
     iconoCampo: "person",
     tituloCampo: "Nombre",
     nombreCampo: "NombreDestinatario",
-    tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
     claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
@@ -27,7 +26,6 @@ export const CamposDestinatario = [
     iconoCampo: "man",
     tituloCampo: "Apellido paterno",
     nombreCampo: "ApellidoPaternoDestinatario",
-    tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
     claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
@@ -44,7 +42,6 @@ export const CamposDestinatario = [
     iconoCampo: "woman",
     tituloCampo: "Apellido materno",
     nombreCampo: "ApellidoMaternoDestinatario",
-    tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
     claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
@@ -61,7 +58,6 @@ export const CamposDestinatario = [
     iconoCampo: "call",
     tituloCampo: "Teléfono casa",
     nombreCampo: "TelefonoCasaDestinatario",
-    tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
     claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
@@ -81,7 +77,6 @@ export const CamposDestinatario = [
     iconoCampo: "phone-portrait",
     tituloCampo: "Celular",
     nombreCampo: "CelularDestinatario",
-    tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
     claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
@@ -102,7 +97,6 @@ export const CamposDestinatario = [
     iconoCampo: "mail",
     tituloCampo: "Correo electrónico",
     nombreCampo: "CorreoDestinatario",
-    tipoCampo: "text",
     placeholderCampo: "Escriba aquí...",
     claseCampo: "RegistrarNuevoDestinatario__Campo",
     validadorCampo: {
