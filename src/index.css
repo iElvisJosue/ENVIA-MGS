@@ -1,7 +1,7 @@
 /* IMPORTAMOS LA FUENTE */
 @font-face {
-  font-family: "NotoSans";
-  src: url("../public/NotoSans.ttf") format("truetype");
+  font-family: "SourceSans3";
+  src: url("../public/SourceSans3.ttf") format("truetype");
 }
 @font-face {
   font-family: "Ticketing";
@@ -43,7 +43,7 @@ input,
 select,
 button,
 a {
-  font-family: "NotoSans", sans-serif;
+  font-family: "SourceSans3", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
