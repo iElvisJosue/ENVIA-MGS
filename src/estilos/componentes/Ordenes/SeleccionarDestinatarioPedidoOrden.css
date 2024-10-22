@@ -8,7 +8,6 @@
 .SeleccionarDestinatarioPedidoOrden__Opciones {
   grid-column: 1 / -1;
   display: flex;
-  justify-content: flex-end;
   gap: 5px;
 }
 .SeleccionarDestinatarioPedidoOrden__Opciones--Boton {
@@ -31,6 +30,13 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
+}
+.SeleccionarDestinatarioPedidoOrden__Opciones--Boton.Remitente
+  .SeleccionarDestinatarioPedidoOrden__Opciones--Boton.Agencia {
+  margin-right: 10px;
+}
+.SeleccionarDestinatarioPedidoOrden__Opciones--Boton.Registrar {
+  margin-left: auto;
 }
 .SeleccionarDestinatarioPedidoOrden__Opciones--Boton:hover {
   background-color: var(--ColorBlanco);

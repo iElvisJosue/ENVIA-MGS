@@ -8,7 +8,6 @@
 .RegistrarNuevoDestinatarioPedidoOrden__Opciones {
   grid-column: 1 / -1;
   display: flex;
-  justify-content: flex-end;
   gap: 5px;
 }
 .RegistrarNuevoDestinatarioPedidoOrden__Opciones--Boton {
@@ -31,6 +30,13 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
+}
+.RegistrarNuevoDestinatarioPedidoOrden__Opciones--Boton.Remitente
+  .RegistrarNuevoDestinatarioPedidoOrden__Opciones--Boton.Agencia {
+  margin-right: 10px;
+}
+.RegistrarNuevoDestinatarioPedidoOrden__Opciones--Boton.Lista {
+  margin-left: auto;
 }
 .RegistrarNuevoDestinatarioPedidoOrden__Opciones--Boton:hover {
   background-color: var(--ColorBlanco);
