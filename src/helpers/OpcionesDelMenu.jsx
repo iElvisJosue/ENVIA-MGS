@@ -14,24 +14,24 @@ export const OpcionesDelMenu = {
       url: "#",
       opcionesSecundarias: [
         {
-          icono: "cube",
-          nombre: "Realizar pedido",
-          url: `${HOST}Realizar-Pedido`,
-        },
-        {
-          icono: "bag-handle",
-          nombre: "Pedidos",
-          url: `${HOST}Pedidos`,
-        },
-        {
           icono: "logo-dropbox",
-          nombre: "Realizar orden",
+          nombre: "Nueva orden",
           url: `${HOST}Realizar-Orden`,
         },
         {
           icono: "list",
           nombre: "Ordenes",
           url: `${HOST}Ordenes`,
+        },
+        {
+          icono: "cube",
+          nombre: "Nuevo pedido",
+          url: `${HOST}Realizar-Pedido`,
+        },
+        {
+          icono: "bag-handle",
+          nombre: "Pedidos",
+          url: `${HOST}Pedidos`,
         },
       ],
     },
@@ -104,25 +104,24 @@ export const OpcionesDelMenu = {
       url: "#",
       opcionesSecundarias: [
         {
-          icono: "cube",
-          nombre: "Realizar pedido",
-          url: `${HOST}Realizar-Pedido`,
-        },
-        {
-          icono: "bag-handle",
-          nombre: "Pedidos",
-          url: `${HOST}Pedidos`,
-        },
-
-        {
           icono: "logo-dropbox",
-          nombre: "Realizar orden",
+          nombre: "Nueva orden",
           url: `${HOST}Realizar-Orden`,
         },
         {
           icono: "list",
           nombre: "Ordenes",
           url: `${HOST}Ordenes`,
+        },
+        {
+          icono: "cube",
+          nombre: "Nuevo pedido",
+          url: `${HOST}Realizar-Pedido`,
+        },
+        {
+          icono: "bag-handle",
+          nombre: "Pedidos",
+          url: `${HOST}Pedidos`,
         },
       ],
     },
@@ -139,24 +138,24 @@ export const OpcionesDelMenu = {
       url: "#",
       opcionesSecundarias: [
         {
-          icono: "cube",
-          nombre: "Realizar pedido",
-          url: `${HOST}Realizar-Pedido`,
-        },
-        {
-          icono: "bag-handle",
-          nombre: "Pedidos",
-          url: `${HOST}Pedidos`,
-        },
-        {
           icono: "logo-dropbox",
-          nombre: "Realizar orden",
+          nombre: "Nueva orden",
           url: `${HOST}Realizar-Orden`,
         },
         {
           icono: "list",
           nombre: "Ordenes",
           url: `${HOST}Ordenes`,
+        },
+        {
+          icono: "cube",
+          nombre: "Nuevo pedido",
+          url: `${HOST}Realizar-Pedido`,
+        },
+        {
+          icono: "bag-handle",
+          nombre: "Pedidos",
+          url: `${HOST}Pedidos`,
         },
       ],
     },
