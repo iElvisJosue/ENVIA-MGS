@@ -25,12 +25,12 @@ export const OpcionesDelMenu = {
         },
         {
           icono: "cube",
-          nombre: "Nuevo pedido",
+          nombre: "Nuevo envío",
           url: `${HOST}Realizar-Pedido`,
         },
         {
           icono: "bag-handle",
-          nombre: "Pedidos",
+          nombre: "Envíos",
           url: `${HOST}Pedidos`,
         },
       ],
@@ -115,12 +115,12 @@ export const OpcionesDelMenu = {
         },
         {
           icono: "cube",
-          nombre: "Nuevo pedido",
+          nombre: "Nuevo envío",
           url: `${HOST}Realizar-Pedido`,
         },
         {
           icono: "bag-handle",
-          nombre: "Pedidos",
+          nombre: "Envíos",
           url: `${HOST}Pedidos`,
         },
       ],
@@ -149,12 +149,12 @@ export const OpcionesDelMenu = {
         },
         {
           icono: "cube",
-          nombre: "Nuevo pedido",
+          nombre: "Nuevo envío",
           url: `${HOST}Realizar-Pedido`,
         },
         {
           icono: "bag-handle",
-          nombre: "Pedidos",
+          nombre: "Envíos",
           url: `${HOST}Pedidos`,
         },
       ],
