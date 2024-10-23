@@ -9,6 +9,8 @@ import { useGlobal } from "../context/GlobalContext";
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
+import Cargando from "../componentes/Cargando";
+import MensajeGeneral from "../componentes/MensajeGeneral";
 import BarraDeProgreso from "../componentes/RealizarOrden/BarraDeProgreso";
 import InformacionDelRemitente from "../componentes/RealizarOrden/InformacionDelRemitente";
 import InformacionDeLaCaja from "../componentes/RealizarOrden/InformacionDeLaCaja";
@@ -24,7 +26,7 @@ import { LISTA_DE_PROGRESOS } from "../helpers/RealizarOrden/ListaDeProgreso";
 import "../estilos/vistas/RealizarOrden.css";
 
 export default function RealizarOrden() {
-  const { agenciaMGS } = useObtenerAgenciaMGS();
+  const { agenciaMGS, cargandoAgenciaMGS } = useObtenerAgenciaMGS();
   const [paso, establecerPaso] = useState(0);
   const [progreso, establecerProgreso] = useState([]);
   const [orden, establecerOrden] = useState([]);
@@ -70,6 +72,8 @@ export default function RealizarOrden() {
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
   const ComponenteParaRenderizar = componentesParaMostrar[paso];
 
+  if (cargandoAgenciaMGS) return <Cargando />;
+
   return (
     // LOS ESTILOS DEL MAIN ESTÁN EN INDEX.CSS
     <main className="Main">
@@ -80,8 +84,17 @@ export default function RealizarOrden() {
         subseccion="Realizar orden"
       />
       <div className="RealizarOrden">
-        <BarraDeProgreso Progreso={progreso} />
-        <ComponenteParaRenderizar {...valoresParaLosComponentes} />
+        {agenciaMGS ? (
+          <>
+            <BarraDeProgreso Progreso={progreso} />
+            <ComponenteParaRenderizar {...valoresParaLosComponentes} />
+          </>
+        ) : (
+          <MensajeGeneral
+            Imagen={"SinResultados.png"}
+            Texto={"¡Oops! No se encontraron resultados."}
+          />
+        )}
       </div>
       <Toaster richColors position="top-right" />
     </main>

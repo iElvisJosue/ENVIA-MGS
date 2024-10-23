@@ -5,10 +5,12 @@ import { useAgencias } from "../context/AgenciasContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useObtenerAgenciaMGS() {
   const { ObtenerAgenciaMGS } = useAgencias();
   const [agenciaMGS, establecerAgenciaMGS] = useState(null);
+  const [cargandoAgenciaMGS, establecerCargandoAgenciaMGS] = useState(true);
 
   useEffect(() => {
     const obtenerCargas = async () => {
@@ -16,7 +18,13 @@ export default function useObtenerAgenciaMGS() {
         const res = await ObtenerAgenciaMGS({
           CookieConToken: COOKIE_CON_TOKEN,
         });
-        establecerAgenciaMGS(res.data[0]);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+        } else {
+          establecerAgenciaMGS(res.data[0]);
+        }
+        establecerCargandoAgenciaMGS(false);
       } catch (error) {
         console.log(error);
       }
@@ -24,5 +32,5 @@ export default function useObtenerAgenciaMGS() {
     obtenerCargas();
   }, []);
 
-  return { agenciaMGS };
+  return { agenciaMGS, cargandoAgenciaMGS };
 }

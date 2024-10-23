@@ -5,6 +5,7 @@ import { useProductos } from "../context/ProductosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useObtenerProductosActivosYDisponiblesParaVender() {
   const { ObtenerProductosActivosYDisponiblesParaVender } = useProductos();
@@ -17,7 +18,12 @@ export default function useObtenerProductosActivosYDisponiblesParaVender() {
         const res = await ObtenerProductosActivosYDisponiblesParaVender({
           CookieConToken: COOKIE_CON_TOKEN,
         });
-        establecerProductos(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+        } else {
+          establecerProductos(res.data);
+        }
       } catch (error) {
         console.log(error);
       }

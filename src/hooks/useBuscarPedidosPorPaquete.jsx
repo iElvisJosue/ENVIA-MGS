@@ -5,6 +5,7 @@ import { usePedidos } from "../context/PedidosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarPedidosPorPaquete({
   CodigoRastreo,
@@ -12,7 +13,7 @@ export default function useBuscarPedidosPorPaquete({
 }) {
   const { BuscarPedidosPorPaquete } = usePedidos();
 
-  const [paquete, establecerPaquete] = useState(null);
+  const [paquete, establecerPaquete] = useState([]);
   const [cargandoPaquete, establecerCargandoPaquete] = useState(true);
 
   useEffect(() => {
@@ -23,7 +24,12 @@ export default function useBuscarPedidosPorPaquete({
           CodigoRastreo,
           GuiaPedido,
         });
-        establecerPaquete(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+        } else {
+          establecerPaquete(res.data);
+        }
         establecerCargandoPaquete(false);
       } catch (error) {
         console.log(error);

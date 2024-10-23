@@ -5,10 +5,11 @@ import { usePedidos } from "../context/PedidosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarDestinatariosPorAgencia({ idAgencia }) {
   const { BuscarDestinatariosPorAgencia } = usePedidos();
-  const [destinatarios, establecerDestinatarios] = useState(null);
+  const [destinatarios, establecerDestinatarios] = useState([]);
   const [cargandoDestinatarios, establecerCargandoDestinatarios] =
     useState(true);
   const [filtro, establecerFiltro] = useState("");
@@ -21,7 +22,12 @@ export default function useBuscarDestinatariosPorAgencia({ idAgencia }) {
           filtro,
           idAgencia,
         });
-        establecerDestinatarios(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+        } else {
+          establecerDestinatarios(res.data);
+        }
         establecerCargandoDestinatarios(false);
       } catch (error) {
         console.log(error);

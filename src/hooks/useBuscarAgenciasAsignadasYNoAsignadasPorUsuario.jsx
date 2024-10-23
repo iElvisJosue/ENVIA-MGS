@@ -5,6 +5,7 @@ import { useUsuarios } from "../context/UsuariosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarAgenciasAsignadasYNoAsignadasPorUsuario(
   idUsuario
@@ -40,10 +41,20 @@ export default function useBuscarAgenciasAsignadasYNoAsignadasPorUsuario(
           filtro: filtroAgenciasAsignadasYNoAsignadasDelUsuario,
           idUsuario,
         });
-        establecerAgenciasAsignadasYNoAsignadasDelUsuario({
-          AgenciasAsignadas: resAsignadas.data,
-          AgenciasNoAsignadas: resNoAsignadas.data,
-        });
+        if (resAsignadas.response || resNoAsignadas.response) {
+          const { status, data } =
+            resAsignadas.response || resNoAsignadas.response;
+          ManejarMensajesDeRespuesta({ status, data });
+          establecerAgenciasAsignadasYNoAsignadasDelUsuario({
+            AgenciasAsignadas: [],
+            AgenciasNoAsignadas: [],
+          });
+        } else {
+          establecerAgenciasAsignadasYNoAsignadasDelUsuario({
+            AgenciasAsignadas: resAsignadas.data,
+            AgenciasNoAsignadas: resNoAsignadas.data,
+          });
+        }
         establecerCargandoAgenciasAsignadasYNoAsignadasDelUsuario(false);
       } catch (error) {
         console.log(error);

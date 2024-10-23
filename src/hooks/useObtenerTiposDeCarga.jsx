@@ -5,6 +5,7 @@ import { useConfiguracion } from "../context/ConfiguracionContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useObtenerTiposDeCarga() {
   const { ObtenerTiposDeCarga } = useConfiguracion();
@@ -18,7 +19,12 @@ export default function useObtenerTiposDeCarga() {
         const res = await ObtenerTiposDeCarga({
           CookieConToken: COOKIE_CON_TOKEN,
         });
-        establecerCargas(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+        } else {
+          establecerCargas(res.data);
+        }
         establecerCargandoCargas(false);
       } catch (error) {
         console.log(error);

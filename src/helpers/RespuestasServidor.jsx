@@ -8,6 +8,8 @@ export const ManejarMensajesDeRespuesta = ({ status, data: message }) => {
       return toast.error(message);
     case 400:
       return toast.error(message);
+    case 401:
+      return toast.error(message);
     case 404:
       return toast.error(message);
     case 500:

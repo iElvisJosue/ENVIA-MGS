@@ -13,7 +13,7 @@ import { ObtenerFechaActual } from "../helpers/FuncionesGenerales";
 export default function useBuscarPedidosPorFecha() {
   const { BuscarPedidosPorFecha } = usePedidos();
   const { usuario } = useGlobal();
-  const [pedidosPorFecha, establecerPedidosPorFecha] = useState(null);
+  const [pedidosPorFecha, establecerPedidosPorFecha] = useState([]);
   const [cargandoPedidosPorFecha, establecerCargandoPedidosPorFecha] =
     useState(true);
   // OBTENEMOS LA FECHA ACTUAL
@@ -35,8 +35,8 @@ export default function useBuscarPedidosPorFecha() {
           ManejarMensajesDeRespuesta({ status, data });
         } else {
           establecerPedidosPorFecha(res.data);
-          establecerCargandoPedidosPorFecha(false);
         }
+        establecerCargandoPedidosPorFecha(false);
       } catch (error) {
         const { status, data } = error.response;
         ManejarMensajesDeRespuesta({ status, data });

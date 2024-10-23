@@ -5,6 +5,7 @@ import { useAgencias } from "../context/AgenciasContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarProductosAsignadosYNoAsignadosPorAgencia(
   idAgencia
@@ -43,10 +44,20 @@ export default function useBuscarProductosAsignadosYNoAsignadosPorAgencia(
           filtro: filtroProductosAsignadosYNoAsignadosPorAgencia,
           idAgencia,
         });
-        establecerProductosAsignadosYNoAsignadosPorAgencia({
-          ProductosAsignados: resAsignados.data,
-          ProductosNoAsignados: resNoAsignadas.data,
-        });
+        if (resAsignados.response || resNoAsignadas.response) {
+          const { status, data } =
+            resAsignados.response || resNoAsignadas.response;
+          ManejarMensajesDeRespuesta({ status, data });
+          establecerProductosAsignadosYNoAsignadosPorAgencia({
+            ProductosAsignados: [],
+            ProductosNoAsignados: [],
+          });
+        } else {
+          establecerProductosAsignadosYNoAsignadosPorAgencia({
+            ProductosAsignados: resAsignados.data,
+            ProductosNoAsignados: resNoAsignadas.data,
+          });
+        }
         establecerCargandoProductosAsignadosYNoAsignadosPorAgencia(false);
       } catch (error) {
         console.log(error);

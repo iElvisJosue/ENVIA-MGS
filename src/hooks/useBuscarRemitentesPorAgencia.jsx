@@ -5,10 +5,11 @@ import { usePedidos } from "../context/PedidosContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarRemitentesPorAgencia({ idAgencia }) {
   const { BuscarRemitentesPorAgencia } = usePedidos();
-  const [remitentes, establecerRemitentes] = useState(null);
+  const [remitentes, establecerRemitentes] = useState([]);
   const [cargandoRemitentes, establecerCargandoRemitentes] = useState(true);
   const [filtro, establecerFiltro] = useState("");
 
@@ -20,7 +21,12 @@ export default function useBuscarRemitentesPorAgencia({ idAgencia }) {
           filtro,
           idAgencia,
         });
-        establecerRemitentes(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+        } else {
+          establecerRemitentes(res.data);
+        }
         establecerCargandoRemitentes(false);
       } catch (error) {
         console.log(error);

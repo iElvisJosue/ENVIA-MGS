@@ -6,12 +6,13 @@ import { useGlobal } from "../context/GlobalContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarUsuariosParaAdministrarPorFiltro() {
   const { BuscarUsuariosParaAdministrarPorFiltro } = useUsuarios();
   const { usuario } = useGlobal();
 
-  const [usuarios, establecerUsuarios] = useState(null);
+  const [usuarios, establecerUsuarios] = useState([]);
   const [cargandoUsuarios, establecerCargandoUsuarios] = useState(true);
   const [filtroUsuario, establecerFiltroUsuario] = useState("");
   const [obtenerUsuariosNuevamente, establecerObtenerUsuariosNuevamente] =
@@ -25,7 +26,12 @@ export default function useBuscarUsuariosParaAdministrarPorFiltro() {
           filtro: filtroUsuario,
           idUsuario: usuario.idUsuario,
         });
-        establecerUsuarios(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+        } else {
+          establecerUsuarios(res.data);
+        }
         establecerCargandoUsuarios(false);
       } catch (error) {
         console.log(error);

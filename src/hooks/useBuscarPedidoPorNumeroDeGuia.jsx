@@ -4,8 +4,11 @@ import { useState, useEffect } from "react";
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { usePedidos } from "../context/PedidosContext";
 
+// IMPORTAMOS LAS AYUDAS
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
+
 export default function useBuscarPedidoPorNumeroDeGuia(GuiaPedido) {
-  const [informacionGuia, establecerInformacionGuia] = useState(null);
+  const [informacionGuia, establecerInformacionGuia] = useState([]);
   const [buscandoInformacionGuia, establecerBuscandoInformacionGuia] =
     useState(true);
 
@@ -15,7 +18,12 @@ export default function useBuscarPedidoPorNumeroDeGuia(GuiaPedido) {
     const obtenerInformacionGuia = async () => {
       try {
         const res = await BuscarPedidoPorNumeroDeGuia(GuiaPedido);
-        establecerInformacionGuia(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+        } else {
+          establecerInformacionGuia(res.data);
+        }
         establecerBuscandoInformacionGuia(false);
       } catch (error) {
         console.log(error);

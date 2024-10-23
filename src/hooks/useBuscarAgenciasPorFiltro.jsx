@@ -5,6 +5,7 @@ import { useAgencias } from "../context/AgenciasContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarAgenciasPorFiltro() {
   const { BuscarAgenciasPorFiltro } = useAgencias();
@@ -22,7 +23,12 @@ export default function useBuscarAgenciasPorFiltro() {
           CookieConToken: COOKIE_CON_TOKEN,
           filtro: filtroAgencias,
         });
-        establecerAgencias(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+        } else {
+          establecerAgencias(res.data);
+        }
         establecerCargandoAgencias(false);
       } catch (error) {
         console.log(error);

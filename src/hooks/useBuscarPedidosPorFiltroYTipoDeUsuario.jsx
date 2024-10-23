@@ -6,6 +6,7 @@ import { useGlobal } from "../context/GlobalContext";
 
 // IMPORTAMOS LAS AYUDAS
 import { COOKIE_CON_TOKEN } from "../helpers/ObtenerCookie";
+import { ManejarMensajesDeRespuesta } from "../helpers/RespuestasServidor";
 
 export default function useBuscarPedidosPorFiltroYTipoDeUsuario() {
   const { BuscarPedidosPorFiltro } = usePedidos();
@@ -24,7 +25,12 @@ export default function useBuscarPedidosPorFiltroYTipoDeUsuario() {
           tipoDeUsuario: usuario.Permisos,
           idDelUsuario: usuario.idUsuario,
         });
-        establecerPedidos(res.data);
+        if (res.response) {
+          const { status, data } = res.response;
+          ManejarMensajesDeRespuesta({ status, data });
+        } else {
+          establecerPedidos(res.data);
+        }
         establecerCargando(false);
       } catch (error) {
         console.log(error);
