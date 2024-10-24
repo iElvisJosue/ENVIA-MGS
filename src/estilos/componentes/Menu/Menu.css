@@ -112,7 +112,7 @@
 }
 @media (width <= 768px) {
   .Menu {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: -300px;
   }
