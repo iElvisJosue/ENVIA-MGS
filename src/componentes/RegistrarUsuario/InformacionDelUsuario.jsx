@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useUsuarios } from "../../context/UsuariosContext";
@@ -30,7 +30,12 @@ export default function InformacionDelUsuario() {
 
   const GuardaInformacionDelUsuario = handleSubmit(async (info) => {
     if (info.Contraseña !== info.ContraseñaConfirmar) {
-      return toast.error("Las contraseñas no coinciden, intente nuevamente 🔒");
+      return toast.error(
+        "Las contraseñas no coinciden, por favor intente nuevamente.",
+        {
+          theme: "colored",
+        }
+      );
     }
     try {
       info.CookieConToken = COOKIE_CON_TOKEN;

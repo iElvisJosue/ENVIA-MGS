@@ -1,6 +1,7 @@
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useState, useEffect } from "react";
-import { Toaster } from "sonner";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
@@ -16,6 +17,7 @@ import useBuscarUltimosDiezPedidos from "../hooks/useBuscarUltimosDiezPedidos";
 // IMPORTAMOS LAS AYUDAS
 import { HOST } from "../helpers/Urls";
 import { ObtenerFechaActual } from "../helpers/FuncionesGenerales";
+import { toastConfig } from "../helpers/ToastProps";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../estilos/vistas/Bienvenida.css";
@@ -146,7 +148,7 @@ export default function Bienvenida() {
           )}
         </section>
       </div>
-      <Toaster richColors position="top-right" />
+      <ToastContainer {...toastConfig} />
     </main>
   );
 }

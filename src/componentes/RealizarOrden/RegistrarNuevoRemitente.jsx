@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 
 // IMPORTAMOS LAS AYUDAS
 import { CamposRemitente } from "../../helpers/RealizarOrden/CamposRemitente";
@@ -52,7 +52,9 @@ export default function RegistrarNuevoRemitente({
     data.CodigoPaisRemitente = data.PaisRemitente.split(" | ")[0];
     establecerRemitente(data);
     establecerPaso(paso + 1);
-    toast.success("Remitente completado con éxito ✨");
+    toast.success("¡Paso 1 (Remitente) completado con éxito!", {
+      theme: "colored",
+    });
   });
 
   const MensajeError = (nombreCampo) => {

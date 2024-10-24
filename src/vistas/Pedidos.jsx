@@ -1,12 +1,16 @@
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useState } from "react";
-import { Toaster } from "sonner";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
 import ListaDePedidos from "../componentes/Pedidos/ListaDePedidos";
 import DetallesDelPedido from "../componentes/Pedidos/DetallesDelPedido";
+
+// IMPORTAMOS LAS AYUDAS
+import { toastConfig } from "../helpers/ToastProps";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../estilos/vistas/Pedidos.css";
@@ -45,7 +49,7 @@ export default function Pedidos() {
       <div className="Pedidos">
         <ComponenteParaRenderizar {...valoresParaLosComponentes} />
       </div>
-      <Toaster richColors position="top-right" />
+      <ToastContainer {...toastConfig} />
     </main>
   );
 }

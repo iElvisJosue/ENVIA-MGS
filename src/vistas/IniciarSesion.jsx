@@ -1,7 +1,9 @@
 // LIBRERÍAS A USAR
 import { useForm } from "react-hook-form";
-import { Toaster, toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import { Zoom } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // CONTEXTOS A USAR
 import { useGlobal } from "../context/GlobalContext";
@@ -27,7 +29,12 @@ export default function IniciarSesion() {
   } = useForm();
 
   const ManejarRespuestaExitosa = (res) => {
-    toast.success(`¡Bienvenido ${res.Usuario} 😎!`);
+    toast.success(
+      `¡Sesión iniciada, Bienvenido ${res.Usuario.toUpperCase()}!`,
+      {
+        theme: "colored",
+      }
+    );
     setTimeout(() => navigate("/Bienvenida"), 1000);
   };
 
@@ -103,7 +110,7 @@ export default function IniciarSesion() {
           Iniciar Sesión <ion-icon name="log-in"></ion-icon>
         </button>
       </form>
-      <Toaster richColors position="top-right" closeButton />
+      <ToastContainer limit={2} transition={Zoom} draggable stacked />
     </main>
   );
 }

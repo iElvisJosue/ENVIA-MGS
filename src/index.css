@@ -25,6 +25,14 @@
   --ColorGrisClaro: #d4d5da;
   --ColorGrisContenedor: #eef3f9;
   --ColorGrisEncabezado: #f9fafe;
+
+  --toastify-color-success: var(--ColorVerde);
+  --toastify-color-info: var(--ColorAzul);
+  --toastify-color-warning: var(--ColorNaranja);
+  --toastify-color-error: var(--ColorRojo);
+
+  --toastify-toast-width: 400px;
+  --toastify-font-family: "SourceSans3", sans-serif;
 }
 * {
   margin: 0;

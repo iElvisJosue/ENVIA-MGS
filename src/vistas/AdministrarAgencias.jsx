@@ -1,6 +1,7 @@
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useState } from "react";
-import { Toaster } from "sonner";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
@@ -8,6 +9,9 @@ import Encabezado from "../componentes/Encabezado";
 import ListaDeAgencias from "../componentes/AdministrarAgencias/ListaDeAgencias";
 import AdministrarProductosDeLaAgencia from "../componentes/AdministrarAgencias/AdministrarProductosDeLaAgencia";
 import EditarAgencia from "../componentes/AdministrarAgencias/EditarAgencia";
+
+// IMPORTAMOS LAS AYUDAS
+import { toastConfig } from "../helpers/ToastProps";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../estilos/vistas/AdministrarAgencias.css";
@@ -52,7 +56,7 @@ export default function AdministrarAgencias() {
       <div className="AdministrarAgencias">
         <ComponenteParaRenderizar {...valoresParaLosComponentes} />
       </div>
-      <Toaster richColors position="top-right" />
+      <ToastContainer {...toastConfig} />
     </main>
   );
 }

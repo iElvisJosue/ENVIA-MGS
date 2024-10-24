@@ -2,7 +2,7 @@
 // LIBRERÍAS A USAR
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { usePedidos } from "../../context/PedidosContext";
@@ -52,7 +52,12 @@ export default function InformacionDeLaCaja({
   const GuardarInformacionDelProducto = handleSubmit(async (data) => {
     const { Producto } = data;
     if (Producto === "Invalido") {
-      return toast.error("Por favor selecciona un campo valido ❌");
+      return toast.error(
+        "¡Oops! Parece que no has seleccionado ningún producto.",
+        {
+          theme: "colored",
+        }
+      );
     }
     const cantidadDeProductos = Number(data.Cantidad);
     const nuevaOrden = [...orden]; // Crear una copia de la orden actual
@@ -67,12 +72,22 @@ export default function InformacionDeLaCaja({
       nuevaOrden.push(nuevoProducto); // Añadir el nuevo producto al pedido
     }
     establecerOrden(nuevaOrden); // Actualizar la orden fuera del bucle
-    toast.success("Productos agregados a la orden con éxito ✨");
+    toast.success(
+      `¡El producto ${data.Producto.toUpperCase()} ha sido añadido con éxito a la orden!`,
+      {
+        theme: "colored",
+      }
+    );
     reset();
   });
 
-  const EliminarProductoDeLaOrden = (id) => {
-    toast.success("Producto eliminado con éxito de la orden ✨");
+  const EliminarProductoDeLaOrden = (Producto, id) => {
+    toast.success(
+      `¡El producto ${Producto.toUpperCase()} ha sido eliminado con éxito de la orden!`,
+      {
+        theme: "colored",
+      }
+    );
     const nuevaOrden = orden.filter((item) => item.idProducto !== id);
     establecerOrden(nuevaOrden);
   };
@@ -113,7 +128,9 @@ export default function InformacionDeLaCaja({
         const { status, data } = res.response;
         ManejarMensajesDeRespuesta({ status, data });
       } else {
-        toast.success("La orden fue creada con éxito ✨");
+        toast.success(`¡La orden ha sido creada con éxito!`, {
+          theme: "colored",
+        });
         establecerDetallesOrden(res.data);
         establecerPaso(2);
       }
@@ -267,7 +284,9 @@ export default function InformacionDeLaCaja({
                 <span className="InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles">
                   <button
                     className="InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles__Boton Eliminar"
-                    onClick={() => EliminarProductoDeLaOrden(idProducto)}
+                    onClick={() =>
+                      EliminarProductoDeLaOrden(Producto, idProducto)
+                    }
                   >
                     Eliminar
                   </button>

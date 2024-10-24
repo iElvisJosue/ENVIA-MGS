@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import AgenciaSeleccionada from "./AgenciaSeleccionada";
@@ -74,7 +74,9 @@ export default function RegistrarNuevoDestinatario({
     data.idDestinatario = false;
     establecerDestinatario(data);
     establecerPaso(paso + 1);
-    toast.success("Destinatario completado con éxito ✨");
+    toast.success("¡Paso 2 (Destinatario) completado con éxito!", {
+      theme: "colored",
+    });
   });
 
   const MensajeError = (nombreCampo) => {

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useGlobal } from "../../context/GlobalContext";
@@ -103,19 +103,32 @@ export default function InformacionDelPedido({
       TipoDeCarga === "Invalido" ||
       TipoDeEnvio === "Invalido"
     ) {
-      return toast.error("Por favor selecciona un campo valido ❌");
+      return toast.error(
+        "¡Oops! Te olvidaste de seleccionar el producto, el tipo de carga o el tipo de envío.",
+        {
+          theme: "colored",
+        }
+      );
     }
     if (Number(ValorAsegurado) > Number(ValorDeclarado)) {
-      return toast.error(
-        "El valor asegurado no puede ser mayor al valor declarado ❌"
+      return toast.warning(
+        "¡El valor asegurado no puede ser mayor al valor declarado!",
+        {
+          theme: "colored",
+        }
       );
     }
     if (Number(ValorAsegurado) > 500) {
-      return toast.error("El valor asegurado no puede ser mayor a $500.00 ❌");
+      return toast.error("¡El valor asegurado no puede ser mayor a $500.00!", {
+        theme: "colored",
+      });
     }
     if (Number(Peso) > Number(productoSeleccionado.PesoMaximoProducto)) {
-      return toast.error(
-        `El peso no puede ser mayor a ${productoSeleccionado.PesoMaximoProducto} ❌`
+      return toast.warning(
+        `¡El peso no puede ser mayor a ${productoSeleccionado.PesoMaximoProducto}!`,
+        {
+          theme: "colored",
+        }
       );
     }
     const cantidadDeProductos = Number(data.Cantidad);
@@ -163,15 +176,25 @@ export default function InformacionDelPedido({
       nuevoPedido.push(nuevoProducto); // Añadir el nuevo producto al pedido
     }
     establecerPedido(nuevoPedido); // Actualizar el pedido fuera del bucle
-    toast.success("Productos agregados al pedido con éxito ✨");
+    toast.success(
+      `¡El producto ${Producto.toUpperCase()} ha sido agregado con éxito al pedido!`,
+      {
+        theme: "colored",
+      }
+    );
     reset();
     // LO ESTABLECEMOS CON EL ELEMENTO 0 PORQUE ES EL PORCENTAJE DE CARGA POR DEFECTO
     // Y AL HACER EL RESET, SE RESETEA EL PORCENTAJE DE CARGA POR DEFECTO
     establecerPorcentajeCarga(cargas[0].PorcentajeCarga);
   });
 
-  const EliminarProductoDelPedido = (id) => {
-    toast.success("Producto eliminado con éxito del pedido ✨");
+  const EliminarProductoDelPedido = (Producto, id) => {
+    toast.success(
+      `¡El producto ${Producto.toUpperCase()} ha sido eliminado con éxito del pedido!`,
+      {
+        theme: "colored",
+      }
+    );
     const nuevoPedido = pedido.filter((item) => item.idProducto !== id);
     establecerPedido(nuevoPedido);
   };
@@ -221,7 +244,9 @@ export default function InformacionDelPedido({
         const { status, data } = res.response;
         ManejarMensajesDeRespuesta({ status, data });
       } else {
-        toast.success("El pedido fue creado con éxito ✨");
+        toast.success("El pedido ha sido creado con éxito!", {
+          theme: "colored",
+        });
         establecerDetallesPedido(res.data);
         establecerPaso(2);
       }
@@ -632,7 +657,9 @@ export default function InformacionDelPedido({
                 <span className="InformacionDelPedidoOrden__ListaProductos__Cuerpo__Detalles">
                   <button
                     className="InformacionDelPedidoOrden__ListaProductos__Cuerpo__Detalles__Boton Eliminar"
-                    onClick={() => EliminarProductoDelPedido(idProducto)}
+                    onClick={() =>
+                      EliminarProductoDelPedido(Producto, idProducto)
+                    }
                   >
                     Eliminar
                   </button>

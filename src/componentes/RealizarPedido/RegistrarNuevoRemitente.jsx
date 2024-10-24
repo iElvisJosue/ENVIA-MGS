@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import AgenciaSeleccionada from "./AgenciaSeleccionada";
@@ -56,7 +56,9 @@ export default function RegistrarNuevoRemitente({
     data.idRemitente = false;
     establecerRemitente(data);
     establecerPaso(paso + 1);
-    toast.success("Remitente completado con éxito ✨");
+    toast.success("¡Paso 1 (Remitente) completado con éxito!", {
+      theme: "colored",
+    });
   });
 
   const MensajeError = (nombreCampo) => {

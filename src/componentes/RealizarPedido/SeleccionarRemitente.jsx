@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 // LIBRERIAS A USAR
 import { useEffect } from "react";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Cargando from "../Cargando";
@@ -62,7 +62,10 @@ export default function SeleccionarRemitente({
     establecerRemitente(remitente);
     establecerPaso(paso + 1);
     toast.success(
-      `Remitente ${remitente.NombreRemitente.toUpperCase()} ${remitente.ApellidosRemitente.toUpperCase()} seleccionado con éxito ✨`
+      `¡El remitente ${remitente.NombreRemitente.toUpperCase()} ${remitente.ApellidosRemitente.toUpperCase()} ha sido seleccionado con éxito!`,
+      {
+        theme: "colored",
+      }
     );
   };
 

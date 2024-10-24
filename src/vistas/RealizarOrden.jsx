@@ -1,7 +1,7 @@
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useState, useEffect } from "react";
-import { Toaster } from "sonner";
-// import { toast } from "sonner";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useGlobal } from "../context/GlobalContext";
@@ -21,6 +21,7 @@ import useObtenerAgenciaMGS from "../hooks/useObtenerAgenciaMGS";
 
 // IMPORTAMOS LAS AYUDAS
 import { LISTA_DE_PROGRESOS } from "../helpers/RealizarOrden/ListaDeProgreso";
+import { toastConfig } from "../helpers/ToastProps";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../estilos/vistas/RealizarOrden.css";
@@ -96,7 +97,7 @@ export default function RealizarOrden() {
           />
         )}
       </div>
-      <Toaster richColors position="top-right" />
+      <ToastContainer {...toastConfig} />
     </main>
   );
 }

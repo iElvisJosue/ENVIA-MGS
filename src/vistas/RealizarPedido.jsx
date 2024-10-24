@@ -1,7 +1,7 @@
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useState, useEffect } from "react";
-import { Toaster } from "sonner";
-import { toast } from "sonner";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useGlobal } from "../context/GlobalContext";
@@ -18,6 +18,7 @@ import DetallesDelPedido from "../componentes/Pedidos/DetallesDelPedido";
 
 // IMPORTAMOS LAS AYUDAS
 import { LISTA_DE_PROGRESOS } from "../helpers/RealizarPedido/ListaDeProgreso";
+import { toastConfig } from "../helpers/ToastProps";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../estilos/vistas/RealizarPedido.css";
@@ -38,7 +39,10 @@ export default function RealizarPedido() {
 
   const EstablecerInformacionDeLaAgencia = (agencia) => {
     toast.success(
-      `Agencia ${agencia.NombreAgencia.toUpperCase()} seleccionada con éxito ✨`
+      `¡La agencia ${agencia.NombreAgencia.toUpperCase()} ha sido seleccionada con éxito!`,
+      {
+        theme: "colored",
+      }
     );
     establecerAgencia(agencia);
     establecerPaso(1);
@@ -98,7 +102,7 @@ export default function RealizarPedido() {
         <BarraDeProgreso Progreso={progreso} />
         <ComponenteParaRenderizar {...valoresParaLosComponentes} />
       </div>
-      <Toaster richColors position="top-right" />
+      <ToastContainer {...toastConfig} />
     </main>
   );
 }

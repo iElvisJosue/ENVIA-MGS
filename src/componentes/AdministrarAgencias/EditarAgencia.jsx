@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useAgencias } from "../../context/AgenciasContext";
@@ -55,8 +55,8 @@ export default function EditarAgencia({
       informacionDeLaAgencia.NombreAgencia === "Envía MGS" &&
       info.Agencia !== "Envía MGS"
     ) {
-      return toast.error(
-        "El nombre de la agencia Envía MGS no puede ser cambiado ❌"
+      return toast.warning(
+        "¡El nombre de la agencia Envía MGS no puede ser cambiado!"
       );
     }
     try {

@@ -1,6 +1,7 @@
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useState } from "react";
-import { Toaster } from "sonner";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Menu from "../componentes/Menu/Menu";
@@ -8,6 +9,9 @@ import Encabezado from "../componentes/Encabezado";
 import ListaDeProductos from "../componentes/AdministrarProductos/ListaDeProductos";
 import AdministrarAgenciasDelProducto from "../componentes/AdministrarProductos/AdministrarAgenciasDelProducto";
 import EditarProducto from "../componentes/AdministrarProductos/EditarProducto";
+
+// IMPORTAMOS LAS AYUDAS
+import { toastConfig } from "../helpers/ToastProps";
 
 // IMPORTAMOS LOS ESTILOS A USAR
 import "../estilos/vistas/AdministrarProductos.css";
@@ -56,7 +60,7 @@ export default function AdministrarProductos() {
       <div className="AdministrarProductos">
         <ComponenteParaRenderizar {...valoresParaLosComponentes} />
       </div>
-      <Toaster richColors position="top-right" />
+      <ToastContainer {...toastConfig} />
     </main>
   );
 }

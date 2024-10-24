@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
 import { useEffect } from "react";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import MensajeGeneral from "./MensajeGeneral";
@@ -39,7 +39,10 @@ export default function SeleccionarAgencia({
       establecerAgencia(agencias[0]);
       establecerPaso(1);
       toast.success(
-        `Agencia ${agencias[0].NombreAgencia.toUpperCase()} seleccionada con éxito ✨`
+        `¡La agencia ${agencias[0].NombreAgencia.toUpperCase()} ha sido seleccionada con éxito!`,
+        {
+          theme: "colored",
+        }
       );
     }
     if (agencias) {

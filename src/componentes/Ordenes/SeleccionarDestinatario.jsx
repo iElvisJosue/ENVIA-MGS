@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 // LIBRERIAS A USAR
 import { useEffect, useState } from "react";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import Cargando from "../Cargando";
@@ -68,7 +68,10 @@ export default function SeleccionarDestinatario({
     establecerDestinatario(destinatario);
     establecerPaso(paso + 1);
     toast.success(
-      `Destinatario ${destinatario.NombreDestinatario.toUpperCase()} ${destinatario.ApellidoPaternoDestinatario.toUpperCase()} ${destinatario.ApellidoMaternoDestinatario.toUpperCase()} seleccionado con éxito ✨`
+      `¡El destinatario ${destinatario.NombreDestinatario.toUpperCase()} ${destinatario.ApellidoPaternoDestinatario.toUpperCase()} ${destinatario.ApellidoMaternoDestinatario.toUpperCase()} ha sido seleccionado con éxito!`,
+      {
+        theme: "colored",
+      }
     );
   };
 
