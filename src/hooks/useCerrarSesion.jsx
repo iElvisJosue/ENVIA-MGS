@@ -1,5 +1,5 @@
 // LIBRERÍAS A USAR
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 
 // CONTEXTOS A USAR
@@ -21,7 +21,9 @@ export default function useCerrarSesion() {
     });
 
     toast.promise(promesaCerrandoSesion, {
-      loading: "Cerrando sesión, por favor espere... ⌛",
+      pending: "Cerrando Sesión...",
+      success: "¡Sesión Cerrada!",
+      error: "¡Oops! Algo salio mal al cerrar la sesión.",
     });
   };
 
