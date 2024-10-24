@@ -128,7 +128,7 @@ export default function DetallesDelPedido({
             <h1>Detalles de envío</h1>
           </section>
           <div className="DetallesDelPedido__Detalles Folio">
-            <ion-icon name="folder"></ion-icon> <b>Folio</b> USMX
+            <ion-icon name="folder"></ion-icon> <b>Folio</b> MGS
             {paquete[indicePedido].idPedido}
           </div>
           <div className="DetallesDelPedido__Detalles Guia">
