@@ -125,7 +125,7 @@ export default function DetallesDeLaOrden({
             {paquete[indiceOrden].idOrden}
           </div>
           <div className="DetallesDeLaOrden__Detalles Guia">
-            <ion-icon name="document-text"></ion-icon> <b>Guia</b>{" "}
+            <ion-icon name="document-text"></ion-icon> <b>Orden</b>{" "}
             {paquete[indiceOrden].GuiaOrden}
           </div>
           <div className="DetallesDeLaOrden__Detalles Usuario">
@@ -189,9 +189,21 @@ export default function DetallesDeLaOrden({
             <img src="LogoImportes.png" alt="Logo Importes" />
             <h1>Importes</h1>
           </section>
-          <div className="DetallesDeLaOrden__Detalles Total">
-            <ion-icon name="cube"></ion-icon> <b>Costo de la caja vacía</b>
+          <div className="DetallesDeLaOrden__Detalles">
+            <ion-icon name="apps"></ion-icon> <b>Cantidad</b>
+            {paquete[indiceOrden].CantidadProductosOrden}
+          </div>
+          <div className="DetallesDeLaOrden__Detalles">
+            <ion-icon name="logo-dropbox"></ion-icon>{" "}
+            <b>Costo de la caja vacía</b>
             {paquete[indiceOrden].CostoCajaVaciaOrden.toLocaleString("en-US", {
+              style: "currency",
+              currency: "USD",
+            })}
+          </div>
+          <div className="DetallesDeLaOrden__Detalles Total">
+            <ion-icon name="cash"></ion-icon> <b>Total</b>
+            {paquete[indiceOrden].TotalProductosOrden.toLocaleString("en-US", {
               style: "currency",
               currency: "USD",
             })}

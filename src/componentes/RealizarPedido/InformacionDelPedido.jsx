@@ -96,7 +96,7 @@ export default function InformacionDelPedido({
       TipoDeCarga === "Invalido" ||
       TipoDeEnvio === "Invalido"
     ) {
-      return toast.error(
+      return toast.warning(
         "¡Oops! Te olvidaste de seleccionar el producto, el tipo de carga o el tipo de envío.",
         {
           theme: "colored",
@@ -112,9 +112,12 @@ export default function InformacionDelPedido({
       );
     }
     if (Number(ValorAsegurado) > 500) {
-      return toast.error("¡El valor asegurado no puede ser mayor a $500.00!", {
-        theme: "colored",
-      });
+      return toast.warning(
+        "¡El valor asegurado no puede ser mayor a $500.00!",
+        {
+          theme: "colored",
+        }
+      );
     }
     if (Number(Peso) > Number(productoSeleccionado.PesoMaximoProducto)) {
       return toast.warning(

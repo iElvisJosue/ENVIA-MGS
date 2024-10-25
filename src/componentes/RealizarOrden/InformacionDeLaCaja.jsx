@@ -14,6 +14,7 @@ import useObtenerProductosActivosYDisponiblesParaVender from "../../hooks/useObt
 import {
   CrearIDUnico,
   CalcularTotalDeLaOrden,
+  CalcularTotalProducto,
 } from "../../helpers/RealizarOrden/Calculos";
 import { ManejarMensajesDeRespuesta } from "../../helpers/RespuestasServidor";
 import { COOKIE_CON_TOKEN } from "../../helpers/ObtenerCookie";
@@ -59,19 +60,15 @@ export default function InformacionDeLaCaja({
         }
       );
     }
-    const cantidadDeProductos = Number(data.Cantidad);
-    const nuevaOrden = [...orden]; // Crear una copia de la orden actual
-    for (let i = 1; i <= cantidadDeProductos; i++) {
-      const nuevoProducto = {
-        ...data, // Copia del objeto data
-        UsuarioResponsable: usuario?.Usuario,
-        idProducto: CrearIDUnico(), // Usar nuevaOrden para mantener el id correcto
-        idAgencia,
-        NombreAgencia,
-      };
-      nuevaOrden.push(nuevoProducto); // Añadir el nuevo producto al pedido
-    }
-    establecerOrden(nuevaOrden); // Actualizar la orden fuera del bucle
+    data.UsuarioResponsable = usuario?.Usuario;
+    data.idProducto = CrearIDUnico();
+    data.idAgencia = idAgencia;
+    data.NombreAgencia = NombreAgencia;
+    data.TotalProducto = CalcularTotalProducto(
+      data.CostoCajaVaciaProducto,
+      data.Cantidad
+    );
+    establecerOrden([...orden, data]); // Actualizar la orden fuera del bucle
     toast.success(
       `¡El producto ${data.Producto.toUpperCase()} ha sido añadido con éxito a la orden!`,
       {
@@ -247,6 +244,8 @@ export default function InformacionDeLaCaja({
                 Largo,
                 Alto,
                 CostoCajaVaciaProducto,
+                Cantidad,
+                TotalProducto,
               },
               index
             ) => (
@@ -255,6 +254,10 @@ export default function InformacionDeLaCaja({
                 key={index}
               >
                 <span className="InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles">
+                  <p>
+                    <ion-icon name="apps"></ion-icon> <b>Cantidad:</b>{" "}
+                    {Cantidad}
+                  </p>
                   <p>
                     <ion-icon name="basket"></ion-icon> <b>Producto:</b>{" "}
                     {Producto}
@@ -274,8 +277,16 @@ export default function InformacionDeLaCaja({
                 </span>
                 <span className="InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles">
                   <p className="InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles--Texto">
-                    <ion-icon name="cash"></ion-icon> <b>Costo:</b>{" "}
+                    <ion-icon name="logo-dropbox"></ion-icon>{" "}
+                    <b>Costo Caja Vacía:</b>{" "}
                     {Number(CostoCajaVaciaProducto).toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                    })}
+                  </p>
+                  <p className="InformacionDeLaCaja__ListaProductos__Cuerpo__Detalles--Texto">
+                    <ion-icon name="cash"></ion-icon> <b>Total:</b>{" "}
+                    {Number(TotalProducto).toLocaleString("en-US", {
                       style: "currency",
                       currency: "USD",
                     })}

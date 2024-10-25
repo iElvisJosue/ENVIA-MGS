@@ -7,7 +7,7 @@ export const ManejarMensajesDeRespuesta = ({ status, data: message }) => {
       return toast.success(message, {
         theme: "colored",
       });
-    // ESTA ES PARA NO INTERPRETADO (BAD REQUEST)|
+    // ESTA ES PARA NO INTERPRETADO (BAD REQUEST)
     case 400:
       return toast.warning(message, {
         theme: "colored",
@@ -34,7 +34,10 @@ export const ManejarMensajesDeRespuesta = ({ status, data: message }) => {
       });
     default:
       return toast.error(
-        "Lo sentimos, ha ocurrido un error inesperado, por favor vuelve a intentarlo."
+        "Lo sentimos, ha ocurrido un error inesperado, por favor vuelve a intentarlo.",
+        {
+          theme: "colored",
+        }
       );
   }
 };

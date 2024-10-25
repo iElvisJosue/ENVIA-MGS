@@ -232,7 +232,7 @@
   gap: 10px;
 }
 .DetallesDeLaOrden__Detalles.Total {
-  grid-column: 1 / -1;
+  grid-column: span 2;
   background-color: var(--ColorVerde);
   color: var(--ColorBlanco);
 }
