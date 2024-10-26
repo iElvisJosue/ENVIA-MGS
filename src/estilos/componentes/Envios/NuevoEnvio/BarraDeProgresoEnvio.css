@@ -1,0 +1,108 @@
+.BarraDeProgresoEnvio {
+  width: 100%;
+  min-height: 75px;
+  height: 75px;
+  max-height: 75px;
+  background-color: var(--ColorGrisEncabezado);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.BarraDeProgresoEnvio__Paso {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.BarraDeProgresoEnvio__Paso.EnProgreso .BarraDeProgresoEnvio__Paso--Número {
+  border: 2px solid var(--ColorAzul);
+}
+.BarraDeProgresoEnvio__Paso.EnProgreso .BarraDeProgresoEnvio__Paso--Número,
+.BarraDeProgresoEnvio__Paso.EnProgreso .BarraDeProgresoEnvio__Paso--Texto,
+.BarraDeProgresoEnvio__Paso.EnProgreso
+  .BarraDeProgresoEnvio__Paso--Icono
+  ion-icon {
+  color: var(--ColorAzul);
+}
+.BarraDeProgresoEnvio__Paso.Completado .BarraDeProgresoEnvio__Paso--Número {
+  border: 2px solid var(--ColorVerde);
+}
+.BarraDeProgresoEnvio__Paso.Completado .BarraDeProgresoEnvio__Paso--Número,
+.BarraDeProgresoEnvio__Paso.Completado .BarraDeProgresoEnvio__Paso--Texto,
+.BarraDeProgresoEnvio__Paso.Completado
+  .BarraDeProgresoEnvio__Paso--Icono
+  ion-icon {
+  color: var(--ColorVerde);
+}
+.BarraDeProgresoEnvio__Paso.SinCompletar .BarraDeProgresoEnvio__Paso--Número {
+  border: 2px solid var(--ColorGris);
+}
+.BarraDeProgresoEnvio__Paso.SinCompletar .BarraDeProgresoEnvio__Paso--Número,
+.BarraDeProgresoEnvio__Paso.SinCompletar .BarraDeProgresoEnvio__Paso--Texto,
+.BarraDeProgresoEnvio__Paso.SinCompletar
+  .BarraDeProgresoEnvio__Paso--Icono
+  ion-icon {
+  color: var(--ColorGris);
+}
+
+.BarraDeProgresoEnvio__Paso--Número {
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
+  background-color: none;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.BarraDeProgresoEnvio__Paso--Texto {
+  font-size: 16px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.BarraDeProgresoEnvio__Paso--Texto ion-icon {
+  font-size: 25px;
+}
+.BarraDeProgresoEnvio__Paso--Icono {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (width <= 500px) {
+  .BarraDeProgresoEnvio__Paso--Número {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+  }
+  .BarraDeProgresoEnvio__Paso--Texto {
+    font-size: 14px;
+  }
+  .BarraDeProgresoEnvio__Paso--Texto ion-icon {
+    font-size: 20px;
+  }
+}
+@media (width <= 368px) {
+  .BarraDeProgresoEnvio__Paso--Número {
+    font-size: 12px;
+  }
+  .BarraDeProgresoEnvio__Paso--Texto {
+    font-size: 12px;
+    gap: 0px;
+  }
+  .BarraDeProgresoEnvio__Paso--Texto ion-icon {
+    font-size: 18px;
+  }
+}

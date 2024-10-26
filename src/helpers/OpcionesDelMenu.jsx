@@ -15,76 +15,30 @@ export const OpcionesDelMenu = {
       opcionesSecundarias: [
         {
           icono: "logo-dropbox",
-          nombre: "Nueva orden",
-          url: `${HOST}Realizar-Orden`,
-        },
-        {
-          icono: "list",
           nombre: "Ordenes",
           url: `${HOST}Ordenes`,
         },
         {
           icono: "cube",
-          nombre: "Nuevo envío",
-          url: `${HOST}Realizar-Pedido`,
-        },
-        {
-          icono: "bag-handle",
           nombre: "Envíos",
-          url: `${HOST}Pedidos`,
+          url: `${HOST}Envios`,
         },
       ],
     },
     {
       icono: "business",
       nombre: "Agencias",
-      url: "#",
-      opcionesSecundarias: [
-        {
-          icono: "add-circle",
-          nombre: "Registrar Agencia",
-          url: `${HOST}Registrar-Agencia`,
-        },
-        {
-          icono: "cog",
-          nombre: "Administrar Agencias",
-          url: `${HOST}Administrar-Agencias`,
-        },
-      ],
+      url: `${HOST}Agencias`,
     },
     {
       icono: "basket",
       nombre: "Productos",
-      url: "#",
-      opcionesSecundarias: [
-        {
-          icono: "add-circle",
-          nombre: "Registrar Producto",
-          url: `${HOST}Registrar-Producto`,
-        },
-        {
-          icono: "cog",
-          nombre: "Administrar Productos",
-          url: `${HOST}Administrar-Productos`,
-        },
-      ],
+      url: `${HOST}Productos`,
     },
     {
       icono: "people-circle",
       nombre: "Usuarios",
-      url: "#",
-      opcionesSecundarias: [
-        {
-          icono: "person-add",
-          nombre: "Registrar Usuario",
-          url: `${HOST}Registrar-Usuario`,
-        },
-        {
-          icono: "cog",
-          nombre: "Administrar Usuarios",
-          url: `${HOST}Administrar-Usuarios`,
-        },
-      ],
+      url: `${HOST}Usuarios`,
     },
     {
       icono: "settings",
@@ -105,23 +59,13 @@ export const OpcionesDelMenu = {
       opcionesSecundarias: [
         {
           icono: "logo-dropbox",
-          nombre: "Nueva orden",
-          url: `${HOST}Realizar-Orden`,
-        },
-        {
-          icono: "list",
           nombre: "Ordenes",
           url: `${HOST}Ordenes`,
         },
         {
           icono: "cube",
-          nombre: "Nuevo envío",
-          url: `${HOST}Realizar-Pedido`,
-        },
-        {
-          icono: "bag-handle",
           nombre: "Envíos",
-          url: `${HOST}Pedidos`,
+          url: `${HOST}Envios`,
         },
       ],
     },
@@ -139,23 +83,13 @@ export const OpcionesDelMenu = {
       opcionesSecundarias: [
         {
           icono: "logo-dropbox",
-          nombre: "Nueva orden",
-          url: `${HOST}Realizar-Orden`,
-        },
-        {
-          icono: "list",
           nombre: "Ordenes",
           url: `${HOST}Ordenes`,
         },
         {
           icono: "cube",
-          nombre: "Nuevo envío",
-          url: `${HOST}Realizar-Pedido`,
-        },
-        {
-          icono: "bag-handle",
           nombre: "Envíos",
-          url: `${HOST}Pedidos`,
+          url: `${HOST}Envios`,
         },
       ],
     },

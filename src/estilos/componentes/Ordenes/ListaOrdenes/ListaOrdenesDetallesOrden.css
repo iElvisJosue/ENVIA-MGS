@@ -1,0 +1,270 @@
+.ListaOrdenesDetallesOrden {
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+.ListaOrdenesDetallesOrden__Seccion,
+.ListaOrdenesDetallesOrden__Opciones {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.ListaOrdenesDetallesOrden__Opciones {
+  margin-top: 30px;
+}
+.ListaOrdenesDetallesOrden__Opciones--Botones {
+  display: flex;
+  gap: 5px;
+}
+.ListaOrdenesDetallesOrden__OtrasOrdenes {
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.ListaOrdenesDetallesOrden__OtrasOrdenes--Texto {
+  font-weight: bold;
+  color: var(--ColorAzul);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.ListaOrdenesDetallesOrden__OtrasOrdenes--Botones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.ListaOrdenesDetallesOrden__OtrasOrdenes--Botones--Boton {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.ListaOrdenesDetallesOrden__OtrasOrdenes--Botones--Boton ion-icon {
+  font-size: 12px;
+}
+.ListaOrdenesDetallesOrden__OtrasOrdenes--Botones--Boton.Anterior {
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.ListaOrdenesDetallesOrden__OtrasOrdenes--Botones--Boton.Siguiente {
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+}
+.ListaOrdenesDetallesOrden__Opciones {
+  justify-content: space-between;
+}
+.ListaOrdenesDetallesOrden__Opciones--Boton {
+  height: 50px;
+  /* border-radius: 15px; */
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.ListaOrdenesDetallesOrden__Opciones--Boton ion-icon {
+  font-size: 20px;
+}
+.ListaOrdenesDetallesOrden__Opciones--Boton.Regresar,
+.ListaOrdenesDetallesOrden__Opciones--Boton.OtraOrden {
+  border: 2px solid var(--ColorRojo);
+  background-color: var(--ColorRojo);
+}
+.ListaOrdenesDetallesOrden__Opciones--Boton.Regresar:hover,
+.ListaOrdenesDetallesOrden__Opciones--Boton.OtraOrden:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.ListaOrdenesDetallesOrden__Opciones--Boton.Regresar:hover::after {
+  content: "Regresar";
+}
+.ListaOrdenesDetallesOrden__Opciones--Boton.OtraOrden:hover::after {
+  content: "Realizar otra orden";
+}
+.ListaOrdenesDetallesOrden__Opciones--Boton.Ticket,
+.ListaOrdenesDetallesOrden__Opciones--Boton.PaqueteTickets {
+  border: 2px solid var(--ColorAzul);
+  background-color: var(--ColorAzul);
+}
+.ListaOrdenesDetallesOrden__Opciones--Boton.Ticket:hover,
+.ListaOrdenesDetallesOrden__Opciones--Boton.PaqueteTickets:hover {
+  background-color: transparent;
+  color: var(--ColorAzul);
+}
+.ListaOrdenesDetallesOrden__Opciones--Boton.Ticket:hover::after {
+  content: "Ticket";
+}
+.ListaOrdenesDetallesOrden__Opciones--Boton.PaqueteTickets:hover::after {
+  content: "Paquete de tickets";
+}
+.ListaOrdenesDetallesOrden__Opciones__Titulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.ListaOrdenesDetallesOrden__Seccion img {
+  width: 50px;
+  height: 50px;
+}
+.ListaOrdenesDetallesOrden__Seccion h1 {
+  color: var(--ColorAzul);
+  text-transform: uppercase;
+}
+.ListaOrdenesDetallesOrden__Detalles {
+  grid-column: span 1;
+  background-color: var(--ColorBlanco);
+  padding: 10px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.ListaOrdenesDetallesOrden__Detalles ion-icon {
+  font-size: 25px;
+}
+.ListaOrdenesDetallesOrden__Detalles.Guia {
+  background-color: var(--ColorPrincipal);
+  color: var(--ColorBlanco);
+}
+.ListaOrdenesDetallesOrden__Detalles.Pendiente {
+  background-color: var(--ColorNaranja);
+  color: var(--ColorBlanco);
+}
+.ListaOrdenesDetallesOrden__Detalles.Pagado {
+  background-color: var(--ColorVerde);
+  color: var(--ColorBlanco);
+}
+.ListaOrdenesDetallesOrden__Detalles.Agencia,
+.ListaOrdenesDetallesOrden__Detalles.Fecha {
+  grid-column: span 2;
+}
+
+.ListaOrdenesDetallesOrden__Detalles.Remitente {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.ListaOrdenesDetallesOrden__Detalles.Movimiento {
+  grid-column: 1 / -1;
+  background-color: transparent;
+  padding: 0;
+
+  flex-direction: column;
+  gap: 10px;
+}
+.ListaOrdenesDetallesOrden__Detalles__Movimiento--Encabezado {
+  width: 100%;
+  /* border-radius: 15px; */
+  background-color: var(--ColorBlanco);
+  padding: 0;
+
+  display: flex;
+}
+
+.ListaOrdenesDetallesOrden__Detalles__Movimiento--Encabezado.Creado,
+.ListaOrdenesDetallesOrden__Detalles__Movimiento--Encabezado.Pagado,
+.ListaOrdenesDetallesOrden__Detalles__Movimiento--Encabezado.Entregado {
+  background-color: var(--ColorVerde);
+  color: var(--ColorBlanco);
+}
+.ListaOrdenesDetallesOrden__Detalles__Movimiento--Encabezado.Pendiente {
+  background-color: var(--ColorNaranja);
+  color: var(--ColorBlanco);
+}
+.ListaOrdenesDetallesOrden__Detalles__Movimiento--Encabezado.Cancelado {
+  background-color: var(--ColorRojo);
+  color: var(--ColorBlanco);
+}
+.ListaOrdenesDetallesOrden__Detalles__Movimiento--Encabezado.Camino,
+.ListaOrdenesDetallesOrden__Detalles__Movimiento--Encabezado.Finalizado {
+  background-color: var(--ColorAzul);
+  color: var(--ColorBlanco);
+}
+.ListaOrdenesDetallesOrden__Detalles__Movimiento--Encabezado--Descripcion {
+  width: 100%;
+  padding: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.ListaOrdenesDetallesOrden__Detalles__Movimiento--Encabezado ion-icon {
+  font-size: 25px;
+}
+.ListaOrdenesDetallesOrden__Detalles__Encabezado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.ListaOrdenesDetallesOrden__Detalles.Total {
+  grid-column: span 2;
+  background-color: var(--ColorVerde);
+  color: var(--ColorBlanco);
+}
+@media (width <= 850px) {
+  .ListaOrdenesDetallesOrden {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .ListaOrdenesDetallesOrden__Seccion,
+  .ListaOrdenesDetallesOrden__Opciones {
+    font-size: 14px;
+  }
+  .ListaOrdenesDetallesOrden__Seccion img {
+    width: 40px;
+    height: 40px;
+  }
+  .ListaOrdenesDetallesOrden__Detalles {
+    font-size: 14px;
+  }
+  .ListaOrdenesDetallesOrden__Opciones--Boton {
+    font-size: 14px;
+  }
+  .ListaOrdenesDetallesOrden__Opciones--Boton ion-icon {
+    font-size: 16px;
+  }
+}
+@media (width <= 450px) {
+  .ListaOrdenesDetallesOrden__Detalles__Movimiento--Encabezado--Descripcion {
+    font-size: 12px;
+  }
+  .ListaOrdenesDetallesOrden__Detalles__Movimiento--Encabezado--Descripcion
+    ion-icon {
+    font-size: 20px;
+  }
+}

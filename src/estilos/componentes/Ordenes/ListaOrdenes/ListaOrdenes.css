@@ -1,0 +1,46 @@
+.ListaOrdenes {
+  grid-area: Cuerpo;
+  width: 100%;
+  height: calc(100vh - 125px);
+  overflow-y: auto;
+}
+.ListaOrdenes__Opciones {
+  padding: 10px;
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+}
+.ListaOrdenes__Opciones--Boton {
+  width: auto;
+  padding: 0 10px;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+  color: var(--ColorBlanco);
+  /* border-radius: 15px; */
+  margin-top: 10px;
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.ListaOrdenes__Opciones--Boton:hover {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorAzul);
+}
+.ListaOrdenes__Opciones--Boton.BuscarPorFecha:hover::after {
+  content: "Buscar por fecha";
+}
+.ListaOrdenes__Opciones--Boton.ListaCompleta:hover::after {
+  content: "Lista completa";
+}
+.ListaOrdenes__Opciones--Boton ion-icon {
+  font-size: 20px;
+}

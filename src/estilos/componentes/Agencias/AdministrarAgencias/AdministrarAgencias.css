@@ -1,0 +1,12 @@
+.AdministrarAgencias {
+  grid-area: Cuerpo;
+  width: 100%;
+  height: calc(100vh - 125px);
+  overflow-y: auto;
+}
+.AdministrarAgencias__MensajeDeError {
+  width: 100%;
+  font-size: 13px;
+  color: var(--ColorRojo);
+  font-weight: bold;
+}

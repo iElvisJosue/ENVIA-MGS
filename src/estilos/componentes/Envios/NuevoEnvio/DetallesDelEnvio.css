@@ -1,0 +1,282 @@
+.DetallesDelEnvio {
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+.DetallesDelEnvio__Seccion,
+.DetallesDelEnvio__Opciones {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.DetallesDelEnvio__Opciones {
+  margin-top: 30px;
+}
+.DetallesDelEnvio__Opciones--Botones {
+  display: flex;
+  gap: 5px;
+}
+.DetallesDelEnvio__OtrosPedidos {
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesDelEnvio__OtrosPedidos--Texto {
+  font-weight: bold;
+  color: var(--ColorAzul);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesDelEnvio__OtrosPedidos--Botones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesDelEnvio__OtrosPedidos--Botones--Boton {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesDelEnvio__OtrosPedidos--Botones--Boton ion-icon {
+  font-size: 12px;
+}
+.DetallesDelEnvio__OtrosPedidos--Botones--Boton.Anterior {
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.DetallesDelEnvio__OtrosPedidos--Botones--Boton.Siguiente {
+  background-color: var(--ColorAzul);
+  border: 2px solid var(--ColorAzul);
+}
+.DetallesDelEnvio__Opciones {
+  justify-content: space-between;
+}
+.DetallesDelEnvio__Opciones--Boton {
+  height: 50px;
+  /* border-radius: 15px; */
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesDelEnvio__Opciones--Boton ion-icon {
+  font-size: 20px;
+}
+.DetallesDelEnvio__Opciones--Boton.Regresar,
+.DetallesDelEnvio__Opciones--Boton.OtroPedido {
+  border: 2px solid var(--ColorRojo);
+  background-color: var(--ColorRojo);
+}
+.DetallesDelEnvio__Opciones--Boton.Regresar:hover,
+.DetallesDelEnvio__Opciones--Boton.OtroPedido:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.DetallesDelEnvio__Opciones--Boton.Regresar:hover::after {
+  content: "Regresar";
+}
+.DetallesDelEnvio__Opciones--Boton.OtroPedido:hover::after {
+  content: "Realizar otro pedido";
+}
+.DetallesDelEnvio__Opciones--Boton.Ticket,
+.DetallesDelEnvio__Opciones--Boton.CodigoDeBarras,
+.DetallesDelEnvio__Opciones--Boton.PaqueteTickets {
+  border: 2px solid var(--ColorAzul);
+  background-color: var(--ColorAzul);
+}
+.DetallesDelEnvio__Opciones--Boton.Ticket:hover,
+.DetallesDelEnvio__Opciones--Boton.CodigoDeBarras:hover,
+.DetallesDelEnvio__Opciones--Boton.PaqueteTickets:hover {
+  background-color: transparent;
+  color: var(--ColorAzul);
+}
+.DetallesDelEnvio__Opciones--Boton.Ticket:hover::after {
+  content: "Ticket";
+}
+.DetallesDelEnvio__Opciones--Boton.CodigoDeBarras:hover::after {
+  content: "Etiqueta";
+}
+.DetallesDelEnvio__Opciones--Boton.PaqueteTickets:hover::after {
+  content: "Paquete de tickets";
+}
+.DetallesDelEnvio__Opciones__Titulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.DetallesDelEnvio__Seccion img {
+  width: 50px;
+  height: 50px;
+}
+.DetallesDelEnvio__Seccion h1 {
+  color: var(--ColorAzul);
+  text-transform: uppercase;
+}
+.DetallesDelEnvio__Detalles {
+  grid-column: span 1;
+  background-color: var(--ColorBlanco);
+  padding: 10px;
+  /* border-radius: 15px; */
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.DetallesDelEnvio__Detalles ion-icon {
+  font-size: 25px;
+}
+.DetallesDelEnvio__Detalles.Guia {
+  background-color: var(--ColorPrincipal);
+  color: var(--ColorBlanco);
+}
+.DetallesDelEnvio__Detalles.Pendiente {
+  background-color: var(--ColorNaranja);
+  color: var(--ColorBlanco);
+}
+.DetallesDelEnvio__Detalles.Pagado {
+  background-color: var(--ColorVerde);
+  color: var(--ColorBlanco);
+}
+.DetallesDelEnvio__Detalles.Agencia,
+.DetallesDelEnvio__Detalles.Fecha,
+.DetallesDelEnvio__Detalles.Remitente,
+.DetallesDelEnvio__Detalles.Destinatario,
+.DetallesDelEnvio__Detalles.Contenido,
+.DetallesDelEnvio__Detalles.Total {
+  grid-column: span 2;
+}
+.DetallesDelEnvio__Detalles.Remitente,
+.DetallesDelEnvio__Detalles.Destinatario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.DetallesDelEnvio__Detalles.Movimiento {
+  grid-column: 1 / -1;
+  background-color: transparent;
+  padding: 0;
+
+  flex-direction: column;
+  gap: 10px;
+}
+.DetallesDelEnvio__Detalles__Movimiento--Encabezado {
+  width: 100%;
+  /* border-radius: 15px; */
+  background-color: var(--ColorBlanco);
+  padding: 0;
+
+  display: flex;
+}
+
+.DetallesDelEnvio__Detalles__Movimiento--Encabezado.Creado,
+.DetallesDelEnvio__Detalles__Movimiento--Encabezado.Pagado,
+.DetallesDelEnvio__Detalles__Movimiento--Encabezado.Entregado {
+  background-color: var(--ColorVerde);
+  color: var(--ColorBlanco);
+}
+.DetallesDelEnvio__Detalles__Movimiento--Encabezado.Pendiente {
+  background-color: var(--ColorNaranja);
+  color: var(--ColorBlanco);
+}
+.DetallesDelEnvio__Detalles__Movimiento--Encabezado.Cancelado {
+  background-color: var(--ColorRojo);
+  color: var(--ColorBlanco);
+}
+.DetallesDelEnvio__Detalles__Movimiento--Encabezado.Camino {
+  background-color: var(--ColorAzul);
+  color: var(--ColorBlanco);
+}
+.DetallesDelEnvio__Detalles__Movimiento--Encabezado--Descripcion {
+  width: 100%;
+  padding: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.DetallesDelEnvio__Detalles__Movimiento--Encabezado ion-icon {
+  font-size: 25px;
+}
+.DetallesDelEnvio__Detalles__Encabezado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.DetallesDelEnvio__Detalles.CostoSeguro,
+.DetallesDelEnvio__Detalles.CostoSobrePeso,
+.DetallesDelEnvio__Detalles.CostoEnvio {
+  background-color: var(--ColorAzul);
+  color: var(--ColorBlanco);
+}
+.DetallesDelEnvio__Detalles.Total {
+  background-color: var(--ColorVerde);
+  color: var(--ColorBlanco);
+}
+@media (width <= 850px) {
+  .DetallesDelEnvio {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .DetallesDelEnvio__Seccion,
+  .DetallesDelEnvio__Opciones {
+    font-size: 14px;
+  }
+  .DetallesDelEnvio__Seccion img {
+    width: 40px;
+    height: 40px;
+  }
+  .DetallesDelEnvio__Detalles {
+    font-size: 14px;
+  }
+  .DetallesDelEnvio__Opciones--Boton {
+    font-size: 14px;
+  }
+  .DetallesDelEnvio__Opciones--Boton ion-icon {
+    font-size: 16px;
+  }
+}
+@media (width <= 450px) {
+  .DetallesDelEnvio__Detalles__Movimiento--Encabezado--Descripcion {
+    font-size: 12px;
+  }
+  .DetallesDelEnvio__Detalles__Movimiento--Encabezado--Descripcion ion-icon {
+    font-size: 20px;
+  }
+}

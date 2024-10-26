@@ -7,59 +7,59 @@ import "react-toastify/dist/ReactToastify.css";
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
 import SubMenu from "../componentes/SubMenu";
-import NuevaOrden from "../componentes/Ordenes/NuevaOrden/NuevaOrden";
-import ListaOrdenes from "../componentes/Ordenes/ListaOrdenes/ListaOrdenes";
+import RegistrarAgencia from "../componentes/Agencias/RegistrarAgencia/RegistrarAgencia";
+import AdministrarAgencias from "../componentes/Agencias/AdministrarAgencias/AdministrarAgencias";
 
 // IMPORTAMOS LAS AYUDAS
 import { toastConfig } from "../helpers/ToastProps";
 
-export default function Ordenes() {
-  const [vistaOrdenes, establecerVistaOrdenes] = useState(0);
+export default function Agencias() {
+  const [vistaAgencias, establecerVistaAgencias] = useState(0);
 
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
   const valoresParaLosComponentes = {
-    vistaOrdenes,
-    establecerVistaOrdenes,
+    vistaAgencias,
+    establecerVistaAgencias,
   };
 
   const OpcionesSubMenu = [
     {
-      Texto: "Nueva orden",
-      Icono: "logo-dropbox",
+      Texto: "Registrar Agencia",
+      Icono: "add-circle",
     },
     {
-      Texto: "Lista ordenes",
-      Icono: "list",
+      Texto: "Administrar Agencias",
+      Icono: "cog",
     },
   ];
 
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
   const componentesParaMostrar = {
-    0: NuevaOrden,
-    1: ListaOrdenes,
+    0: RegistrarAgencia,
+    1: AdministrarAgencias,
   };
 
   const TituloSubseccion = {
-    0: "Nueva Orden",
-    1: "Lista Ordenes",
+    0: "Registrar Agencia",
+    1: "Administrar Agencias",
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
-  const ComponenteParaRenderizar = componentesParaMostrar[vistaOrdenes];
+  const ComponenteParaRenderizar = componentesParaMostrar[vistaAgencias];
 
   return (
     // LOS ESTILOS DEL MAIN ESTÁN EN INDEX.CSS
     <main className="Main">
       <Menu />
       <Encabezado
-        icono="storefront"
-        seccion="Paquetería"
-        subseccion={TituloSubseccion[vistaOrdenes]}
+        icono="business"
+        seccion="Agencias"
+        subseccion={TituloSubseccion[vistaAgencias]}
       />
       <SubMenu
         OpcionesSubMenu={OpcionesSubMenu}
-        vista={vistaOrdenes}
-        establecerVista={establecerVistaOrdenes}
+        vista={vistaAgencias}
+        establecerVista={establecerVistaAgencias}
       />
       <ComponenteParaRenderizar {...valoresParaLosComponentes} />
       <ToastContainer {...toastConfig} />

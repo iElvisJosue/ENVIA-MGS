@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-// IMPORTAMOS LOS HOOKS A USAR
-
 // IMPORTAMOS LOS ESTILOS
 import "../estilos/componentes/Encabezado.css";
 

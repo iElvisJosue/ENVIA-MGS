@@ -101,7 +101,7 @@ export default function Bienvenida() {
           <ul className="Bienvenida__UltimasGuias--Encabezado">
             <p>Últimos pedidos</p>
             <button
-              onClick={() => (window.location.href = `${HOST}Realizar-Pedido`)}
+              onClick={() => (window.location.href = `${HOST}Envios`)}
               title="Ver todos los pedidos"
             >
               <ion-icon name="add"></ion-icon>
@@ -143,7 +143,7 @@ export default function Bienvenida() {
             <div className="Bienvenida__UltimasGuias--Cuerpo SinResultados">
               <img src="SinResultados.png" alt="No hay resultados" />
               <small>¡Oops! Parece que más no tienes pedidos realizados.</small>
-              <a href={`${HOST}Realizar-Pedido`}>Realizar pedido</a>
+              <a href={`${HOST}Envios`}>Nuevo envio</a>
             </div>
           )}
         </section>

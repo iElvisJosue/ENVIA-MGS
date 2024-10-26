@@ -1,0 +1,27 @@
+.NuevoEnvio {
+  grid-area: Cuerpo;
+  width: 100%;
+  height: calc(100vh - 125px);
+  overflow-y: auto;
+}
+.NuevoEnvio__MensajeDeError {
+  width: 100%;
+  font-size: 13px;
+  color: var(--ColorRojo);
+  font-weight: bold;
+}
+.NuevoEnvio__AgenciaSeleccionada {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+}
+.NuevoEnvio__AgenciaSeleccionada b {
+  color: var(--ColorVerde);
+  font-style: italic;
+}
+@media (width <= 500px) {
+  .NuevoEnvio__AgenciaSeleccionada {
+    font-size: 10px;
+  }
+}

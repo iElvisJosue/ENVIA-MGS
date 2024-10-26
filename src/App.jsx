@@ -10,17 +10,12 @@ import { ProveedorConfiguracion } from "./context/ConfiguracionContext";
 // IMPORTAMOS LAS VISTAS
 import IniciarSesion from "./vistas/IniciarSesion";
 import Bienvenida from "./vistas/Bienvenida";
-import RealizarPedido from "./vistas/RealizarPedido";
-import RealizarOrden from "./vistas/RealizarOrden";
-import RegistrarAgencia from "./vistas/RegistrarAgencia";
-import RegistrarUsuario from "./vistas/RegistrarUsuario";
-import RegistrarProducto from "./vistas/RegistrarProducto";
-import Pedidos from "./vistas/Pedidos";
+import Envios from "./vistas/Envios";
 import Ordenes from "./vistas/Ordenes";
+import Agencias from "./vistas/Agencias";
+import Productos from "./vistas/Productos";
+import Usuarios from "./vistas/Usuarios";
 import NumeroDeGuia from "./vistas/NumeroDeGuia";
-import AdministrarUsuarios from "./vistas/AdministrarUsuarios";
-import AdministrarAgencias from "./vistas/AdministrarAgencias";
-import AdministrarProductos from "./vistas/AdministrarProductos";
 
 // PROTECCIÓN DE RUTAS
 import ProteccionPorCookies from "./proteccion/ProteccionPorCookies";
@@ -48,44 +43,15 @@ export default function App() {
                       {/* RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
                       <Route element={<ProteccionParaAdministradores />}>
                         {/* RUTAS DE AGENCIAS */}
-                        <Route
-                          path="/Registrar-Agencia"
-                          element={<RegistrarAgencia />}
-                        />
-                        <Route
-                          path="/Administrar-Agencias"
-                          element={<AdministrarAgencias />}
-                        />
+                        <Route path="/Agencias" element={<Agencias />} />
                         {/* RUTAS DE USUARIOS */}
-                        <Route
-                          path="/Registrar-Usuario"
-                          element={<RegistrarUsuario />}
-                        />
-                        <Route
-                          path="/Administrar-Usuarios"
-                          element={<AdministrarUsuarios />}
-                        />
+                        <Route path="/Usuarios" element={<Usuarios />} />
                         {/* RUTAS DE PRODUCTOS */}
-                        <Route
-                          path="/Registrar-Producto"
-                          element={<RegistrarProducto />}
-                        />
-                        <Route
-                          path="/Administrar-Productos"
-                          element={<AdministrarProductos />}
-                        />
+                        <Route path="/Productos" element={<Productos />} />
                       </Route>
                       {/* TERMINAN LAS RUTAS PROTEGIDAS PARA ADMINISTRADORES */}
                       {/* RUTAS DE PAQUETERÍA */}
-                      <Route
-                        path="/Realizar-Pedido"
-                        element={<RealizarPedido />}
-                      />
-                      <Route path="/Pedidos" element={<Pedidos />} />
-                      <Route
-                        path="/Realizar-Orden"
-                        element={<RealizarOrden />}
-                      />
+                      <Route path="/Envios" element={<Envios />} />
                       <Route path="/Ordenes" element={<Ordenes />} />
                       {/* RUTAS DE BIENVENIDA */}
                       <Route path="/Bienvenida" element={<Bienvenida />} />

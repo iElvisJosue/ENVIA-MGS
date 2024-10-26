@@ -7,45 +7,45 @@ import "react-toastify/dist/ReactToastify.css";
 import Menu from "../componentes/Menu/Menu";
 import Encabezado from "../componentes/Encabezado";
 import SubMenu from "../componentes/SubMenu";
-import NuevaOrden from "../componentes/Ordenes/NuevaOrden/NuevaOrden";
-import ListaOrdenes from "../componentes/Ordenes/ListaOrdenes/ListaOrdenes";
+import NuevoEnvio from "../componentes/Envios/NuevoEnvio/NuevoEnvio";
+import ListaEnvios from "../componentes/Envios/ListaEnvios/ListaEnvios";
 
 // IMPORTAMOS LAS AYUDAS
 import { toastConfig } from "../helpers/ToastProps";
 
-export default function Ordenes() {
-  const [vistaOrdenes, establecerVistaOrdenes] = useState(0);
+export default function Envios() {
+  const [vistaEnvios, establecerVistaEnvios] = useState(0);
 
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
   const valoresParaLosComponentes = {
-    vistaOrdenes,
-    establecerVistaOrdenes,
+    vistaEnvios,
+    establecerVistaEnvios,
   };
 
   const OpcionesSubMenu = [
     {
-      Texto: "Nueva orden",
-      Icono: "logo-dropbox",
+      Texto: "Nuevo envío",
+      Icono: "cube",
     },
     {
-      Texto: "Lista ordenes",
+      Texto: "Lista envíos",
       Icono: "list",
     },
   ];
 
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
   const componentesParaMostrar = {
-    0: NuevaOrden,
-    1: ListaOrdenes,
+    0: NuevoEnvio,
+    1: ListaEnvios,
   };
 
   const TituloSubseccion = {
-    0: "Nueva Orden",
-    1: "Lista Ordenes",
+    0: "Nuevo Envío",
+    1: "Lista Envíos",
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS
-  const ComponenteParaRenderizar = componentesParaMostrar[vistaOrdenes];
+  const ComponenteParaRenderizar = componentesParaMostrar[vistaEnvios];
 
   return (
     // LOS ESTILOS DEL MAIN ESTÁN EN INDEX.CSS
@@ -53,13 +53,13 @@ export default function Ordenes() {
       <Menu />
       <Encabezado
         icono="storefront"
-        seccion="Paquetería"
-        subseccion={TituloSubseccion[vistaOrdenes]}
+        seccion="Envíos"
+        subseccion={TituloSubseccion[vistaEnvios]}
       />
       <SubMenu
         OpcionesSubMenu={OpcionesSubMenu}
-        vista={vistaOrdenes}
-        establecerVista={establecerVistaOrdenes}
+        vista={vistaEnvios}
+        establecerVista={establecerVistaEnvios}
       />
       <ComponenteParaRenderizar {...valoresParaLosComponentes} />
       <ToastContainer {...toastConfig} />

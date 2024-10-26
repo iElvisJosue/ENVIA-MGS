@@ -1,0 +1,108 @@
+.BarraDeProgresoOrden {
+  width: 100%;
+  min-height: 75px;
+  height: 75px;
+  max-height: 75px;
+  background-color: var(--ColorGrisEncabezado);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.BarraDeProgresoOrden__Paso {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.BarraDeProgresoOrden__Paso.EnProgreso .BarraDeProgresoOrden__Paso--Número {
+  border: 2px solid var(--ColorAzul);
+}
+.BarraDeProgresoOrden__Paso.EnProgreso .BarraDeProgresoOrden__Paso--Número,
+.BarraDeProgresoOrden__Paso.EnProgreso .BarraDeProgresoOrden__Paso--Texto,
+.BarraDeProgresoOrden__Paso.EnProgreso
+  .BarraDeProgresoOrden__Paso--Icono
+  ion-icon {
+  color: var(--ColorAzul);
+}
+.BarraDeProgresoOrden__Paso.Completado .BarraDeProgresoOrden__Paso--Número {
+  border: 2px solid var(--ColorVerde);
+}
+.BarraDeProgresoOrden__Paso.Completado .BarraDeProgresoOrden__Paso--Número,
+.BarraDeProgresoOrden__Paso.Completado .BarraDeProgresoOrden__Paso--Texto,
+.BarraDeProgresoOrden__Paso.Completado
+  .BarraDeProgresoOrden__Paso--Icono
+  ion-icon {
+  color: var(--ColorVerde);
+}
+.BarraDeProgresoOrden__Paso.SinCompletar .BarraDeProgresoOrden__Paso--Número {
+  border: 2px solid var(--ColorGris);
+}
+.BarraDeProgresoOrden__Paso.SinCompletar .BarraDeProgresoOrden__Paso--Número,
+.BarraDeProgresoOrden__Paso.SinCompletar .BarraDeProgresoOrden__Paso--Texto,
+.BarraDeProgresoOrden__Paso.SinCompletar
+  .BarraDeProgresoOrden__Paso--Icono
+  ion-icon {
+  color: var(--ColorGris);
+}
+
+.BarraDeProgresoOrden__Paso--Número {
+  width: 25px;
+  height: 25px;
+  border-radius: 50px;
+  background-color: none;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.BarraDeProgresoOrden__Paso--Texto {
+  font-size: 16px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.BarraDeProgresoOrden__Paso--Texto ion-icon {
+  font-size: 25px;
+}
+.BarraDeProgresoOrden__Paso--Icono {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (width <= 500px) {
+  .BarraDeProgresoOrden__Paso--Número {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+  }
+  .BarraDeProgresoOrden__Paso--Texto {
+    font-size: 14px;
+  }
+  .BarraDeProgresoOrden__Paso--Texto ion-icon {
+    font-size: 20px;
+  }
+}
+@media (width <= 368px) {
+  .BarraDeProgresoOrden__Paso--Número {
+    font-size: 12px;
+  }
+  .BarraDeProgresoOrden__Paso--Texto {
+    font-size: 12px;
+    gap: 0px;
+  }
+  .BarraDeProgresoOrden__Paso--Texto ion-icon {
+    font-size: 18px;
+  }
+}
