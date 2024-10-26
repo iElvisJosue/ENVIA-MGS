@@ -13,9 +13,8 @@
   border: none;
   font-size: 16px;
   padding: 5px;
-  background: var(--ColorGrisEncabezado);
+  background-color: var(--ColorGrisContenedor);
   color: var(--ColorGris);
-  transition: 0.3s ease-in-out color, 0.3s ease-in-out background;
   cursor: pointer;
 
   display: flex;
@@ -24,8 +23,12 @@
   gap: 5px;
 }
 .SubMenu__Boton.Seleccionado {
-  background-color: var(--ColorGrisContenedor);
-  color: var(--ColorAzul);
+  background: linear-gradient(
+    45deg,
+    var(--ColorAzulHover) 0%,
+    var(--ColorAzul) 100%
+  );
+  color: var(--ColorBlanco);
   font-weight: bold;
   text-transform: uppercase;
 }
