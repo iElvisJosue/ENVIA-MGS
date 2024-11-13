@@ -142,6 +142,7 @@
   background-color: var(--ColorBlanco);
   padding: 10px;
   text-align: center;
+  transition: 0.3s ease-in-out all;
 
   display: flex;
   flex-direction: column;
@@ -149,8 +150,14 @@
   justify-content: center;
   gap: 5px;
 }
-.ListaOrdenesDetallesOrden__Detalles ion-icon {
-  font-size: 25px;
+.ListaOrdenesDetallesOrden__Detalles.Dos {
+  grid-column: span 2;
+}
+.ListaOrdenesDetallesOrden__Detalles.Tres {
+  grid-column: span 3;
+}
+.ListaOrdenesDetallesOrden__Detalles.Cuatro {
+  grid-column: 1 / -1;
 }
 .ListaOrdenesDetallesOrden__Detalles.Guia {
   background-color: var(--ColorPrincipal);
@@ -164,18 +171,58 @@
   background-color: var(--ColorVerde);
   color: var(--ColorBlanco);
 }
-.ListaOrdenesDetallesOrden__Detalles.Agencia,
-.ListaOrdenesDetallesOrden__Detalles.Fecha {
-  grid-column: span 2;
+.ListaOrdenesDetallesOrden__Detalles.Vendedor {
+  background-color: var(--ColorAzul);
+  color: var(--ColorBlanco);
 }
-
-.ListaOrdenesDetallesOrden__Detalles.Remitente {
+.ListaOrdenesDetallesOrden__Detalles.Folio {
+  border: 2px solid var(--ColorBlanco);
+}
+.ListaOrdenesDetallesOrden__Detalles.Folio:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  border-color: var(--ColorVerde);
+  color: var(--ColorVerde);
+}
+.ListaOrdenesDetallesOrden__Detalles.Total {
+  background-color: var(--ColorRojo);
+  color: var(--ColorBlanco);
+}
+.ListaOrdenesDetallesOrden__Detalles.Recibio {
+  background-color: var(--ColorVerde);
+  color: var(--ColorBlanco);
+}
+.ListaOrdenesDetallesOrden__Detalles.MedioDeEnvio {
+  background-color: var(--ColorGris);
+  color: var(--ColorBlanco);
+}
+/* .ListaOrdenesDetallesOrden__Detalles.Remitente {
   grid-column: 1 / -1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
+} */
+.ListaOrdenesDetallesOrden__Detalles ion-icon {
+  font-size: 25px;
+}
+.ListaOrdenesDetallesOrden__Detalles--Select {
+  width: 100%;
+  text-align: center;
+  border: none;
+  color: var(--ColorBlanco);
+  text-transform: uppercase;
+  background-color: transparent;
+  font-size: 16px;
+}
+.ListaOrdenesDetallesOrden__Detalles--Select.Tipo {
+  color: var(--ColorNegro);
+}
+.ListaOrdenesDetallesOrden__Detalles--Select option {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorNegro);
+  font-size: 16px;
 }
 .ListaOrdenesDetallesOrden__Detalles.Movimiento {
   grid-column: 1 / -1;
@@ -230,11 +277,6 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
-}
-.ListaOrdenesDetallesOrden__Detalles.Total {
-  grid-column: span 2;
-  background-color: var(--ColorVerde);
-  color: var(--ColorBlanco);
 }
 @media (width <= 850px) {
   .ListaOrdenesDetallesOrden {
