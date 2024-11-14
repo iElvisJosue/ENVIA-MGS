@@ -152,7 +152,11 @@ export default function ListaOrdenesDetallesOrden({
               <option value="Retornada">Retornada</option>
             </select>
           </div>
-          <div className="ListaOrdenesDetallesOrden__Detalles Declarado Dos">
+          <div className="ListaOrdenesDetallesOrden__Detalles Declarado">
+            <ion-icon name="keypad"></ion-icon> <b>Cantidad</b>
+            {paquete[indiceOrden].CantidadProductosOrden}
+          </div>
+          <div className="ListaOrdenesDetallesOrden__Detalles Declarado">
             <ion-icon name="cash"></ion-icon> <b>Valor Declarado</b>
             {paquete[indiceOrden].CostoCajaVaciaOrden.toLocaleString("en-US", {
               style: "currency",

@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@hookform/error-message": "2.0.1",
+    "@react-google-maps/api": "2.20.3",
+    "react-google-places-autocomplete": "4.1.0",
     "axios": "1.6.8",
     "framer-motion": "11.9.0",
     "js-cookie": "3.0.5",

@@ -9,3 +9,10 @@ export const SolicitudObtenerTiposDeCarga = (data) =>
 // SOLICITUD PARA OBTENER LOS TIPOS DE ENVIO
 export const SolicitudObtenerTiposDeEnvio = (data) =>
   axios.post("/configuracion/ObtenerTiposDeEnvio", data);
+// PETICIÓN PARA OBTENER LA API DE GOOGLE MAPS AUTO COMPLETADO
+export const SolicitudObtenerApiGoogleMapsAutoCompletado = ({
+  CookieConToken,
+}) =>
+  axios.get(
+    `/configuracion/ObtenerApiGoogleMapsAutoCompletado/${CookieConToken}`
+  );

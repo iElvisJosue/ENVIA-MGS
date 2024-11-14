@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
 // LIBRERÍAS A USAR
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { toast } from "react-toastify";
 
 // IMPORTAMOS LOS COMPONENTES A USAR
 import AgenciaSeleccionadaEnvio from "./AgenciaSeleccionadaEnvio";
+import GoogleAPI from "../../GoogleAPI";
 
 // IMPORTAMOS LAS AYUDAS
 import {
@@ -26,6 +27,10 @@ export default function RegistrarNuevoRemitenteEnvio({
   paso,
   agencia,
 }) {
+  // ESTADOS AQUI
+  const [direccion, establecerDireccion] = useState(null);
+  const [detallesDeLaDireccion, establecerDetallesDeLaDireccion] =
+    useState(null);
   const {
     handleSubmit,
     register,
@@ -39,27 +44,53 @@ export default function RegistrarNuevoRemitenteEnvio({
     if (remitente?.idRemitente === false) {
       setValue("NombreRemitente", remitente?.NombreRemitente);
       setValue("ApellidosRemitente", remitente?.ApellidosRemitente);
-      setValue("TelefonoCasaRemitente", remitente?.TelefonoCasaRemitente);
       setValue("CelularRemitente", remitente?.CelularRemitente);
+      setValue("TelefonoCasaRemitente", remitente?.TelefonoCasaRemitente);
       setValue("CorreoRemitente", remitente?.CorreoRemitente);
-      setValue("CodigoPostalRemitente", remitente?.CodigoPostalRemitente);
-      setValue("CiudadRemitente", remitente?.CiudadRemitente);
-      setValue("EstadoRemitente", remitente?.EstadoRemitente);
-      setValue("DireccionRemitente", remitente?.DireccionRemitente);
-      setValue("ReferenciaRemitente", remitente?.ReferenciaRemitente);
+      establecerDetallesDeLaDireccion({
+        PAIS: remitente?.PaisRemitente,
+        CODIGO_PAIS: remitente?.CodigoPaisRemitente,
+        ESTADO: remitente?.EstadoRemitente,
+        CODIGO_ESTADO: remitente?.CodigoEstadoRemitente,
+        CIUDAD: remitente?.CiudadRemitente,
+        CODIGO_POSTAL: remitente?.CodigoPostalRemitente,
+        DIRECCION: remitente?.DireccionRemitente,
+      });
     }
   }, []);
 
   const GuardaInformacionDelRemitente = handleSubmit(async (data) => {
+    if (!detallesDeLaDireccion) {
+      return toast.warning(
+        "¡Para registrar el remitente, debe seleccionar una dirección!",
+        {
+          theme: "colored",
+        }
+      );
+    }
     // SON TEMPORALES
-    data.CodigoPaisRemitente = data.PaisRemitente.split(" | ")[0];
     data.idRemitente = false;
+    data.PaisRemitente = detallesDeLaDireccion.PAIS;
+    data.CodigoPaisRemitente = detallesDeLaDireccion.CODIGO_PAIS;
+    data.EstadoRemitente = detallesDeLaDireccion.ESTADO;
+    data.CodigoEstadoRemitente = detallesDeLaDireccion.CODIGO_ESTADO;
+    data.CiudadRemitente = detallesDeLaDireccion.CIUDAD;
+    data.CodigoPostalRemitente = detallesDeLaDireccion.CODIGO_POSTAL;
+    data.DireccionRemitente = detallesDeLaDireccion.DIRECCION;
     establecerRemitente(data);
     establecerPaso(paso + 1);
     toast.success("¡Paso 1 (Remitente) completado con éxito!", {
       theme: "colored",
     });
   });
+
+  const PropsGoogleAPI = {
+    direccion,
+    establecerDireccion,
+    detallesDeLaDireccion,
+    establecerDetallesDeLaDireccion,
+    ciudadesPermitidas: ["us", "mx"],
+  };
 
   const MensajeError = (nombreCampo) => {
     return (
@@ -138,29 +169,6 @@ export default function RegistrarNuevoRemitenteEnvio({
       </span>
       <span className="RegistrarNuevoRemitenteEnvio__Campo">
         <p>
-          <ion-icon name="call"></ion-icon> Teléfono casa
-        </p>
-        <input
-          id="TelefonoCasaRemitente"
-          type="text"
-          name="TelefonoCasaRemitente"
-          placeholder="Escriba aquí..."
-          {...register("TelefonoCasaRemitente", {
-            pattern: REGEX_SOLO_NUMEROS,
-            maxLength: {
-              value: 10,
-              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
-            },
-            minLength: {
-              value: 10,
-              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
-            },
-          })}
-        />
-        {MensajeError("TelefonoCasaRemitente")}
-      </span>
-      <span className="RegistrarNuevoRemitenteEnvio__Campo">
-        <p>
           <ion-icon name="phone-portrait"></ion-icon> Celular
         </p>
         <input
@@ -183,6 +191,29 @@ export default function RegistrarNuevoRemitenteEnvio({
         />
         {MensajeError("CelularRemitente")}
       </span>
+      <span className="RegistrarNuevoRemitenteEnvio__Campo">
+        <p>
+          <ion-icon name="call"></ion-icon> Teléfono casa
+        </p>
+        <input
+          id="TelefonoCasaRemitente"
+          type="text"
+          name="TelefonoCasaRemitente"
+          placeholder="Escriba aquí..."
+          {...register("TelefonoCasaRemitente", {
+            pattern: REGEX_SOLO_NUMEROS,
+            maxLength: {
+              value: 10,
+              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
+            },
+            minLength: {
+              value: 10,
+              message: "¡Este campo no puede tener menos de 10 caracteres! 🔠",
+            },
+          })}
+        />
+        {MensajeError("TelefonoCasaRemitente")}
+      </span>
       <span className="RegistrarNuevoRemitenteEnvio__Campo Dos">
         <p>
           <ion-icon name="mail"></ion-icon> Correo electrónico
@@ -203,122 +234,7 @@ export default function RegistrarNuevoRemitenteEnvio({
         />
         {MensajeError("CorreoRemitente")}
       </span>
-      <span className="RegistrarNuevoRemitenteEnvio__Campo">
-        <p>
-          <ion-icon name="earth"></ion-icon> País
-        </p>
-        <select
-          name="PaisRemitente"
-          id="PaisRemitente"
-          defaultValue={""}
-          {...register("PaisRemitente", {
-            required: "¡Este campo es obligatorio! ⚠️",
-          })}
-        >
-          <option value="">Selecciona un país</option>
-          <option value="MEX | Mexico">MEX | Mexico</option>
-          <option value="USA | United States">USA | United States</option>
-        </select>
-        {MensajeError("PaisRemitente")}
-      </span>
-      <span className="RegistrarNuevoRemitenteEnvio__Campo">
-        <p>
-          <ion-icon name="location"></ion-icon> Estado
-        </p>
-        <select
-          name="EstadoRemitente"
-          id="EstadoRemitente"
-          defaultValue={""}
-          {...register("EstadoRemitente", {
-            required: "¡Este campo es obligatorio! ⚠️",
-          })}
-        >
-          <option value="">Selecciona un estado</option>
-          <option value="California">California</option>
-        </select>
-        {MensajeError("EstadoRemitente")}
-      </span>
-      <span className="RegistrarNuevoRemitenteEnvio__Campo">
-        <p>
-          <ion-icon name="locate"></ion-icon> Ciudad
-        </p>
-        <select
-          name="CiudadRemitente"
-          id="CiudadRemitente"
-          defaultValue={""}
-          {...register("CiudadRemitente", {
-            required: "¡Este campo es obligatorio! ⚠️",
-          })}
-        >
-          <option value="">Selecciona una ciudad</option>
-          <option value="Los Angeles">Los Angeles</option>
-        </select>
-        {MensajeError("CiudadRemitente")}
-      </span>
-      <span className="RegistrarNuevoRemitenteEnvio__Campo">
-        <p>
-          <ion-icon name="pin"></ion-icon> Código Postal
-        </p>
-        <input
-          id="CodigoPostalRemitente"
-          type="text"
-          name="CodigoPostalRemitente"
-          maxLength="5"
-          placeholder="Escriba aquí..."
-          {...register("CodigoPostalRemitente", {
-            required: "¡Este campo es obligatorio! ⚠️",
-            pattern: REGEX_SOLO_NUMEROS,
-            maxLength: {
-              value: 5,
-              message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
-            },
-            minLength: {
-              value: 5,
-              message: "¡Este campo no puede tener menos de 5 caracteres! 🔠",
-            },
-          })}
-        />
-        {MensajeError("CodigoPostalRemitente")}
-      </span>
-      <span className="RegistrarNuevoRemitenteEnvio__Campo Dos">
-        <p>
-          <ion-icon name="trail-sign"></ion-icon> Dirección
-        </p>
-        <input
-          id="DireccionRemitente"
-          type="text"
-          name="DireccionRemitente"
-          placeholder="Escriba aquí..."
-          {...register("DireccionRemitente", {
-            required: "¡Este campo es obligatorio! ⚠️",
-            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-            maxLength: {
-              value: 1000,
-              message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
-            },
-          })}
-        />
-        {MensajeError("DireccionRemitente")}
-      </span>
-      <span className="RegistrarNuevoRemitenteEnvio__Campo Tres">
-        <p>
-          <ion-icon name="document-text"></ion-icon> Referencia
-        </p>
-        <input
-          id="ReferenciaRemitente"
-          type="text"
-          name="ReferenciaRemitente"
-          placeholder="Escriba aquí..."
-          {...register("ReferenciaRemitente", {
-            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-            maxLength: {
-              value: 1000,
-              message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
-            },
-          })}
-        />
-        {MensajeError("ReferenciaRemitente")}
-      </span>
+      <GoogleAPI {...PropsGoogleAPI} />
       <footer className="RegistrarNuevoRemitenteEnvio__Footer">
         <button
           type="button"

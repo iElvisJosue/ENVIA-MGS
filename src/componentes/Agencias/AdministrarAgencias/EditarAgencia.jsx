@@ -1,12 +1,15 @@
 /* eslint-disable react/prop-types */
 // IMPORTAMOS LAS LIBRERÍAS A USAR
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { toast } from "react-toastify";
 
 // IMPORTAMOS LOS CONTEXTOS A USAR
 import { useAgencias } from "../../../context/AgenciasContext";
+
+// IMPORTAMOS LOS COMPONENTES A USAR
+import GoogleAPI from "../../GoogleAPI";
 
 // IMPORTAMOS LAS AYUDAS
 import { ManejarMensajesDeRespuesta } from "../../../helpers/RespuestasServidor";
@@ -24,6 +27,17 @@ export default function EditarAgencia({
   informacionDeLaAgencia,
   establecerVista,
 }) {
+  // ESTADOS AQUI
+  const [direccion, establecerDireccion] = useState(null);
+  const [detallesDeLaDireccion, establecerDetallesDeLaDireccion] = useState({
+    PAIS: informacionDeLaAgencia.PaisAgencia,
+    CODIGO_PAIS: informacionDeLaAgencia.CodigoPaisAgencia,
+    ESTADO: informacionDeLaAgencia.EstadoAgencia,
+    CODIGO_ESTADO: informacionDeLaAgencia.CodigoEstadoAgencia,
+    CIUDAD: informacionDeLaAgencia.CiudadAgencia,
+    CODIGO_POSTAL: informacionDeLaAgencia.CodigoPostalAgencia,
+    DIRECCION: informacionDeLaAgencia.DireccionAgencia,
+  });
   const { ActualizarInformacionAgencia } = useAgencias();
 
   const {
@@ -36,14 +50,13 @@ export default function EditarAgencia({
   });
 
   useEffect(() => {
-    setValue("Agencia", informacionDeLaAgencia?.NombreAgencia);
-    setValue("Contacto", informacionDeLaAgencia?.NombreContactoAgencia);
-    setValue("Telefono", informacionDeLaAgencia?.TelefonoContactoAgencia);
-    setValue("Correo", informacionDeLaAgencia?.CorreoContactoAgencia);
-    setValue("Estado", informacionDeLaAgencia?.EstadoAgencia);
-    setValue("Ciudad", informacionDeLaAgencia?.CiudadAgencia);
-    setValue("CP", informacionDeLaAgencia?.CodigoPostalAgencia);
-    setValue("Direccion", informacionDeLaAgencia?.DireccionAgencia);
+    setValue("NombreAgencia", informacionDeLaAgencia?.NombreAgencia);
+    setValue("NombreContacto", informacionDeLaAgencia?.NombreContactoAgencia);
+    setValue(
+      "TelefonoContacto",
+      informacionDeLaAgencia?.TelefonoContactoAgencia
+    );
+    setValue("CorreoContacto", informacionDeLaAgencia?.CorreoContactoAgencia);
     if (informacionDeLaAgencia?.NombreAgencia === "Envía MGS") {
       document
         .getElementById("NombreAgencia")
@@ -57,14 +70,32 @@ export default function EditarAgencia({
   const ActualizarInformacionDeLaAgencia = handleSubmit(async (info) => {
     if (
       informacionDeLaAgencia.NombreAgencia === "Envía MGS" &&
-      info.Agencia !== "Envía MGS"
+      info.NombreAgencia !== "Envía MGS"
     ) {
+      return toast.error(
+        "¡El nombre de la agencia Envía MGS no puede ser cambiado!",
+        {
+          theme: "colored",
+        }
+      );
+    }
+    if (!detallesDeLaDireccion) {
       return toast.warning(
-        "¡El nombre de la agencia Envía MGS no puede ser cambiado!"
+        "¡Para actualizar la agencia, debe seleccionar una dirección!",
+        {
+          theme: "colored",
+        }
       );
     }
     try {
       info.idAgencia = informacionDeLaAgencia?.idAgencia;
+      info.PaisAgencia = detallesDeLaDireccion.PAIS;
+      info.CodigoPaisAgencia = detallesDeLaDireccion.CODIGO_PAIS;
+      info.EstadoAgencia = detallesDeLaDireccion.ESTADO;
+      info.CodigoEstadoAgencia = detallesDeLaDireccion.CODIGO_ESTADO;
+      info.CiudadAgencia = detallesDeLaDireccion.CIUDAD;
+      info.CodigoPostalAgencia = detallesDeLaDireccion.CODIGO_POSTAL;
+      info.DireccionAgencia = detallesDeLaDireccion.DIRECCION;
       info.CookieConToken = COOKIE_CON_TOKEN;
       const res = await ActualizarInformacionAgencia(info);
       if (res.response) {
@@ -80,6 +111,14 @@ export default function EditarAgencia({
       ManejarMensajesDeRespuesta({ status, data });
     }
   });
+
+  const PropsGoogleAPI = {
+    direccion,
+    establecerDireccion,
+    detallesDeLaDireccion,
+    establecerDetallesDeLaDireccion,
+    ciudadesPermitidas: ["us", "mx"],
+  };
 
   const MensajeError = (nombreCampo) => {
     return (
@@ -117,9 +156,9 @@ export default function EditarAgencia({
         <input
           id="NombreAgencia"
           type="text"
-          name="Agencia"
+          name="NombreAgencia"
           placeholder="Escriba aquí..."
-          {...register("Agencia", {
+          {...register("NombreAgencia", {
             required: "¡Este campo es obligatorio! ⚠️",
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
@@ -128,7 +167,7 @@ export default function EditarAgencia({
             },
           })}
         />
-        {MensajeError("Agencia")}
+        {MensajeError("NombreAgencia")}
       </span>
       <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Dos">
         <p>
@@ -137,9 +176,9 @@ export default function EditarAgencia({
         <input
           id="NombreContacto"
           type="text"
-          name="Contacto"
+          name="NombreContacto"
           placeholder="Escriba aquí..."
-          {...register("Contacto", {
+          {...register("NombreContacto", {
             required: "¡Este campo es obligatorio! ⚠️",
             pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
             maxLength: {
@@ -148,7 +187,7 @@ export default function EditarAgencia({
             },
           })}
         />
-        {MensajeError("Contacto")}
+        {MensajeError("NombreContacto")}
       </span>
       <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
         <p>
@@ -157,9 +196,9 @@ export default function EditarAgencia({
         <input
           id="TelefonoContacto"
           type="text"
-          name="Telefono"
+          name="TelefonoContacto"
           placeholder="Escriba aquí..."
-          {...register("Telefono", {
+          {...register("TelefonoContacto", {
             required: "¡Este campo es obligatorio! ⚠️",
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
@@ -172,18 +211,18 @@ export default function EditarAgencia({
             },
           })}
         />
-        {MensajeError("Telefono")}
+        {MensajeError("TelefonoContacto")}
       </span>
-      <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
+      <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Tres">
         <p>
           <ion-icon name="mail"></ion-icon> Correo del contacto
         </p>
         <input
           id="CorreoContacto"
           type="text"
-          name="Correo"
+          name="CorreoContacto"
           placeholder="Escriba aquí..."
-          {...register("Correo", {
+          {...register("CorreoContacto", {
             required: "¡Este campo es obligatorio! ⚠️",
             pattern: REGEX_CORREO,
             maxLength: {
@@ -192,80 +231,9 @@ export default function EditarAgencia({
             },
           })}
         />
-        {MensajeError("Correo")}
+        {MensajeError("CorreoContacto")}
       </span>
-      <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
-        <p>
-          <ion-icon name="location"></ion-icon> Estado
-        </p>
-        <select
-          id="EstadoAgencia"
-          name="Estado"
-          {...register("Estado", {
-            required: "¡Este campo es obligatorio! ⚠️",
-          })}
-        >
-          <option value="">Elige una opción</option>
-          <option value="Prueba">Opción de prueba</option>
-        </select>
-        {MensajeError("Estado")}
-      </span>
-      <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
-        <p>
-          <ion-icon name="locate"></ion-icon> Ciudad
-        </p>
-        <select
-          id="CiudadAgencia"
-          name="Ciudad"
-          {...register("Ciudad", {
-            required: "¡Este campo es obligatorio! ⚠️",
-          })}
-        >
-          <option value="">Elige una opción</option>
-          <option value="Prueba">Opción de prueba</option>
-        </select>
-        {MensajeError("Ciudad")}
-      </span>
-      <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo">
-        <p>
-          <ion-icon name="pin"></ion-icon> Código Postal
-        </p>
-        <input
-          id="CPAgencia"
-          type="text"
-          name="CP"
-          placeholder="Escriba aquí..."
-          {...register("CP", {
-            required: "¡Este campo es obligatorio! ⚠️",
-            pattern: REGEX_SOLO_NUMEROS,
-            maxLength: {
-              value: 10,
-              message: "¡Este campo no puede tener más de 10 caracteres! 🔠",
-            },
-          })}
-        />
-        {MensajeError("CP")}
-      </span>
-      <span className="RegistrarAgencia__InformacionDeLaAgencia__Titulo__Campo Tres">
-        <p>
-          <ion-icon name="trail-sign"></ion-icon> Dirección
-        </p>
-        <input
-          id="DireccionAgencia"
-          type="text"
-          name="Direccion"
-          placeholder="Escriba aquí..."
-          {...register("Direccion", {
-            required: "¡Este campo es obligatorio! ⚠️",
-            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-            maxLength: {
-              value: 1000,
-              message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
-            },
-          })}
-        />
-        {MensajeError("Direccion")}
-      </span>
+      <GoogleAPI {...PropsGoogleAPI} />
       <footer className="EditarAgencia__Footer">
         <button type="submit" className="EditarAgencia__Footer__Boton Guardar">
           Actualizar

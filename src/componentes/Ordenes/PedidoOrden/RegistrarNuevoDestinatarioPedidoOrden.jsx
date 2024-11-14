@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 // IMPORTAMOS LOS COMPONENTES A USAR
 import ModalInformacionDeLaAgenciaPedidoOrden from "./ModalInformacionDeLaAgenciaPedidoOrden";
 import ModalInformacionDelRemitentePedidoOrden from "./ModalInformacionDelRemitentePedidoOrden";
+import GoogleAPI from "../../GoogleAPI";
 
 // IMPORTAMOS LAS AYUDAS
 import {
@@ -29,6 +30,10 @@ export default function RegistrarNuevoDestinatario({
   agencia,
   remitente,
 }) {
+  // ESTADOS AQUI
+  const [direccion, establecerDireccion] = useState(null);
+  const [detallesDeLaDireccion, establecerDetallesDeLaDireccion] =
+    useState(null);
   const [mostrarModalAgencia, establecerMostrarModalAgencia] = useState(false);
   const [mostrarModalRemitente, establecerMostrarModalRemitente] =
     useState(false);
@@ -59,32 +64,50 @@ export default function RegistrarNuevoDestinatario({
       );
       setValue("CelularDestinatario", destinatario?.CelularDestinatario);
       setValue("CorreoDestinatario", destinatario?.CorreoDestinatario);
-      setValue("ColoniaDestinatario", destinatario?.ColoniaDestinatario);
-      setValue(
-        "MunicipioDelegacionDestinatario",
-        destinatario?.MunicipioDelegacionDestinatario
-      );
-      setValue(
-        "CodigoPostalDestinatario",
-        destinatario?.CodigoPostalDestinatario
-      );
-      setValue("CiudadDestinatario", destinatario?.CiudadDestinatario);
-      setValue("EstadoDestinatario", destinatario?.EstadoDestinatario);
-      setValue("DireccionDestinatario", destinatario?.DireccionDestinatario);
-      setValue("ReferenciaDestinatario", destinatario?.ReferenciaDestinatario);
+      establecerDetallesDeLaDireccion({
+        PAIS: destinatario?.PaisDestinatario,
+        CODIGO_PAIS: destinatario?.CodigoPaisDestinatario,
+        ESTADO: destinatario?.EstadoDestinatario,
+        CODIGO_ESTADO: destinatario?.CodigoEstadoDestinatario,
+        CIUDAD: destinatario?.CiudadDestinatario,
+        CODIGO_POSTAL: destinatario?.CodigoPostalDestinatario,
+        DIRECCION: destinatario?.DireccionDestinatario,
+      });
     }
   }, []);
 
   const GuardarInformacionDelDestinatario = handleSubmit(async (data) => {
+    if (!detallesDeLaDireccion) {
+      return toast.warning(
+        "¡Para registrar el destinatario, debe seleccionar una dirección!",
+        {
+          theme: "colored",
+        }
+      );
+    }
     // SON TEMPORALES
-    data.CodigoPaisDestinatario = data.PaisDestinatario.split(" | ")[0];
     data.idDestinatario = false;
+    data.PaisDestinatario = detallesDeLaDireccion.PAIS;
+    data.CodigoPaisDestinatario = detallesDeLaDireccion.CODIGO_PAIS;
+    data.EstadoDestinatario = detallesDeLaDireccion.ESTADO;
+    data.CodigoEstadoDestinatario = detallesDeLaDireccion.CODIGO_ESTADO;
+    data.CiudadDestinatario = detallesDeLaDireccion.CIUDAD;
+    data.CodigoPostalDestinatario = detallesDeLaDireccion.CODIGO_POSTAL;
+    data.DireccionDestinatario = detallesDeLaDireccion.DIRECCION;
     establecerDestinatario(data);
     establecerPaso(paso + 1);
     toast.success("¡Paso 2 (Destinatario) completado con éxito!", {
       theme: "colored",
     });
   });
+
+  const PropsGoogleAPI = {
+    direccion,
+    establecerDireccion,
+    detallesDeLaDireccion,
+    establecerDetallesDeLaDireccion,
+    ciudadesPermitidas: ["us", "mx"],
+  };
 
   const MensajeError = (nombreCampo) => {
     return (
@@ -208,29 +231,6 @@ export default function RegistrarNuevoDestinatario({
       </span>
       <span className="RegistrarNuevoDestinatarioPedidoOrden__Campo">
         <p>
-          <ion-icon name="call"></ion-icon> Teléfono casa
-        </p>
-        <input
-          id="TelefonoCasaDestinatario"
-          type="text"
-          name="TelefonoCasaDestinatario"
-          placeholder="Escriba aquí..."
-          {...register("TelefonoCasaDestinatario", {
-            pattern: REGEX_SOLO_NUMEROS,
-            maxLength: {
-              value: 10,
-              message: "¡Este campo no puede tener más de 10 caracteres! 🔢",
-            },
-            minLength: {
-              value: 10,
-              message: "¡Este campo no puede tener menos de 10 caracteres! 🔢",
-            },
-          })}
-        />
-        {MensajeError("TelefonoCasaDestinatario")}
-      </span>
-      <span className="RegistrarNuevoDestinatarioPedidoOrden__Campo">
-        <p>
           <ion-icon name="phone-portrait"></ion-icon> Celular
         </p>
         <input
@@ -255,6 +255,29 @@ export default function RegistrarNuevoDestinatario({
       </span>
       <span className="RegistrarNuevoDestinatarioPedidoOrden__Campo">
         <p>
+          <ion-icon name="call"></ion-icon> Teléfono casa
+        </p>
+        <input
+          id="TelefonoCasaDestinatario"
+          type="text"
+          name="TelefonoCasaDestinatario"
+          placeholder="Escriba aquí..."
+          {...register("TelefonoCasaDestinatario", {
+            pattern: REGEX_SOLO_NUMEROS,
+            maxLength: {
+              value: 10,
+              message: "¡Este campo no puede tener más de 10 caracteres! 🔢",
+            },
+            minLength: {
+              value: 10,
+              message: "¡Este campo no puede tener menos de 10 caracteres! 🔢",
+            },
+          })}
+        />
+        {MensajeError("TelefonoCasaDestinatario")}
+      </span>
+      <span className="RegistrarNuevoDestinatarioPedidoOrden__Campo">
+        <p>
           <ion-icon name="mail"></ion-icon> Correo electrónico
         </p>
         <input
@@ -273,141 +296,7 @@ export default function RegistrarNuevoDestinatario({
         />
         {MensajeError("CorreoDestinatario")}
       </span>
-      <span className="RegistrarNuevoDestinatarioPedidoOrden__Campo">
-        <p>
-          <ion-icon name="earth"></ion-icon> País
-        </p>
-        <select
-          name="PaisDestinatario"
-          id="PaisDestinatario"
-          defaultValue={""}
-          {...register("PaisDestinatario", {
-            required: "¡Este campo es obligatorio! ⚠️",
-          })}
-        >
-          <option value="">Selecciona un país</option>
-          <option value="MEX | Mexico">MEX | Mexico</option>
-          <option value="USA | United States">USA | United States</option>
-        </select>
-        {MensajeError("PaisDestinatario")}
-      </span>
-      <span className="RegistrarNuevoDestinatarioPedidoOrden__Campo">
-        <p>
-          <ion-icon name="location"></ion-icon> Estado
-        </p>
-        <select
-          name="EstadoDestinatario"
-          id="EstadoDestinatario"
-          defaultValue={""}
-          {...register("EstadoDestinatario", {
-            required: "¡Este campo es obligatorio! ⚠️",
-          })}
-        >
-          <option value="">Selecciona un estado</option>
-          <option value="California">California</option>
-        </select>
-        {MensajeError("EstadoDestinatario")}
-      </span>
-      <span className="RegistrarNuevoDestinatarioPedidoOrden__Campo">
-        <p>
-          <ion-icon name="locate"></ion-icon> Ciudad
-        </p>
-        <select
-          name="CiudadDestinatario"
-          id="CiudadDestinatario"
-          defaultValue={""}
-          {...register("CiudadDestinatario", {
-            required: "¡Este campo es obligatorio! ⚠️",
-          })}
-        >
-          <option value="">Selecciona una ciudad</option>
-          <option value="Los Angeles">Los Angeles</option>
-        </select>
-        {MensajeError("CiudadDestinatario")}
-      </span>
-      <span className="RegistrarNuevoDestinatarioPedidoOrden__Campo">
-        <p>
-          <ion-icon name="pin"></ion-icon> Código Postal
-        </p>
-        <input
-          id="CodigoPostalDestinatario"
-          type="text"
-          name="CodigoPostalDestinatario"
-          maxLength="5"
-          placeholder="Escriba aquí..."
-          {...register("CodigoPostalDestinatario", {
-            required: "¡Este campo es obligatorio! ⚠️",
-            pattern: REGEX_SOLO_NUMEROS,
-            maxLength: {
-              value: 5,
-              message: "¡Este campo no puede tener más de 5 caracteres! 🔠",
-            },
-            minLength: {
-              value: 5,
-              message: "¡Este campo no puede tener menos de 5 caracteres! 🔠",
-            },
-          })}
-        />
-        {MensajeError("CodigoPostalDestinatario")}
-      </span>
-      <span className="RegistrarNuevoDestinatarioPedidoOrden__Campo Dos">
-        <p>
-          <ion-icon name="trail-sign"></ion-icon> Dirección
-        </p>
-        <input
-          id="DireccionDestinatario"
-          type="text"
-          name="DireccionDestinatario"
-          placeholder="Escriba aquí..."
-          {...register("DireccionDestinatario", {
-            required: "¡Este campo es obligatorio! ⚠️",
-            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-            maxLength: {
-              value: 1000,
-              message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
-            },
-          })}
-        />
-        {MensajeError("DireccionDestinatario")}
-      </span>
-      <span className="RegistrarNuevoDestinatarioPedidoOrden__Campo">
-        <p>
-          <ion-icon name="navigate"></ion-icon> Municipio o delegación
-        </p>
-        <input
-          id="MunicipioDelegacionDestinatario"
-          type="text"
-          name="MunicipioDelegacionDestinatario"
-          placeholder="Escriba aquí..."
-          {...register("MunicipioDelegacionDestinatario", {
-            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-            maxLength: {
-              value: 1000,
-              message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
-            },
-          })}
-        />
-        {MensajeError("MunicipioDelegacionDestinatario")}
-      </span>
-      <span className="RegistrarNuevoDestinatarioPedidoOrden__Campo Dos">
-        <p>
-          <ion-icon name="document-text"></ion-icon> Referencia
-        </p>
-        <input
-          id="ReferenciaDestinatario"
-          type="text"
-          name="ReferenciaDestinatario"
-          placeholder="Escriba aquí..."
-          {...register("ReferenciaDestinatario", {
-            pattern: REGEX_LETRAS_NUMEROS_ACENTOS_ESPACIOS,
-            maxLength: {
-              value: 1000,
-              message: "¡Este campo no puede tener más de 1000 caracteres! 🔠",
-            },
-          })}
-        />
-        {MensajeError("ReferenciaDestinatario")}
-      </span>
+      <GoogleAPI {...PropsGoogleAPI} />
       <footer className="RegistrarNuevoDestinatarioPedidoOrden__Footer">
         <button
           className="RegistrarNuevoDestinatarioPedidoOrden__Footer__Boton Regresar"

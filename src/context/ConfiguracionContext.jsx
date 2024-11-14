@@ -3,6 +3,7 @@ import { createContext, useContext } from "react";
 import {
   SolicitudObtenerTiposDeCarga,
   SolicitudObtenerTiposDeEnvio,
+  SolicitudObtenerApiGoogleMapsAutoCompletado,
 } from "../api/authConfiguracion";
 
 export const ConfiguracionContext = createContext();
@@ -37,11 +38,21 @@ export const ProveedorConfiguracion = ({ children }) => {
     }
   };
 
+  const ObtenerApiGoogleMapsAutoCompletado = async (data) => {
+    try {
+      const res = await SolicitudObtenerApiGoogleMapsAutoCompletado(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
+
   return (
     <ConfiguracionContext.Provider
       value={{
         ObtenerTiposDeCarga,
         ObtenerTiposDeEnvio,
+        ObtenerApiGoogleMapsAutoCompletado,
       }}
     >
       {children}

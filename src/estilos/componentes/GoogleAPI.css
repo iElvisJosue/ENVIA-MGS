@@ -1,0 +1,96 @@
+.GoogleAPI__LoadScript {
+  grid-column: 1 / -1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.GoogleAPI__LoadScript input {
+  min-height: 35px;
+  height: 35px;
+  max-height: 35px;
+}
+.GoogleAPI__LoadScript p {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--ColorNegro);
+  font-weight: bold;
+  gap: 5px;
+}
+.GoogleAPI__LoadScript p ion-icon {
+  font-size: 20px;
+}
+.GoogleAPI__Detalles {
+  grid-column: 1 / -1;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.GoogleAPI__Detalles--Titulo {
+  grid-column: 1 / -1;
+  font-size: 20px;
+  text-align: center;
+  color: var(--ColorNegro);
+  font-weight: bold;
+  text-transform: uppercase;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.GoogleAPI__Detalles--Cerrar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--ColorRojo);
+  background-color: var(--ColorRojo);
+  color: var(--ColorBlanco);
+  font-size: 10px;
+  transition: 0.3s ease-in-out all;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.GoogleAPI__Detalles--Cerrar:hover {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorRojo);
+  cursor: pointer;
+}
+.GoogleAPI__Detalles--Contenido {
+  grid-column: span 1;
+  background-color: var(--ColorBlanco);
+  padding: 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.GoogleAPI__Detalles--Contenido.Direccion {
+  grid-column: 1 / -1;
+}
+.GoogleAPI__Detalles--Contenido p {
+  display: flex;
+  text-align: center;
+  color: var(--ColorAzul);
+  font-weight: bold;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  gap: 5px;
+}
+.GoogleAPI__Detalles--Contenido p ion-icon {
+  font-size: 20px;
+}
+.GoogleAPI__Detalles--Contenido b {
+  color: var(--ColorNegro);
+  text-align: center;
+}
