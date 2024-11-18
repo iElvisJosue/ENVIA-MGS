@@ -61,7 +61,7 @@ export default function ListaDeOrdenesCompletarInformacionOrden({
       } else {
         const { status, data } = res;
         ManejarMensajesDeRespuesta({ status, data });
-        // establecerVistaOrden(esListaCompleta ? 0 : 1);
+        establecerVistaOrden(esListaCompleta ? 0 : 1);
       }
     } catch (error) {
       const { status, data } = error.response;
