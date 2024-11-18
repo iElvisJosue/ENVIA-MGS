@@ -14,8 +14,9 @@ import useBuscarOrdenesPorFiltroYTipoDeUsuario from "../../../hooks/useBuscarOrd
 import "../../../estilos/componentes/Ordenes/ListaOrdenes/ListaOrdenesCompleta.css";
 
 export default function ListaOrdenesCompleta({
+  RealizarPedidoParaLaOrden,
   EstablecerLosDetallesDeLaOrden,
-  EstablecerElRemitenteYLaOrden,
+  CompletarInformacionDeLaOrden,
 }) {
   const { ordenes, cargando, filtro, establecerFiltro } =
     useBuscarOrdenesPorFiltroYTipoDeUsuario();
@@ -27,6 +28,22 @@ export default function ListaOrdenesCompleta({
     // Comprobamos si el nuevo valor cumple con la expresión regular
     if (regex.test(valorIntroducido)) {
       establecerFiltro(valorIntroducido);
+    }
+  };
+
+  const ValidarColorParaEstaOrden = (orden) => {
+    if (
+      orden.InformacionCompletadaOrden !== "Si" ||
+      orden.PedidoRealizadoOrden !== "Si"
+    ) {
+      if (orden.InformacionCompletadaOrden === "No") {
+        return "InformacionNoCompletada";
+      }
+      if (orden.PedidoRealizadoOrden === "No") {
+        return "PedidoNoRealizado";
+      }
+    } else {
+      return "InformacionPedidoCompletados";
     }
   };
 
@@ -59,10 +76,13 @@ export default function ListaOrdenesCompleta({
           </h2>
           <span className="ListaOrdenesCompleta__Colores">
             <p className="ListaOrdenesCompleta__Clasificacion--Texto PedidoRealizado">
-              <ion-icon name="checkmark"></ion-icon> Pedido Realizado
+              <ion-icon name="checkmark-circle"></ion-icon> Pedido Realizado
+            </p>
+            <p className="ListaOrdenesCompleta__Clasificacion--Texto InformacionNoCompletada">
+              <ion-icon name="document"></ion-icon> Información No Completada
             </p>
             <p className="ListaOrdenesCompleta__Clasificacion--Texto PedidoNoRealizado">
-              <ion-icon name="close"></ion-icon> Pedido No Realizado
+              <ion-icon name="cube"></ion-icon> Pedido No Realizado
             </p>
           </span>
           <div className="ListaOrdenesCompleta__Cuerpo">
@@ -105,9 +125,9 @@ export default function ListaOrdenesCompleta({
                 {ordenes.map((orden) => (
                   <tr
                     key={orden.idOrden}
-                    className={`ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo--TR ${
-                      orden.PedidoRealizadoOrden === "Si" && "OrdenRealizada"
-                    }`}
+                    className={`ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo--TR ${ValidarColorParaEstaOrden(
+                      orden
+                    )}`}
                   >
                     <td>{orden.GuiaOrden}</td>
                     <td>
@@ -128,12 +148,21 @@ export default function ListaOrdenesCompleta({
                       >
                         <ion-icon name="eye"></ion-icon>
                       </button>
-                      {orden.PedidoRealizadoOrden === "No" && (
+                      {orden.InformacionCompletadaOrden === "Si" ? (
+                        orden.PedidoRealizadoOrden === "No" && (
+                          <button
+                            title="Realizar pedido"
+                            onClick={() => RealizarPedidoParaLaOrden(orden)}
+                          >
+                            <ion-icon name="cube"></ion-icon>
+                          </button>
+                        )
+                      ) : (
                         <button
-                          title="Realizar pedido"
-                          onClick={() => EstablecerElRemitenteYLaOrden(orden)}
+                          title="Completar información"
+                          onClick={() => CompletarInformacionDeLaOrden(orden)}
                         >
-                          <ion-icon name="cube"></ion-icon>
+                          <ion-icon name="document"></ion-icon>
                         </button>
                       )}
                     </td>

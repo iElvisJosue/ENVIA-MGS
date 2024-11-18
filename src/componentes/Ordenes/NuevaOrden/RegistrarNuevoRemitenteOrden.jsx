@@ -45,15 +45,15 @@ export default function RegistrarNuevoRemitenteOrden({
       setValue("TelefonoCasaRemitente", remitente?.TelefonoCasaRemitente);
       setValue("CelularRemitente", remitente?.CelularRemitente);
       setValue("CorreoRemitente", remitente?.CorreoRemitente);
-      establecerDetallesDeLaDireccion({
-        PAIS: remitente?.PaisRemitente,
-        CODIGO_PAIS: remitente?.CodigoPaisRemitente,
-        ESTADO: remitente?.EstadoRemitente,
-        CODIGO_ESTADO: remitente?.CodigoEstadoRemitente,
-        CIUDAD: remitente?.CiudadRemitente,
-        CODIGO_POSTAL: remitente?.CodigoPostalRemitente,
-        DIRECCION: remitente?.DireccionRemitente,
-      });
+      // establecerDetallesDeLaDireccion({
+      //   PAIS: remitente?.PaisRemitente,
+      //   CODIGO_PAIS: remitente?.CodigoPaisRemitente,
+      //   ESTADO: remitente?.EstadoRemitente,
+      //   CODIGO_ESTADO: remitente?.CodigoEstadoRemitente,
+      //   CIUDAD: remitente?.CiudadRemitente,
+      //   CODIGO_POSTAL: remitente?.CodigoPostalRemitente,
+      //   DIRECCION: remitente?.DireccionRemitente,
+      // });
     }
   }, []);
 
@@ -166,14 +166,14 @@ export default function RegistrarNuevoRemitenteOrden({
       </span>
       <span className="RegistrarNuevoRemitenteOrden__Campo">
         <p>
-          <ion-icon name="phone-portrait"></ion-icon> Celular
+          <ion-icon name="call"></ion-icon> Teléfono #1
         </p>
         <input
-          id="CelularRemitente"
+          id="TelefonoUnoRemitente"
           type="text"
-          name="CelularRemitente"
+          name="TelefonoUnoRemitente"
           placeholder="Escriba aquí..."
-          {...register("CelularRemitente", {
+          {...register("TelefonoUnoRemitente", {
             required: "¡Este campo es obligatorio! ⚠️",
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
@@ -186,18 +186,18 @@ export default function RegistrarNuevoRemitenteOrden({
             },
           })}
         />
-        {MensajeError("CelularRemitente")}
+        {MensajeError("TelefonoUnoRemitente")}
       </span>
       <span className="RegistrarNuevoRemitenteOrden__Campo">
         <p>
-          <ion-icon name="call"></ion-icon> Teléfono casa
+          <ion-icon name="call"></ion-icon> Teléfono #2 (Opcional)
         </p>
         <input
-          id="TelefonoCasaRemitente"
+          id="TelefonoDosRemitente"
           type="text"
-          name="TelefonoCasaRemitente"
+          name="TelefonoDosRemitente"
           placeholder="Escriba aquí..."
-          {...register("TelefonoCasaRemitente", {
+          {...register("TelefonoDosRemitente", {
             pattern: REGEX_SOLO_NUMEROS,
             maxLength: {
               value: 10,
@@ -209,7 +209,7 @@ export default function RegistrarNuevoRemitenteOrden({
             },
           })}
         />
-        {MensajeError("TelefonoCasaRemitente")}
+        {MensajeError("TelefonoDosRemitente")}
       </span>
       <span className="RegistrarNuevoRemitenteOrden__Campo Dos">
         <p>

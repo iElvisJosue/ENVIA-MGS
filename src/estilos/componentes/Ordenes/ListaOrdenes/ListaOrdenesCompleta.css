@@ -79,6 +79,10 @@
 .ListaOrdenesCompleta__Clasificacion--Texto ion-icon {
   font-size: 16px;
 }
+.ListaOrdenesCompleta__Clasificacion--Texto.InformacionNoCompletada {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorNaranja);
+}
 .ListaOrdenesCompleta__Clasificacion--Texto.PedidoRealizado {
   background-color: var(--ColorBlanco);
   color: var(--ColorVerde);
@@ -126,9 +130,14 @@
   border-right: 2px solid var(--ColorSecundario);
   border-bottom: 2px solid var(--ColorSecundario);
   border-left: 2px solid var(--ColorSecundario);
+}
+.ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo--TR.InformacionNoCompletada {
+  color: var(--ColorNaranja);
+}
+.ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo--TR.PedidoNoRealizado {
   color: var(--ColorRojo);
 }
-.ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo--TR.OrdenRealizada {
+.ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo--TR.InformacionPedidoCompletados {
   color: var(--ColorVerde);
 }
 .ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo hr {
@@ -157,20 +166,40 @@
   align-items: center;
   justify-content: center;
 }
-.ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo--TR.OrdenRealizada
+.ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo--TR.InformacionNoCompletada
+  .ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo__Acciones
+  button {
+  background-color: var(--ColorNaranja);
+  border: 2px solid var(--ColorNaranja);
+}
+.ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo--TR.InformacionNoCompletada
+  .ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo__Acciones
+  button:hover {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorNaranja);
+}
+.ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo--TR.PedidoNoRealizado
+  .ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo__Acciones
+  button {
+  background-color: var(--ColorRojo);
+  border: 2px solid var(--ColorRojo);
+}
+.ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo--TR.PedidoNoRealizado
+  .ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo__Acciones
+  button:hover {
+  background-color: var(--ColorBlanco);
+  color: var(--ColorRojo);
+}
+.ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo--TR.InformacionPedidoCompletados
   .ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo__Acciones
   button {
   background-color: var(--ColorVerde);
   border: 2px solid var(--ColorVerde);
 }
-.ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo__Acciones button:hover {
-  background-color: transparent;
-  color: var(--ColorRojo);
-}
-.ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo--TR.OrdenRealizada
+.ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo--TR.InformacionPedidoCompletados
   .ListaOrdenesCompleta__Cuerpo__Tabla__Cuerpo__Acciones
   button:hover {
-  background-color: transparent;
+  background-color: var(--ColorBlanco);
   color: var(--ColorVerde);
 }
 @media (max-width: 1000px) {

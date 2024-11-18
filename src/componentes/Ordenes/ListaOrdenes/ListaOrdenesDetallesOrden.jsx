@@ -45,6 +45,14 @@ export default function ListaOrdenesDetallesOrden({
     }
   };
 
+  const ValidarFormateoDeFecha = (fecha) => {
+    if (fecha) {
+      return FormatearFecha(fecha);
+    } else {
+      return "dd/mm/aaaa";
+    }
+  };
+
   if (cargandoPaquete) return <Cargando />;
 
   // LA FUNCIÓN DE ReiniciarRealizarPedido ES PARA EL COMPONENTE DE "REALIZAR PEDIDO"
@@ -170,34 +178,25 @@ export default function ListaOrdenesDetallesOrden({
               currency: "USD",
             })}
           </div>
-          {/* <div className="ListaOrdenesDetallesOrden__Detalles Agencia">
-            <ion-icon name="business"></ion-icon> <b>Agencia</b>{" "}
-            {paquete[indiceOrden].NombreAgencia}
-          </div>
-          <div className="ListaOrdenesDetallesOrden__Detalles Fecha">
-            <ion-icon name="calendar"></ion-icon> <b>Fecha y hora</b>{" "}
-            {FormatearFecha(
-              paquete[indiceOrden].FechaCreacionOrden.slice(0, 10)
-            )}{" "}
-            {paquete[indiceOrden].HoraCreacionOrden}
-          </div> */}
           <section className="ListaOrdenesDetallesOrden__Seccion">
             <img src="VenedorUsuario.png" alt="Logo Usuario y Vendedor" />
             <h1>Usuario y Vendedor</h1>
           </section>
           <div className="ListaOrdenesDetallesOrden__Detalles">
-            <ion-icon name="color-palette"></ion-icon> <b>Paleta</b> FDSIMMY2
+            <ion-icon name="color-palette"></ion-icon> <b>Paleta</b>{" "}
+            {paquete[indiceOrden].NombrePaletaOrden || "N/A"}
           </div>
           <div className="ListaOrdenesDetallesOrden__Detalles Vendedor">
             <ion-icon name="storefront"></ion-icon> <b>Vendedor</b>{" "}
-            {paquete[indiceOrden].UsuarioResponsableOrden} (34485)
+            {paquete[indiceOrden].VendedorOrden || "N/A"}
           </div>
           <div className="ListaOrdenesDetallesOrden__Detalles">
-            <ion-icon name="person-circle"></ion-icon> <b>Manager</b> (36053)
-            ARIEL U
+            <ion-icon name="person-circle"></ion-icon> <b>Manager</b>
+            {paquete[indiceOrden].NombreManagerOrden || "N/A"}
           </div>
           <div className="ListaOrdenesDetallesOrden__Detalles">
-            <ion-icon name="eye"></ion-icon> <b>Verificador</b> Sin definir
+            <ion-icon name="eye"></ion-icon> <b>Verificador</b>
+            {paquete[indiceOrden].NombreVerificadorOrden || "N/A"}
           </div>
           <section className="ListaOrdenesDetallesOrden__Seccion">
             <img src="LogoRemitente.png" alt="Logo Remitente" />
@@ -207,47 +206,14 @@ export default function ListaOrdenesDetallesOrden({
             <ion-icon name="person-circle"></ion-icon> <b>Nombre</b>{" "}
             {paquete[indiceOrden].NombreRemitente}{" "}
             {paquete[indiceOrden].ApellidosRemitente}
-            {/* <p className="ListaOrdenesDetallesOrden__Detalles__Encabezado">
-              <ion-icon name="paper-plane"></ion-icon>{" "}
-            </p>
-            <p>
-              <b>Nombre: </b>
-              {paquete[indiceOrden].NombreRemitente}{" "}
-              {paquete[indiceOrden].ApellidosRemitente}
-            </p>
-            <p>
-              <b>Teléfono(s): </b>
-              {paquete[indiceOrden].CelularRemitente}
-              {paquete[indiceOrden].TelefonoCasaRemitente &&
-                ` - ${paquete[indiceOrden].TelefonoCasaRemitente}`}
-            </p>
-            <p>
-              <b>Correo: </b>
-              {paquete[indiceOrden].CorreoRemitente}
-            </p>
-            <p>
-              <b>Dirección: </b>
-              <br />
-              {paquete[indiceOrden].PaisRemitente} <br />{" "}
-              {paquete[indiceOrden].EstadoRemitente},{" "}
-              {paquete[indiceOrden].CiudadRemitente},{" "}
-              {paquete[indiceOrden].DireccionRemitente}{" "}
-              {paquete[indiceOrden].CodigoPostalRemitente}
-            </p>
-            {paquete[indiceOrden].ReferenciaRemitente && (
-              <p>
-                <b>Referencia: </b>
-                {paquete[indiceOrden].ReferenciaRemitente}
-              </p>
-            )} */}
           </div>
           <div className="ListaOrdenesDetallesOrden__Detalles">
             <ion-icon name="call"></ion-icon> <b>Teléfono (1)</b>{" "}
-            {paquete[indiceOrden].CelularRemitente}
+            {paquete[indiceOrden].TelefonoUnoRemitente || "N/A"}
           </div>
           <div className="ListaOrdenesDetallesOrden__Detalles">
             <ion-icon name="call"></ion-icon> <b>Teléfono (2)</b>{" "}
-            {paquete[indiceOrden].TelefonoCasaRemitente || "N/A"}
+            {paquete[indiceOrden].TelefonoDosRemitente || "N/A"}
           </div>
           <div className="ListaOrdenesDetallesOrden__Detalles">
             <ion-icon name="mail"></ion-icon> <b>Correo</b>{" "}
@@ -339,26 +305,23 @@ export default function ListaOrdenesDetallesOrden({
           </section>
           <div className="ListaOrdenesDetallesOrden__Detalles">
             <ion-icon name="flag"></ion-icon> <b>País</b>{" "}
-            {paquete[indiceOrden].PaisRemitente}
+            {paquete[indiceOrden].PaisEntregaOrden || "N/A"}
           </div>
           <div className="ListaOrdenesDetallesOrden__Detalles">
             <ion-icon name="location"></ion-icon> <b>Estado</b>{" "}
-            {paquete[indiceOrden].EstadoRemitente}
+            {paquete[indiceOrden].EstadoEntregaOrden || "N/A"}
           </div>
           <div className="ListaOrdenesDetallesOrden__Detalles">
             <ion-icon name="locate"></ion-icon> <b>Ciudad</b>{" "}
-            {paquete[indiceOrden].CiudadRemitente}
+            {paquete[indiceOrden].CiudadEntregaOrden || "N/A"}
           </div>
           <div className="ListaOrdenesDetallesOrden__Detalles">
             <ion-icon name="pin"></ion-icon> <b>Código Postal</b>{" "}
-            {paquete[indiceOrden].CodigoPostalRemitente}
+            {paquete[indiceOrden].CodigoPostalEntregaOrden || "N/A"}
           </div>
           <div className="ListaOrdenesDetallesOrden__Detalles Cuatro">
             <ion-icon name="trail-sign"></ion-icon> <b>Dirección</b>{" "}
-            {paquete[indiceOrden].DireccionRemitente}
-            <br />
-            {paquete[indiceOrden].ReferenciaRemitente &&
-              paquete[indiceOrden].ReferenciaRemitente}
+            {paquete[indiceOrden].DireccionEntregaOrden || "N/A"}
           </div>
           <section className="ListaOrdenesDetallesOrden__Seccion">
             <img src="LogoFechas.png" alt="Logo Fechas" />
@@ -366,31 +329,21 @@ export default function ListaOrdenesDetallesOrden({
           </section>
           <div className="ListaOrdenesDetallesOrden__Detalles">
             <ion-icon name="log-in"></ion-icon> <b>Ingreso</b>{" "}
-            {FormatearFecha(
-              paquete[indiceOrden].FechaCreacionOrden.slice(0, 10)
-            )}{" "}
-            {paquete[indiceOrden].HoraCreacionOrden}
+            {ValidarFormateoDeFecha(paquete[indiceOrden].FechaIngresoOrden)}
           </div>
           <div className="ListaOrdenesDetallesOrden__Detalles">
             <ion-icon name="checkmark-circle"></ion-icon> <b>Verificación</b>{" "}
-            {FormatearFecha(
-              paquete[indiceOrden].FechaCreacionOrden.slice(0, 10)
-            )}{" "}
-            {paquete[indiceOrden].HoraCreacionOrden}
+            {ValidarFormateoDeFecha(
+              paquete[indiceOrden].FechaVerificacionOrden
+            ) || "dd/mm/aaaa"}
           </div>
           <div className="ListaOrdenesDetallesOrden__Detalles">
             <ion-icon name="send"></ion-icon> <b>Envío</b>{" "}
-            {FormatearFecha(
-              paquete[indiceOrden].FechaCreacionOrden.slice(0, 10)
-            )}{" "}
-            {paquete[indiceOrden].HoraCreacionOrden}
+            {ValidarFormateoDeFecha(paquete[indiceOrden].FechaEnvioOrden)}
           </div>
           <div className="ListaOrdenesDetallesOrden__Detalles Recibio">
             <ion-icon name="bag-check"></ion-icon> <b>Recibió</b>{" "}
-            {FormatearFecha(
-              paquete[indiceOrden].FechaCreacionOrden.slice(0, 10)
-            )}{" "}
-            {paquete[indiceOrden].HoraCreacionOrden}
+            {ValidarFormateoDeFecha(paquete[indiceOrden].FechaRecibioOrden)}
           </div>
           <section className="ListaOrdenesDetallesOrden__Seccion">
             <img src="LogoEntrega.png" alt="Logo Entrega" />
@@ -414,13 +367,11 @@ export default function ListaOrdenesDetallesOrden({
           </div>
           <div className="ListaOrdenesDetallesOrden__Detalles">
             <ion-icon name="calendar"></ion-icon> <b>Fecha de entrega</b>{" "}
-            {FormatearFecha(
-              paquete[indiceOrden].FechaCreacionOrden.slice(0, 10)
-            )}
+            {ValidarFormateoDeFecha(paquete[indiceOrden].FechaEntregaOrden)}
           </div>
           <div className="ListaOrdenesDetallesOrden__Detalles">
             <ion-icon name="time"></ion-icon> <b>Horario</b>{" "}
-            {paquete[indiceOrden].HoraCreacionOrden}
+            {paquete[indiceOrden].HorarioOrden || "00:00:00"}
           </div>
           <section className="ListaOrdenesDetallesOrden__Seccion">
             <img src="LogoRastreo.png" alt="Logo Rastreo" />
@@ -428,14 +379,16 @@ export default function ListaOrdenesDetallesOrden({
           </section>
           <div className="ListaOrdenesDetallesOrden__Detalles">
             <ion-icon name="document-text"></ion-icon> <b>Guía</b>{" "}
-            {paquete[indiceOrden].GuiaOrden}
+            {paquete[indiceOrden].GuiaOrden || "N/A"}
           </div>
           <div className="ListaOrdenesDetallesOrden__Detalles">
-            <ion-icon name="search"></ion-icon> <b>Rastreo</b> RF123456789US
+            <ion-icon name="search"></ion-icon> <b>Rastreo</b>
+            {paquete[indiceOrden].RastreoOrden || "N/A"}
           </div>
           <div className="ListaOrdenesDetallesOrden__Detalles Dos">
             <ion-icon name="color-palette"></ion-icon>{" "}
-            <b>Numeración de paleta</b> PLT-00012345
+            <b>Numeración de paleta</b>{" "}
+            {paquete[indiceOrden].NumeracionPaletaOrden || "N/A"}
           </div>
         </>
       ) : (

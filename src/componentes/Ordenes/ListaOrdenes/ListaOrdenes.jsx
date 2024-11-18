@@ -6,6 +6,7 @@ import { useState } from "react";
 import ListaDeOrdenesCompleta from "./ListaOrdenesCompleta";
 import ListaOrdenesPorFecha from "./ListaOrdenesPorFecha";
 import ListaOrdenesDetallesOrden from "./ListaOrdenesDetallesOrden";
+import ListaDeOrdenesCompletarInformacionOrden from "./ListaDeOrdenesCompletarInformacionOrden";
 import ListaDeOrdenesRealizarPedidoOrden from "./ListaDeOrdenesRealizarPedidoOrden";
 
 // IMPORTAMOS LOS ESTILOS
@@ -27,7 +28,27 @@ export default function ListaOrdenes() {
     establecerVistaOrden(2);
   };
 
-  const EstablecerElRemitenteYLaOrden = (infOrden) => {
+  const CompletarInformacionDeLaOrden = (infOrden) => {
+    const { remitente, orden, agencia } =
+      EstablecerInformacionDeLaOrden(infOrden);
+    establecerInformacionDelRemitente(remitente);
+    establecerInformacionDeLaOrden(orden);
+    establecerInformacionDeLaAgencia(agencia);
+
+    establecerVistaOrden(3);
+  };
+
+  const RealizarPedidoParaLaOrden = (infOrden) => {
+    const { remitente, orden, agencia } =
+      EstablecerInformacionDeLaOrden(infOrden);
+    establecerInformacionDelRemitente(remitente);
+    establecerInformacionDeLaOrden(orden);
+    establecerInformacionDeLaAgencia(agencia);
+
+    establecerVistaOrden(4);
+  };
+
+  const EstablecerInformacionDeLaOrden = (infOrden) => {
     const remitente = {
       idRemitente: infOrden.idRemitente,
       NombreRemitente: infOrden.NombreRemitente,
@@ -70,11 +91,7 @@ export default function ListaOrdenes() {
       CodigoPostalAgencia: infOrden.CodigoPostalAgencia,
       DireccionAgencia: infOrden.DireccionAgencia,
     };
-    establecerInformacionDelRemitente(remitente);
-    establecerInformacionDeLaOrden(orden);
-    establecerInformacionDeLaAgencia(agencia);
-
-    establecerVistaOrden(3);
+    return { remitente, orden, agencia };
   };
 
   // ESTOS SON LOS PROPS COMPARTIDOS PARA TODOS LOS COMPONENTES
@@ -91,8 +108,9 @@ export default function ListaOrdenes() {
     establecerInformacionDeLaOrden,
     informacionDeLaAgencia,
     establecerInformacionDeLaAgencia,
-    EstablecerElRemitenteYLaOrden,
+    RealizarPedidoParaLaOrden,
     EstablecerLosDetallesDeLaOrden,
+    CompletarInformacionDeLaOrden,
   };
 
   // ESTA ES LA LISTA DE LOS COMPONENTES PARA ESTA VISTA
@@ -100,7 +118,8 @@ export default function ListaOrdenes() {
     0: ListaDeOrdenesCompleta,
     1: ListaOrdenesPorFecha,
     2: ListaOrdenesDetallesOrden,
-    3: ListaDeOrdenesRealizarPedidoOrden,
+    3: ListaDeOrdenesCompletarInformacionOrden,
+    4: ListaDeOrdenesRealizarPedidoOrden,
   };
 
   // ESTE ES EL COMPONENTE QUE MOSTRAREMOS

@@ -15,6 +15,7 @@ import {
   SolicitudBuscarOrdenesPorFecha,
   SolicitudBuscarMovimientosDeUnaOrden,
   SolicitudBuscarOrdenesPorPaquete,
+  SolicitudCompletarInformacionDeUnaOrden,
 } from "../api/authPedidos";
 
 export const PedidosContext = createContext();
@@ -141,6 +142,14 @@ export const ProveedorPedidos = ({ children }) => {
       return error;
     }
   };
+  const CompletarInformacionDeUnaOrden = async (data) => {
+    try {
+      const res = await SolicitudCompletarInformacionDeUnaOrden(data);
+      return res;
+    } catch (error) {
+      return error;
+    }
+  };
 
   return (
     <PedidosContext.Provider
@@ -159,6 +168,7 @@ export const ProveedorPedidos = ({ children }) => {
         BuscarOrdenesPorFecha,
         BuscarMovimientosDeUnaOrden,
         BuscarOrdenesPorPaquete,
+        CompletarInformacionDeUnaOrden,
       }}
     >
       {children}

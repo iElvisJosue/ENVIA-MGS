@@ -1,0 +1,146 @@
+.ListaDeOrdenesCompletarInformacionOrden {
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+.ListaDeOrdenesCompletarInformacionOrden__Opciones {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 30px;
+}
+.ListaDeOrdenesCompletarInformacionOrden__Opciones--Boton {
+  height: 50px;
+  /* border-radius: 15px; */
+  font-size: 17px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.ListaDeOrdenesCompletarInformacionOrden__Opciones--Boton ion-icon {
+  font-size: 20px;
+}
+.ListaDeOrdenesCompletarInformacionOrden__Opciones--Boton.Regresar {
+  border: 2px solid var(--ColorRojo);
+  background-color: var(--ColorRojo);
+}
+.ListaDeOrdenesCompletarInformacionOrden__Opciones--Boton.Regresar:hover {
+  background-color: transparent;
+  color: var(--ColorRojo);
+}
+.ListaDeOrdenesCompletarInformacionOrden__Opciones--Boton.Regresar:hover::after {
+  content: "Regresar";
+}
+.ListaDeOrdenesCompletarInformacionOrden__Titulo {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--ColorAzul);
+  text-transform: uppercase;
+  font-size: 22px;
+  margin: 10px 0;
+}
+.ListaDeOrdenesCompletarInformacionOrden__Campo {
+  grid-column: span 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.ListaDeOrdenesCompletarInformacionOrden__Campo p {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--ColorNegro);
+  font-weight: bold;
+  gap: 5px;
+}
+.ListaDeOrdenesCompletarInformacionOrden__Campo p ion-icon {
+  font-size: 20px;
+}
+.ListaDeOrdenesCompletarInformacionOrden__Campo input,
+.ListaDeOrdenesCompletarInformacionOrden__Campo select {
+  width: 100%;
+  min-height: 50px;
+  height: 50px;
+  max-height: 50px;
+  background-color: var(--ColorBlanco);
+  border: 1px solid var(--ColorBlanco);
+  /* border-radius: 5px; */
+  padding: 0 10px;
+  color: var(--ColorNegro);
+  font-size: 16px;
+  font-weight: bold;
+}
+.ListaDeOrdenesCompletarInformacionOrden__Campo input:focus {
+  border: 2px solid var(--ColorNegro);
+}
+.ListaDeOrdenesCompletarInformacionOrden__Campo.Dos {
+  grid-column: span 2;
+}
+.ListaDeOrdenesCompletarInformacionOrden__Campo.Tres {
+  grid-column: span 3;
+}
+.ListaDeOrdenesCompletarInformacionOrden__Campo.Cuatro {
+  grid-column: 1 / -1;
+}
+.ListaDeOrdenesCompletarInformacionOrden__Footer {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.ListaDeOrdenesCompletarInformacionOrden__Footer__Boton {
+  width: 150px;
+  height: 50px;
+  max-height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--ColorBlanco);
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  /* border-radius: 25px; */
+}
+.ListaDeOrdenesCompletarInformacionOrden__Footer__Boton.Finalizar {
+  background-color: var(--ColorVerde);
+  border: 2px solid var(--ColorVerde);
+}
+.ListaDeOrdenesCompletarInformacionOrden__Footer__Boton.Finalizar:hover {
+  background-color: transparent;
+  color: var(--ColorVerde);
+}
+@media (width <= 1050px) {
+  .ListaDeOrdenesCompletarInformacionOrden {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (width <= 500px) {
+  .ListaDeOrdenesCompletarInformacionOrden__Footer__Boton {
+    width: 100%;
+    height: 50px;
+  }
+}
+@media (width <= 450px) {
+  .ListaDeOrdenesCompletarInformacionOrden {
+    grid-template-columns: 1fr;
+  }
+  .ListaDeOrdenesCompletarInformacionOrden__Campo.Dos {
+    grid-column: span 1;
+  }
+  .ListaDeOrdenesCompletarInformacionOrden__Campo.Tres {
+    grid-column: span 1;
+  }
+}

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 // LIBRERÍAS A USAR
+import { useMemo } from "react";
 import { LoadScript } from "@react-google-maps/api";
 import GooglePlacesAutocomplete, {
   geocodeByAddress,
@@ -19,6 +20,7 @@ export default function GoogleAPI({
 }) {
   const { apiGoogleMapsAutoCompletado } =
     useObtenerApiGoogleMapsAutoCompletado();
+  const LIBRERIA = useMemo(() => ["places", "geometry"], []);
 
   const manejarDireccion = async (value) => {
     establecerDireccion(value);
@@ -74,7 +76,7 @@ export default function GoogleAPI({
           </p>
           <LoadScript
             googleMapsApiKey={apiGoogleMapsAutoCompletado}
-            libraries={["places"]}
+            libraries={LIBRERIA}
           >
             <GooglePlacesAutocomplete
               apiKey={apiGoogleMapsAutoCompletado}

@@ -14,8 +14,9 @@ import useBuscarOrdenesPorFecha from "../../../hooks/useBuscarOrdenesPorFecha";
 import "../../../estilos/componentes/Ordenes/ListaOrdenes/ListaOrdenesPorFecha.css";
 
 export default function ListaOrdenesPorFecha({
+  RealizarPedidoParaLaOrden,
   EstablecerLosDetallesDeLaOrden,
-  EstablecerElRemitenteYLaOrden,
+  CompletarInformacionDeLaOrden,
 }) {
   const {
     ordenesPorFecha,
@@ -31,6 +32,22 @@ export default function ListaOrdenesPorFecha({
   };
   const ManejarSegundaFecha = (event) => {
     establecerSegundaFecha(event.target.value);
+  };
+
+  const ValidarColorParaEstaOrden = (orden) => {
+    if (
+      orden.InformacionCompletadaOrden !== "Si" ||
+      orden.PedidoRealizadoOrden !== "Si"
+    ) {
+      if (orden.InformacionCompletadaOrden === "No") {
+        return "InformacionNoCompletada";
+      }
+      if (orden.PedidoRealizadoOrden === "No") {
+        return "PedidoNoRealizado";
+      }
+    } else {
+      return "InformacionPedidoCompletados";
+    }
   };
 
   if (cargandoOrdenesPorFecha) return <Cargando />;
@@ -73,6 +90,9 @@ export default function ListaOrdenesPorFecha({
           <span className="ListaOrdenesPorFecha__Colores">
             <p className="ListaOrdenesPorFecha__Clasificacion--Texto PedidoRealizado">
               <ion-icon name="checkmark"></ion-icon> Pedido Realizado
+            </p>
+            <p className="ListaOrdenesPorFecha__Clasificacion--Texto InformacionNoCompletada">
+              <ion-icon name="document"></ion-icon> Información No Completada
             </p>
             <p className="ListaOrdenesPorFecha__Clasificacion--Texto PedidoNoRealizado">
               <ion-icon name="close"></ion-icon> Pedido No Realizado
@@ -118,9 +138,9 @@ export default function ListaOrdenesPorFecha({
                 {ordenesPorFecha.map((orden) => (
                   <tr
                     key={orden.idOrden}
-                    className={`ListaOrdenesPorFecha__Cuerpo__Tabla__Cuerpo--TR ${
-                      orden.PedidoRealizadoOrden === "Si" && "OrdenRealizada"
-                    }`}
+                    className={`ListaOrdenesPorFecha__Cuerpo__Tabla__Cuerpo--TR ${ValidarColorParaEstaOrden(
+                      orden
+                    )}`}
                   >
                     <td>{orden.GuiaOrden}</td>
                     <td>
@@ -136,17 +156,26 @@ export default function ListaOrdenesPorFecha({
                       <button
                         title="Ver orden"
                         onClick={() =>
-                          EstablecerLosDetallesDeLaOrden(orden, false)
+                          EstablecerLosDetallesDeLaOrden(orden, true)
                         }
                       >
                         <ion-icon name="eye"></ion-icon>
                       </button>
-                      {orden.PedidoRealizadoOrden === "No" && (
+                      {orden.InformacionCompletadaOrden === "Si" ? (
+                        orden.PedidoRealizadoOrden === "No" && (
+                          <button
+                            title="Realizar pedido"
+                            onClick={() => RealizarPedidoParaLaOrden(orden)}
+                          >
+                            <ion-icon name="cube"></ion-icon>
+                          </button>
+                        )
+                      ) : (
                         <button
-                          title="Realizar pedido"
-                          onClick={() => EstablecerElRemitenteYLaOrden(orden)}
+                          title="Completar información"
+                          onClick={() => CompletarInformacionDeLaOrden(orden)}
                         >
-                          <ion-icon name="cube"></ion-icon>
+                          <ion-icon name="document"></ion-icon>
                         </button>
                       )}
                     </td>

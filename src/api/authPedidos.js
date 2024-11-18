@@ -42,3 +42,6 @@ export const SolicitudBuscarMovimientosDeUnaOrden = (data) =>
 // SOLICITUD PARA BUSCAR PEDIDOS POR PAQUETE
 export const SolicitudBuscarOrdenesPorPaquete = (data) =>
   axios.post("/pedidos/BuscarOrdenesPorPaquete", data);
+// SOLICITUD PARA COMPLETAR LA INFORMACIÓN DE UNA ORDEN
+export const SolicitudCompletarInformacionDeUnaOrden = (data) =>
+  axios.put("/pedidos/CompletarInformacionDeUnaOrden", data);
